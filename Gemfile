@@ -13,4 +13,4 @@ gemspec
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
 
-gem 'lato_core', :path => '../lato_core'
+gem 'lato_core', :path => '../lato-core'
