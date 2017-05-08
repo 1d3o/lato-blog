@@ -1,4 +1,4 @@
-# Lato Blog 2.0
+# Lato Blog
 
 ## Installation
 
