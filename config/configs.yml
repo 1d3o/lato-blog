@@ -1,0 +1,29 @@
+# This file contain all settings for the blog module.
+
+# set languages for posts.
+languages:
+  language_en:
+    identifier: en
+    title: English
+  language_it:
+    identifier: it
+    title: Italiano
+
+# set menu items for the module.
+menu_items:
+  blog_articles:
+    icon: file-text
+    title: translate[articles]
+    url: ''
+    position: 12
+    permission_min: 0
+    permission_max: 99
+
+# set assets for the module. -> Please, do not edit default assets.
+assets:
+  blog_style:
+    path: lato_blog/application
+    type: stylesheet
+  blog_script:
+    path: lato_blog/application
+    type: javascript
