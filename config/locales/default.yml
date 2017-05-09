@@ -1,6 +1,8 @@
 menu:
   articles: Articles
+  articles_new: Add new
   articles_index: Show all
+  articles_categories: Categories
 
 pages:
   posts: Posts

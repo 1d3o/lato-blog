@@ -19,9 +19,19 @@ menu_items:
     permission_min: 0
     permission_max: 99
     sub_items:
+      new:
+        title: translate[articles_new]
+        url: ''
+        permission_min: 0
+        permission_max: 99
       all:
         title: translate[articles_index]
         url: /lato/blog/posts
+        permission_min: 0
+        permission_max: 99
+      categories:
+        title: translate[articles_categories]
+        url: ''
         permission_min: 0
         permission_max: 99
 
