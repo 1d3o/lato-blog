@@ -18,6 +18,12 @@ menu_items:
     position: 12
     permission_min: 0
     permission_max: 99
+    sub_items:
+      all:
+        title: translate[articles_index]
+        url: /lato/blog/posts
+        permission_min: 0
+        permission_max: 99
 
 # set assets for the module. -> Please, do not edit default assets.
 assets:
