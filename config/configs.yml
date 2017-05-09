@@ -39,4 +39,4 @@ header_widgets:
   blog_switch_lang:
     icon: language
     path: lato_blog/hwidgets/switchlang
-    position: 1
+    position: 11
