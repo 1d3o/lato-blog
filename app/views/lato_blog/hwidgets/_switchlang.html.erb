@@ -1,0 +1,15 @@
+<div class="hwidgets-systeminfo">
+
+  <%=raw cell(:elements, :title).new(label: 'Languages', size: 6) %>
+
+  <% languages = CONFIGS[:lato_blog][:languages].values %>
+
+  <% if languages.length > 0 %>
+    <% languages.each do |language| %>
+      <%=raw cell(:elements, :button).new(label: language[:title]) %>
+    <% end %>
+  <% else %>
+    <p>There are no languages for articles.</p>
+  <% end %>
+
+</div>
