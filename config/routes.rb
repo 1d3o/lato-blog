@@ -2,7 +2,7 @@ LatoBlog::Engine.routes.draw do
   
   # load custom routes files
   def draw(routes_name)
-    instance_eval(File.read(LatoCore::Engine.root.join("config/routes/#{routes_name}.rb")))
+    instance_eval(File.read(LatoBlog::Engine.root.join("config/routes/#{routes_name}.rb")))
   end
 
   # set root path

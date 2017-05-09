@@ -14,7 +14,7 @@ menu_items:
   blog_articles:
     icon: file-text
     title: translate[articles]
-    url: ''
+    url: /lato/blog/posts
     position: 12
     permission_min: 0
     permission_max: 99

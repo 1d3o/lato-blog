@@ -3,7 +3,7 @@ module LatoBlog
     protect_from_forgery with: :exception
 
     def index
-      redirect_to lato_blog.dashboard_path
+      redirect_to lato_blog.posts_path
     end
 
   end
