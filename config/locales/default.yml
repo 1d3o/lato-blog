@@ -1,3 +1,6 @@
 menu:
   articles: Articles
   articles_index: Show all
+
+pages:
+  posts: Posts

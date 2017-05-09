@@ -6,7 +6,7 @@ module LatoBlog
     end
 
     def index
-
+      core__set_header_active_page_title(LANGUAGES[:lato_blog][:pages][:posts])
     end
     
   end
