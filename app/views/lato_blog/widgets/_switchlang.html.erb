@@ -15,7 +15,7 @@
       %>
 
       <%=raw cell(:elements, :button).new(label: language[:title], style: style, icon: icon,
-      url: lato_blog.switch_current_language_path(language: language[:identifier])) %>
+      url: lato_blog.switch_current_language_path(language: language[:identifier]), remote: true) %>
 
     <% end %>
 

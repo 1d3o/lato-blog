@@ -17,11 +17,14 @@ module LatoBlog
         cookies[:lato_blog__current_language] = languages.first 
       end
       
-      redirect_to lato_blog.root_path
+      respond_to do |format|
+        format.js
+      end
     end
 
     private
 
+      # This function set a default language on cookie if no languages are set.
       def set_default_current_language
         if !cookies[:lato_blog__current_language]
           languages = blog__get_languages_identifier
