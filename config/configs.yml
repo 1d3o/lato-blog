@@ -9,8 +9,8 @@ languages:
     identifier: it
     title: Italiano
 
-# set menu items for the module.
-menu_items:
+# set menu for the module.
+menu:
   blog_articles:
     icon: file-text
     title: translate[articles]
