@@ -44,9 +44,9 @@ assets:
     path: lato_blog/application
     type: javascript
 
-# set header widgets for the module. -> Please, do not edit default header widgets.
-header_widgets:
+# set widgets for the module. -> Please, do not edit default widgets.
+widgets:
   blog_switch_lang:
     icon: language
-    path: lato_blog/hwidgets/switchlang
+    path: lato_blog/widgets/switchlang
     position: 11
