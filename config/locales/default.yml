@@ -6,3 +6,7 @@ menu:
 
 pages:
   posts: Posts
+
+mixed:
+  languages: Languages
+  no_languages: There are not languages on the system

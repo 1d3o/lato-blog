@@ -1,15 +1,28 @@
 <div class="hwidgets-systeminfo">
 
-  <%=raw cell(:elements, :title).new(label: 'Languages', size: 6) %>
+  <%=raw cell(:elements, :title).new(label: LANGUAGES[:lato_blog][:mixed][:languages], size: 6) %>
 
   <% languages = CONFIGS[:lato_blog][:languages].values %>
 
   <% if languages.length > 0 %>
+
     <% languages.each do |language| %>
-      <%=raw cell(:elements, :button).new(label: language[:title]) %>
+
+      <%
+        check = cookies[:lato_blog__current_language] === language[:identifier]
+        style = ( check ? 'success' : '')
+        icon = ( check ? 'check' : '')
+      %>
+
+      <%=raw cell(:elements, :button).new(label: language[:title], style: style, icon: icon,
+      url: lato_blog.switch_current_language_path(language: language[:identifier])) %>
+
     <% end %>
+
   <% else %>
-    <p>There are no languages for articles.</p>
+
+    <p><%= LANGUAGES[:lato_blog][:mixed][:no_languages] %></p>
+
   <% end %>
 
 </div>
