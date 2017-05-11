@@ -4,24 +4,16 @@
 
   <% languages = CONFIGS[:lato_blog][:languages].values %>
 
-  <% if languages.length > 0 %>
+  <% languages.each do |language| %>
 
-    <% languages.each do |language| %>
+    <%
+      check = cookies[:lato_blog__current_language] === language[:identifier]
+      style = ( check ? 'success' : '')
+      icon = ( check ? 'check' : '')
+    %>
 
-      <%
-        check = cookies[:lato_blog__current_language] === language[:identifier]
-        style = ( check ? 'success' : '')
-        icon = ( check ? 'check' : '')
-      %>
-
-      <%=raw cell(:elements, :button).new(label: language[:title], style: style, icon: icon,
-      url: lato_blog.switch_current_language_path(language: language[:identifier]), remote: true) %>
-
-    <% end %>
-
-  <% else %>
-
-    <p><%= LANGUAGES[:lato_blog][:mixed][:no_languages] %></p>
+    <%=raw cell(:elements, :button).new(label: language[:title], style: style, icon: icon,
+    url: lato_blog.switch_current_language_path(language: language[:identifier]), remote: true) %>
 
   <% end %>
 

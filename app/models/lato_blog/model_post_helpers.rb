@@ -21,6 +21,11 @@ module LatoBlog
       return LANGUAGES[:lato_blog][:posts_status][self.meta_status]
     end
 
+    # This function return the name of the superuser creator of the post.
+    def get_superuser_creator_name
+      return self.superuser_creator ? self.superuser_creator.get_complete_name : 'Anonymous'
+    end
+
     # This function the post translation for a specific language.
     def get_translation_for_language language_identifier
       return self.post_parent.posts.find_by(meta_language: language_identifier)

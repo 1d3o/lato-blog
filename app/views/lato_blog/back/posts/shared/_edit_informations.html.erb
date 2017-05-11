@@ -17,6 +17,7 @@
       <%=raw cell(:elements, :table, :row).new(labels: [LANGUAGES[:lato_blog][:mixed][:publication_date], @post.get_pretty_publication_datetime]) %>
       <%=raw cell(:elements, :table, :row).new(labels: [LANGUAGES[:lato_blog][:mixed][:creation_date], @post.get_pretty_created_at]) %>
       <%=raw cell(:elements, :table, :row).new(labels: [LANGUAGES[:lato_blog][:mixed][:update_date], @post.get_pretty_updated_at]) %>
+      <%=raw cell(:elements, :table, :row).new(labels: [LANGUAGES[:lato_blog][:mixed][:superuser_creator], @post.get_superuser_creator_name]) %>
 
     <%=raw table_body.close %>
 

@@ -43,6 +43,7 @@ mixed:
   publication_date: Date of pubblication
   creation_date: Date of creation
   update_date: Date of update
+  superuser_creator: Superuser creator
 
 posts_status:
   published: Published

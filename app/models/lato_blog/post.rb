@@ -17,6 +17,7 @@ module LatoBlog
     # Relations:
 
     belongs_to :post_parent, foreign_key: :lato_blog_post_parent_id, class_name: 'LatoBlog::PostParent'
+    belongs_to :superuser_creator, foreign_key: :lato_core_superuser_creator_id, class_name: 'LatoCore::Superuser'
 
     # Scopes:
 
