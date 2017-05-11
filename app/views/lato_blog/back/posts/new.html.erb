@@ -1,34 +1,16 @@
 <%
   row = cell(:elements, :row).new
   block = cell(:elements, :block).new(class: 'xs-12 sm-12 md-12')
-  container_block_big = cell(:elements, :block).new(class: 'xs-12 sm-12 md-8 no-padding no-background no-shadow')
-  container_block_small = cell(:elements, :block).new(class: 'xs-12 sm-12 md-4 no-padding no-background no-shadow')
 %>
 
 <!-- MAIN CONTAINER -->
 <%=raw row.open %>
 
-  <!-- BIG SECTION CONTAINER -->
-  <%=raw container_block_big.open %>
+  <%=raw block.open %>
 
-    <%=raw row.open %>
+    <%= render 'lato_blog/back/posts/shared/form', url: lato_blog.posts_path, method: :post %>
 
-      <%=raw block.open %>
-
-        <%= render 'lato_blog/back/posts/shared/form', url: lato_blog.posts_path, method: :post %>
-
-      <%=raw block.close %>
-
-    <%=raw row.close %>
-
-  <%=raw container_block_big.close %>
-  <!-- / BIG SECTION CONTAINER -->
-
-  <!-- SMALL SECTION CONTAINER -->
-  <%=raw container_block_small.open %>
-
-  <%=raw container_block_small.close %>
-  <!-- / SMALL SECTION CONTAINER -->
+  <%=raw block.close %>
 
 <%=raw row.close %>
 <!-- / MAIN CONTAINER -->

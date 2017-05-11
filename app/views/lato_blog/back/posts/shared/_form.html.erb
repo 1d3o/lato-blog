@@ -11,7 +11,7 @@
     required: true, class: 'md-12', value: @post.title) %>
 
     <%=raw cell(:inputs, :text).new(name: 'post[subtitle]', label: LANGUAGES[:lato_blog][:forms][:subtitle],
-    required: true, class: 'md-12', value: @post.subtitle) %>
+    required: false, class: 'md-12', value: @post.subtitle) %>
 
   <%=raw row.close %>
 

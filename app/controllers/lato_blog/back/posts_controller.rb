@@ -14,9 +14,9 @@ module LatoBlog
       @posts_status = 'deleted' if params[:status] && params[:status] === 'deleted'
       # find informations data
       @posts_informations = {
-        published_length: LatoBlog::Post.published.length,
-        drafted_length: LatoBlog::Post.drafted.length,
-        deleted_length: LatoBlog::Post.deleted.length
+        published_length: LatoBlog::Post.published.where(meta_language: cookies[:lato_blog__current_language]).length,
+        drafted_length: LatoBlog::Post.drafted.where(meta_language: cookies[:lato_blog__current_language]).length,
+        deleted_length: LatoBlog::Post.deleted.where(meta_language: cookies[:lato_blog__current_language]).length
       }
       # find posts to show
       @posts = LatoBlog::Post.where(meta_status: @posts_status, meta_language: cookies[:lato_blog__current_language])
@@ -54,6 +54,12 @@ module LatoBlog
       @post = LatoBlog::Post.find_by(id: params[:id])
 
       if !@post
+        flash[:warning] = LANGUAGES[:lato_blog][:flashes][:post_not_found]
+        redirect_to lato_blog.posts_path
+        return
+      end
+
+      if @post.meta_language != cookies[:lato_blog__current_language]
         flash[:warning] = LANGUAGES[:lato_blog][:flashes][:post_not_found]
         redirect_to lato_blog.posts_path
         return

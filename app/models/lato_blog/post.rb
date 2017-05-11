@@ -13,6 +13,10 @@ module LatoBlog
 
     validates :lato_core_superuser_creator_id, presence: true
 
+    # Relations:
+
+    belongs_to :post_parent, foreign_key: :lato_blog_post_parent_id, class_name: 'LatoBlog::PostParent'
+
     # Scopes:
 
     scope :published, -> { where(meta_status: BLOG_POSTS_STATUS[:published]) }

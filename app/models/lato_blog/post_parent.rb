@@ -5,6 +5,10 @@ module LatoBlog
 
     validates :publication_datetime, presence: true
 
+    # Relations:
+
+    has_many :posts, foreign_key: :lato_blog_post_parent_id, class_name: 'LatoBlog::Post'
+
     # Calbacks:
 
     before_validation do
