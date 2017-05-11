@@ -17,6 +17,7 @@ flashes:
 forms:
   id: Id
   title: Title
+  subtitle: Subtitle
   language: Language
 
 mixed:

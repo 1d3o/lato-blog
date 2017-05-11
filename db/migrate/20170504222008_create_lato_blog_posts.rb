@@ -2,6 +2,7 @@ class CreateLatoBlogPosts < ActiveRecord::Migration[5.1]
   def change
     create_table :lato_blog_posts do |t|
       t.string :title
+      t.string :subtitle
       t.text :excerpt
       t.text :content
 

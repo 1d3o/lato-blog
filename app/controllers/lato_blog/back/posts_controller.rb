@@ -88,7 +88,7 @@ module LatoBlog
       # This function generate params for a new post.
       def new_post_params
         # take params from front-end request
-        post_params = params.require(:post).permit(:title).to_h
+        post_params = params.require(:post).permit(:title, :subtitle).to_h
         # add current superuser id
         post_params[:lato_core_superuser_creator_id] = @core__current_superuser.id
         # add post parent id

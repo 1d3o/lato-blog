@@ -10,6 +10,9 @@
     <%=raw cell(:inputs, :text).new(name: 'post[title]', label: LANGUAGES[:lato_blog][:forms][:title],
     required: true, class: 'md-12', value: @post.title) %>
 
+    <%=raw cell(:inputs, :text).new(name: 'post[subtitle]', label: LANGUAGES[:lato_blog][:forms][:subtitle],
+    required: true, class: 'md-12', value: @post.subtitle) %>
+
   <%=raw row.close %>
 
   <div class="text-right">
