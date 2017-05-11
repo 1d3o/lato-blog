@@ -28,7 +28,7 @@
       message: LANGUAGES[:lato_blog][:mixed][:empty_trash_message],
       positive_response: LANGUAGES[:lato_blog][:mixed][:empty_trash_positive],
       negative_response: LANGUAGES[:lato_blog][:mixed][:empty_trash_negative]
-    }) %>
+    }, url: lato_blog.posts_destroy_all_deleted_path) %>
   </div>
  
 <%=raw block.close %>

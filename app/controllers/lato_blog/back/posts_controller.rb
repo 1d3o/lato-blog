@@ -60,6 +60,29 @@ module LatoBlog
       end
     end
 
+    # This function updates a post.
+    def update
+
+    end
+    
+    # This function destroyes a post.
+    def destroy
+
+    end
+
+    # Tis function destroyes all posts with status deleted.
+    def destroy_all_deleted
+      @posts = LatoBlog::Post.deleted
+
+      if !@posts || @posts.length < 1
+        flash[:warning] = LANGUAGES[:lato_blog][:flashes][:deleted_posts_not_found]
+        redirect_to lato_blog.posts_path
+        return
+      end
+
+      redirect_to lato_blog.posts_path(status: 'deleted')
+    end
+
     private
 
       # This function generate params for a new post.

@@ -1,7 +1,10 @@
 <%
   block = cell(:elements, :block).new(class: 'xs-12 sm-12 md-12')
   table = cell(:elements, :table, :container).new
-  table_head = cell(:elements, :table, :head).new(labels: [LANGUAGES[:lato_blog][:forms][:title]])
+  table_head = cell(:elements, :table, :head).new(labels: [
+    LANGUAGES[:lato_blog][:forms][:title],
+    LANGUAGES[:lato_blog][:forms][:language]
+  ])
   table_body = cell(:elements, :table, :body).new
 %>
 
@@ -24,7 +27,7 @@
 
       <% @posts.each do |post| %>
 
-        <%=raw cell(:elements, :table, :row).new(labels: [post.title]) %>
+        <%=raw cell(:elements, :table, :row).new(labels: ["<a href='#{lato_blog.post_path(post.id)}'>#{post.title}</a>", post.meta_language]) %>
 
       <% end %>
 

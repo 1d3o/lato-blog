@@ -12,10 +12,12 @@ pages:
 flashes:
   post_create_success: The Article was created successfully
   post_not_found: Post not found
+  deleted_posts_not_found: There are not deleted posts
 
 forms:
   id: Id
   title: Title
+  language: Language
 
 mixed:
   languages: Languages
