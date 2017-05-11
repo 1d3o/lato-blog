@@ -1,0 +1,18 @@
+<%=raw block.open %>
+
+  <%=raw cell(:elements, :title).new(label: LANGUAGES[:lato_blog][:mixed][:switch_to], size: 6) %>
+
+  <%
+    published_button = cell(:elements, :button).new(label: LANGUAGES[:lato_blog][:mixed][:published_articles],
+    style: 'success', icon: 'thumbs-o-up', url: lato_blog.posts_path(status: 'published'))
+    drafted_button = cell(:elements, :button).new(label: LANGUAGES[:lato_blog][:mixed][:drafted_articles],
+    style: 'warning', icon: 'user-secret', url: lato_blog.posts_path(status: 'drafted'))
+    deleted_button = cell(:elements, :button).new(label: LANGUAGES[:lato_blog][:mixed][:deleted_articles],
+    style: 'danger', icon: 'trash', url: lato_blog.posts_path(status: 'deleted'))
+
+    buttons = []
+  %>
+
+  <%=raw cell(:elements, :buttongroup).new(buttons: buttons) %>
+
+<%=raw block.close %>

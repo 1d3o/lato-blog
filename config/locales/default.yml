@@ -5,8 +5,20 @@ menu:
   articles_categories: Categories
 
 pages:
-  posts: Posts
+  posts: Articles
+  posts_new: New article
+  posts_edit: Edit article
+
+flashes:
+  post_create_success: The Article was created successfully
+  post_not_found: Post not found
 
 mixed:
   languages: Languages
   no_languages: There are not languages on the system
+  published_articles: Public articles
+  drafted_articles: Drafted articles
+  deleted_articles: Deleted articles
+  switch_to: Switch to
+  save: Save
+  cancel: Cancel

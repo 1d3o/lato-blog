@@ -15,7 +15,7 @@
 
       <%=raw block.open %>
 
-        <%=raw cell(:elements, :title).new(label: LANGUAGES[:lato_blog][:mixed][:published_articles], size: 6) %>
+        <%= render 'lato_blog/back/posts/shared/form', url: lato_blog.posts_path, method: :post %>
 
       <%=raw block.close %>
 
@@ -26,12 +26,6 @@
 
   <!-- SMALL SECTION CONTAINER -->
   <%=raw container_block_small.open %>
-
-    <%=raw row.open %>
-
-      <%= render 'lato_blog/back/posts/shared/index_status_switch', status: @posts_status %>
-
-    <%=raw row.close %>
 
   <%=raw container_block_small.close %>
   <!-- / SMALL SECTION CONTAINER -->
