@@ -1,6 +1,6 @@
 # This file contain all settings for the blog module.
 
-# set languages for posts.
+# set languages for posts. -> One language is necessary.
 languages:
   language_en:
     identifier: en

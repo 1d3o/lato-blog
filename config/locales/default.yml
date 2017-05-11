@@ -29,6 +29,8 @@ mixed:
   deleted_posts: Deleted articles
   switch_to: Switch to
   save: Save
+  create: Create
+  show: Show
   cancel: Cancel
   info: Informations
   new_post: New article

@@ -10,12 +10,7 @@ module LatoBlog
 
     # This function switch the default language used by the system and redirect to the same user page.
     def switch_current_language
-      languages = blog__get_languages_identifier
-      if languages.include? params[:language]
-        cookies[:lato_blog__current_language] = params[:language]
-      elsif languages && languages.length > 0
-        cookies[:lato_blog__current_language] = languages.first 
-      end
+      set_current_language params[:language]
       
       respond_to do |format|
         format.js
@@ -29,6 +24,15 @@ module LatoBlog
         if !cookies[:lato_blog__current_language]
           languages = blog__get_languages_identifier
           cookies[:lato_blog__current_language] = (languages && languages.length > 0) ? languages.first : nil
+        end
+      end
+
+      def set_current_language language
+        languages = blog__get_languages_identifier
+        if languages.include? language
+          cookies[:lato_blog__current_language] = language
+        else
+          set_default_current_language
         end
       end
     

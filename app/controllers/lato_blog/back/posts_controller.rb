@@ -32,6 +32,14 @@ module LatoBlog
     def new
       core__set_header_active_page_title(LANGUAGES[:lato_blog][:pages][:posts_new])
       @post = LatoBlog::Post.new
+
+      if params[:language]
+        set_current_language params[:language]
+      end
+
+      if params[:parent]
+        @post_parent = LatoBlog::PostParent.find_by(id: params[:parent])
+      end
     end
 
     # This function creates a new post.
@@ -60,9 +68,7 @@ module LatoBlog
       end
 
       if @post.meta_language != cookies[:lato_blog__current_language]
-        flash[:warning] = LANGUAGES[:lato_blog][:flashes][:post_not_found]
-        redirect_to lato_blog.posts_path
-        return
+        set_current_language @post.meta_language
       end
     end
 
@@ -113,7 +119,7 @@ module LatoBlog
         # add current superuser id
         post_params[:lato_core_superuser_creator_id] = @core__current_superuser.id
         # add post parent id
-        post_params[:lato_blog_post_parent_id] = generate_post_parent
+        post_params[:lato_blog_post_parent_id] = params[:parent] ? params[:parent] : generate_post_parent
         # add metadata
         post_params[:meta_language] = cookies[:lato_blog__current_language]
         post_params[:meta_status] = BLOG_POSTS_STATUS[:drafted]

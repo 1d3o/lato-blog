@@ -17,9 +17,16 @@
         <% if @post.meta_language === language[:identifier] %>
           <%=raw cell(:elements, :table, :row).new(labels: [language[:title], '']) %>
         <% elsif @post.get_translation_for_language(language[:identifier]) %>
-          <%=raw cell(:elements, :table, :row).new(labels: [language[:title], 'Show']) %>
+          <% language_post = @post.get_translation_for_language(language[:identifier]) %>
+          <%=raw cell(:elements, :table, :row).new(labels: [
+            language[:title],
+            "<a href='#{lato_blog.post_path(language_post.id)}'>#{LANGUAGES[:lato_blog][:mixed][:show]}</a>"
+          ]) %>
         <% else %>
-          <%=raw cell(:elements, :table, :row).new(labels: [language[:title], 'Create']) %>
+          <%=raw cell(:elements, :table, :row).new(labels: [
+            language[:title],
+            "<a href='#{lato_blog.new_post_path(language: language[:identifier], parent: @post.post_parent.id)}'>#{LANGUAGES[:lato_blog][:mixed][:create]}</a>"
+          ]) %>
         <% end %>
 
       <% end %>

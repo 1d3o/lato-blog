@@ -12,6 +12,7 @@ module LatoBlog
     validates :meta_language, presence: true, length: { maximum: 250 }, inclusion: { in: ([nil] + BLOG_LANGUAGES_IDENTIFIER) }
 
     validates :lato_core_superuser_creator_id, presence: true
+    validates :lato_blog_post_parent_id, presence: true
 
     # Relations:
 
@@ -33,6 +34,8 @@ module LatoBlog
       meta_permalink.downcase!
       meta_status.downcase!
       meta_language.downcase!
+
+      check_lato_blog_post_parent
     end
 
     private 
@@ -54,6 +57,23 @@ module LatoBlog
         end
 
         self.meta_permalink = accepted
+      end
+
+      # This function check that the post parent exist and has not others post for the same language.
+      def check_lato_blog_post_parent
+        post_parent = LatoBlog::PostParent.find_by(id: self.lato_blog_post_parent_id)
+        if !post_parent
+          errors.add('Post parent', 'not exist for the post')
+          throw :abort
+          return
+        end
+
+        same_language_post = post_parent.posts.find_by(meta_language: self.meta_language)
+        if same_language_post && same_language_post.id != self.id
+          errors.add('Post parent', 'has another post for the same language')
+          throw :abort
+          return
+        end
       end
 
   end

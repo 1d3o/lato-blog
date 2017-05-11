@@ -5,6 +5,8 @@
 
 <%=raw form.open %>
 
+  <input type="hidden" name="parent" value="<%= @post_parent ? @post_parent.id : nil %>">
+
   <%=raw row.open %>
 
     <%=raw cell(:inputs, :text).new(name: 'post[title]', label: LANGUAGES[:lato_blog][:forms][:title],
