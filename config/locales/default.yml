@@ -1,8 +1,8 @@
 menu:
-  articles: Articles
-  articles_new: Add new
-  articles_index: Show all
-  articles_categories: Categories
+  posts: Articles
+  posts_new: Add new
+  posts_index: Show all
+  posts_categories: Categories
 
 pages:
   posts: Articles
@@ -13,12 +13,22 @@ flashes:
   post_create_success: The Article was created successfully
   post_not_found: Post not found
 
+forms:
+  id: Id
+  title: Title
+
 mixed:
   languages: Languages
   no_languages: There are not languages on the system
-  published_articles: Public articles
-  drafted_articles: Drafted articles
-  deleted_articles: Deleted articles
+  published_posts: Public articles
+  drafted_posts: Drafted articles
+  deleted_posts: Deleted articles
   switch_to: Switch to
   save: Save
   cancel: Cancel
+  info: Informations
+  new_post: New article
+  empty_trash: Empty trash
+  empty_trash_message: Are you sure to continue? All the deleted articles will be completely destroyed.
+  empty_trash_positive: Yes, I'm sure
+  empty_trash_negative: No, I don't want

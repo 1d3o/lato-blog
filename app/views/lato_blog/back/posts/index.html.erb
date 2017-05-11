@@ -13,11 +13,7 @@
 
     <%=raw row.open %>
 
-      <%=raw block.open %>
-
-        <%=raw cell(:elements, :title).new(label: LANGUAGES[:lato_blog][:mixed][:published_articles], size: 6) %>
-
-      <%=raw block.close %>
+      <%= render 'lato_blog/back/posts/shared/index', status: @posts_status %>
 
     <%=raw row.close %>
 
@@ -28,6 +24,8 @@
   <%=raw container_block_small.open %>
 
     <%=raw row.open %>
+
+      <%= render 'lato_blog/back/posts/shared/index_informations', informations: @posts_informations %>
 
       <%= render 'lato_blog/back/posts/shared/index_status_switch', status: @posts_status %>
 

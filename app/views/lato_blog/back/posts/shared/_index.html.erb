@@ -1,0 +1,35 @@
+<%
+  block = cell(:elements, :block).new(class: 'xs-12 sm-12 md-12')
+  table = cell(:elements, :table, :container).new
+  table_head = cell(:elements, :table, :head).new(labels: [LANGUAGES[:lato_blog][:forms][:title]])
+  table_body = cell(:elements, :table, :body).new
+%>
+
+<%=raw block.open %>
+
+  <%
+    title = ''
+    title = LANGUAGES[:lato_blog][:mixed][:published_posts] if status && status === 'published'
+    title = LANGUAGES[:lato_blog][:mixed][:drafted_posts] if status && status === 'drafted'
+    title = LANGUAGES[:lato_blog][:mixed][:deleted_posts] if status && status === 'deleted'
+  %>
+
+  <%=raw cell(:elements, :title).new(label: title, size: 6) %>
+
+  <%=raw table.open %>
+
+    <%=raw table_head.show %>
+
+    <%=raw table_body.open %>
+
+      <% @posts.each do |post| %>
+
+        <%=raw cell(:elements, :table, :row).new(labels: [post.title]) %>
+
+      <% end %>
+
+    <%=raw table_body.close %>
+
+  <%=raw table.close %>
+
+<%=raw block.close %>

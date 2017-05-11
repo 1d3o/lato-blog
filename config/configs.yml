@@ -13,24 +13,24 @@ languages:
 menu:
   blog_articles:
     icon: file-text
-    title: translate[articles]
+    title: translate[posts]
     url: /lato/blog/posts
     position: 12
     permission_min: 0
     permission_max: 99
     sub_items:
       new:
-        title: translate[articles_new]
-        url: ''
+        title: translate[posts_new]
+        url: /lato/blog/posts/new
         permission_min: 0
         permission_max: 99
       all:
-        title: translate[articles_index]
+        title: translate[posts_index]
         url: /lato/blog/posts
         permission_min: 0
         permission_max: 99
       categories:
-        title: translate[articles_categories]
+        title: translate[posts_categories]
         url: ''
         permission_min: 0
         permission_max: 99

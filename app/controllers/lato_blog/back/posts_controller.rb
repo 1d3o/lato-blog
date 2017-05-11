@@ -12,6 +12,12 @@ module LatoBlog
       @posts_status = 'published'
       @posts_status = 'drafted' if params[:status] && params[:status] === 'drafted'
       @posts_status = 'deleted' if params[:status] && params[:status] === 'deleted'
+      # find informations data
+      @posts_informations = {
+        published_length: LatoBlog::Post.published.length,
+        drafted_length: LatoBlog::Post.drafted.length,
+        deleted_length: LatoBlog::Post.deleted.length
+      }
       # find posts to show
       @posts = LatoBlog::Post.where(meta_status: @posts_status, meta_language: cookies[:lato_blog__current_language])
     end

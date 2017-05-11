@@ -7,7 +7,7 @@
 
   <%=raw row.open %>
 
-    <%=raw cell(:inputs, :text).new(name: 'post[title]', label: 'Title',
+    <%=raw cell(:inputs, :text).new(name: 'post[title]', label: LANGUAGES[:lato_blog][:forms][:title],
     required: true, class: 'md-12', value: @post.title) %>
 
   <%=raw row.close %>

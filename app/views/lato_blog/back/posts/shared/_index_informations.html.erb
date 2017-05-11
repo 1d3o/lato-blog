@@ -1,0 +1,34 @@
+<%
+  block = cell(:elements, :block).new(class: 'xs-12 sm-12 md-12')
+  table = cell(:elements, :table, :container).new
+  table_body = cell(:elements, :table, :body).new
+%>
+
+<%=raw block.open %>
+
+  <%=raw cell(:elements, :title).new(label: LANGUAGES[:lato_blog][:mixed][:info], size: 6) %>
+
+  <%=raw table.open %>
+
+    <%=raw table_body.open %>
+
+      <%=raw cell(:elements, :table, :row).new(labels: [LANGUAGES[:lato_blog][:mixed][:published_posts], informations[:published_length]]) %>
+      <%=raw cell(:elements, :table, :row).new(labels: [LANGUAGES[:lato_blog][:mixed][:drafted_posts], informations[:drafted_length]]) %>
+      <%=raw cell(:elements, :table, :row).new(labels: [LANGUAGES[:lato_blog][:mixed][:deleted_posts], informations[:deleted_length]]) %>
+
+    <%=raw table_body.close %>
+
+  <%=raw table.close %>
+
+  <div class="text-left">
+    <br><br>
+    <%=raw cell(:elements, :button).new(label: LANGUAGES[:lato_blog][:mixed][:new_post], icon: 'plus', url: lato_blog.new_post_path) %>
+    <%=raw cell(:elements, :button).new(label: LANGUAGES[:lato_blog][:mixed][:empty_trash], icon: 'trash', style: 'danger',
+    confirmation: {
+      message: LANGUAGES[:lato_blog][:mixed][:empty_trash_message],
+      positive_response: LANGUAGES[:lato_blog][:mixed][:empty_trash_positive],
+      negative_response: LANGUAGES[:lato_blog][:mixed][:empty_trash_negative]
+    }) %>
+  </div>
+ 
+<%=raw block.close %>
