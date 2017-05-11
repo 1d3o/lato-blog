@@ -60,12 +60,7 @@ module LatoBlog
     def edit
       core__set_header_active_page_title(LANGUAGES[:lato_blog][:pages][:posts_edit])
       @post = LatoBlog::Post.find_by(id: params[:id])
-
-      if !@post
-        flash[:warning] = LANGUAGES[:lato_blog][:flashes][:post_not_found]
-        redirect_to lato_blog.posts_path
-        return
-      end
+      return unless check_post_presence
 
       if @post.meta_language != cookies[:lato_blog__current_language]
         set_current_language @post.meta_language
@@ -75,12 +70,7 @@ module LatoBlog
     # This function updates a post.
     def update
       @post = LatoBlog::Post.find_by(id: params[:id])
-
-      if !@post
-        flash[:warning] = LANGUAGES[:lato_blog][:flashes][:post_not_found]
-        redirect_to lato_blog.posts_path
-        return
-      end
+      return unless check_post_presence
 
       if !@post.update(edit_post_params)
         flash[:danger] = @post.errors.full_messages.to_sentence
@@ -90,6 +80,17 @@ module LatoBlog
       
       flash[:success] = LANGUAGES[:lato_blog][:flashes][:post_update_success]
       redirect_to lato_blog.post_path(@post.id)
+    end
+
+    # This function updates the status of a post.
+    def update_status
+      @post = LatoBlog::Post.find_by(id: params[:id])
+      return unless check_post_presence
+
+      # TODO: Continue
+
+      flash[:success] = LANGUAGES[:lato_blog][:flashes][:post_update_success]
+      redirect_to lato_blog.post_path(@post.id)      
     end
     
     # This function destroyes a post.
@@ -111,6 +112,19 @@ module LatoBlog
     end
 
     private
+
+      # This function checks the @post variable is present and redirect to index if it not exist.
+      def check_post_presence
+        if !@post
+          flash[:warning] = LANGUAGES[:lato_blog][:flashes][:post_not_found]
+          redirect_to lato_blog.posts_path
+          return false
+        end
+
+        return true
+      end
+
+      # Params helpers:
 
       # This function generate params for a new post.
       def new_post_params

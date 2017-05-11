@@ -19,6 +19,8 @@ module LatoBlog
 
     private
 
+      # Language helpers:
+
       # This function set a default language on cookie if no languages are set.
       def set_default_current_language
         if !cookies[:lato_blog__current_language]
@@ -27,6 +29,7 @@ module LatoBlog
         end
       end
 
+      # This function set the language received as params as default language if it is possible.
       def set_current_language language
         languages = blog__get_languages_identifier
         if languages.include? language
