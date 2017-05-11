@@ -12,7 +12,11 @@
 
     <%=raw table_body.open %>
 
-      <%=raw cell(:elements, :table, :row).new(labels: ['Current language', get_current_language_title]) %>
+      <%=raw cell(:elements, :table, :row).new(labels: [LANGUAGES[:lato_blog][:mixed][:current_language], get_current_language_title]) %>
+      <%=raw cell(:elements, :table, :row).new(labels: [LANGUAGES[:lato_blog][:mixed][:current_status], @post.get_pretty_status]) %>
+      <%=raw cell(:elements, :table, :row).new(labels: [LANGUAGES[:lato_blog][:mixed][:publication_date], @post.get_pretty_publication_datetime]) %>
+      <%=raw cell(:elements, :table, :row).new(labels: [LANGUAGES[:lato_blog][:mixed][:creation_date], @post.get_pretty_created_at]) %>
+      <%=raw cell(:elements, :table, :row).new(labels: [LANGUAGES[:lato_blog][:mixed][:update_date], @post.get_pretty_updated_at]) %>
 
     <%=raw table_body.close %>
 

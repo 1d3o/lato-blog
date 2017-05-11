@@ -68,7 +68,22 @@ module LatoBlog
 
     # This function updates a post.
     def update
+      @post = LatoBlog::Post.find_by(id: params[:id])
 
+      if !@post
+        flash[:warning] = LANGUAGES[:lato_blog][:flashes][:post_not_found]
+        redirect_to lato_blog.posts_path
+        return
+      end
+
+      if !@post.update(edit_post_params)
+        flash[:danger] = @post.errors.full_messages.to_sentence
+        redirect_to lato_blog.edit_post_path(@post.id)
+        return
+      end
+      
+      flash[:success] = LANGUAGES[:lato_blog][:flashes][:post_update_success]
+      redirect_to lato_blog.post_path(@post.id)
     end
     
     # This function destroyes a post.
@@ -104,6 +119,11 @@ module LatoBlog
         post_params[:meta_status] = BLOG_POSTS_STATUS[:drafted]
         # return final post object
         return post_params
+      end
+
+      # This function generate params for a edit post.
+      def edit_post_params
+        params.require(:post).permit(:title, :subtitle)
       end
 
       # This function generate and save a new post parent and return the id.

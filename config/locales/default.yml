@@ -11,8 +11,9 @@ pages:
 
 flashes:
   post_create_success: The Article was created successfully
-  post_not_found: Post not found
-  deleted_posts_not_found: There are not deleted posts
+  post_not_found: Article not found
+  deleted_posts_not_found: There are not deleted articles
+  post_update_success: The Article was updated successfully
 
 forms:
   id: Id
@@ -35,3 +36,13 @@ mixed:
   empty_trash_message: Are you sure to continue? All the deleted articles will be completely destroyed.
   empty_trash_positive: Yes, I'm sure
   empty_trash_negative: No, I don't want
+  current_language: Current language
+  current_status: Current status
+  publication_date: Date of pubblication
+  creation_date: Date of creation
+  update_date: Date of update
+
+posts_status:
+  published: Published
+  drafted: Drafted
+  deleted: Deleted

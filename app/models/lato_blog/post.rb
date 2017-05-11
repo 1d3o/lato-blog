@@ -1,7 +1,7 @@
 module LatoBlog
   class Post < ApplicationRecord
 
-    include PostHelpers
+    include ModelPostHelpers
 
     # Validations:
 

@@ -27,7 +27,13 @@
   <!-- SMALL SECTION CONTAINER -->
   <%=raw container_block_small.open %>
 
-    <%= render 'lato_blog/back/posts/shared/edit_informations' %>
+    <%=raw row.open %>
+
+      <%= render 'lato_blog/back/posts/shared/edit_informations' %>
+
+      <%= render 'lato_blog/back/posts/shared/edit_languages' %>
+
+    <%=raw row.close %>
 
   <%=raw container_block_small.close %>
   <!-- / SMALL SECTION CONTAINER -->
