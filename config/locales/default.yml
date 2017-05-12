@@ -16,6 +16,7 @@ flashes:
   deleted_posts_destroy_success: All deleted posts are destroyed
   post_update_success: The Article was updated successfully
   post_status_not_accepted: The status selected can not be accepted for the article.
+  post_publication_datetime_not_accepted: The date for the article can not be accepted.
 
 forms:
   id: Id
@@ -48,6 +49,7 @@ mixed:
   update_date: Date of update
   superuser_creator: Superuser creator
   status: Status
+  change_publication_datetime: Change publication date
 
 posts_status:
   published: Published

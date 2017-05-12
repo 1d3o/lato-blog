@@ -103,6 +103,27 @@ module LatoBlog
       flash[:success] = LANGUAGES[:lato_blog][:flashes][:post_update_success]
       redirect_to lato_blog.post_path(@post.id)      
     end
+
+    # This function updates the publication datetime of a post (update the post parent).
+    def update_publication_datetime
+      @post = LatoBlog::Post.find_by(id: params[:id])
+      return unless check_post_presence
+
+      if !params[:publication_datetime]
+        flash[:warning] = LANGUAGES[:lato_blog][:flashes][:post_publication_datetime_not_accepted]
+        redirect_to lato_blog.edit_post_path(@post.id)
+        return false
+      end
+
+      if !@post.post_parent.update(publication_datetime: params[:publication_datetime])
+        flash[:danger] = @post.post_parent.errors.full_messages.to_sentence
+        redirect_to lato_blog.edit_post_path(@post.id)
+        return
+      end
+
+      flash[:success] = LANGUAGES[:lato_blog][:flashes][:post_update_success]
+      redirect_to lato_blog.post_path(@post.id)    
+    end 
     
     # This function destroyes a post.
     def destroy
