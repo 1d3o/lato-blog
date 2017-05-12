@@ -47,6 +47,7 @@ mixed:
   creation_date: Date of creation
   update_date: Date of update
   superuser_creator: Superuser creator
+  status: Status
 
 posts_status:
   published: Published
