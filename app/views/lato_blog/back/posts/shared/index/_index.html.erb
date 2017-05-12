@@ -27,7 +27,7 @@
 
       <% @posts.each do |post| %>
 
-        <%=raw cell(:elements, :table, :row).new(labels: ["<a href='#{lato_blog.post_path(post.id)}'>#{post.title}</a>", post.meta_language]) %>
+        <%=raw cell(:elements, :table, :row).new(labels: ["<a href='#{lato_blog.post_path(post.id)}'>#{post.title}</a>", post.get_pretty_language]) %>
 
       <% end %>
 

@@ -19,7 +19,8 @@ module LatoBlog
         deleted_length: LatoBlog::Post.deleted.where(meta_language: cookies[:lato_blog__current_language]).length
       }
       # find posts to show
-      @posts = LatoBlog::Post.where(meta_status: @posts_status, meta_language: cookies[:lato_blog__current_language])
+      @posts = LatoBlog::Post.where(meta_status: @posts_status,
+      meta_language: cookies[:lato_blog__current_language]).joins(:post_parent).order('lato_blog_post_parents.publication_datetime DESC')
     end
 
     # This function shows a single post. It create a redirect to the edit path.
@@ -152,7 +153,7 @@ module LatoBlog
         # add current superuser id
         post_params[:lato_core_superuser_creator_id] = @core__current_superuser.id
         # add post parent id
-        post_params[:lato_blog_post_parent_id] = params[:parent] ? params[:parent] : generate_post_parent
+        post_params[:lato_blog_post_parent_id] = (params[:parent] && !params[:parent].blank? ? params[:parent] : generate_post_parent)
         # add metadata
         post_params[:meta_language] = cookies[:lato_blog__current_language]
         post_params[:meta_status] = BLOG_POSTS_STATUS[:drafted]
