@@ -87,7 +87,17 @@ module LatoBlog
       @post = LatoBlog::Post.find_by(id: params[:id])
       return unless check_post_presence
 
-      # TODO: Continue
+      if !params[:status] || !BLOG_POSTS_STATUS.values.include?(params[:status])
+        flash[:warning] = LANGUAGES[:lato_blog][:flashes][:post_status_not_accepted]
+        redirect_to lato_blog.edit_post_path(@post.id)
+        return false
+      end
+
+      if !@post.update(meta_status: params[:status])
+        flash[:danger] = @post.errors.full_messages.to_sentence
+        redirect_to lato_blog.edit_post_path(@post.id)
+        return
+      end
 
       flash[:success] = LANGUAGES[:lato_blog][:flashes][:post_update_success]
       redirect_to lato_blog.post_path(@post.id)      
@@ -104,10 +114,19 @@ module LatoBlog
 
       if !@posts || @posts.length < 1
         flash[:warning] = LANGUAGES[:lato_blog][:flashes][:deleted_posts_not_found]
-        redirect_to lato_blog.posts_path
+        redirect_to lato_blog.posts_path(status: 'deleted')
         return
       end
 
+      @posts.each do |post|
+        if !post.destroy
+          flash[:danger] = post.errors.full_messages.to_sentence
+          redirect_to lato_blog.edit_post_path(post.id)
+          return
+        end
+      end
+
+      flash[:success] = LANGUAGES[:lato_blog][:flashes][:deleted_posts_destroy_success]
       redirect_to lato_blog.posts_path(status: 'deleted')
     end
 

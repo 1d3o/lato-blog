@@ -1,0 +1,30 @@
+<%
+  block = cell(:elements, :block).new(class: 'xs-12 sm-12 md-12 posts__edit-status-switch')
+  row = cell(:elements, :row).new
+  form = cell(:inputs, :form).new(url: lato_blog.posts_update_status_path, method: :post)
+%>
+
+<%=raw block.open %>
+
+  <%=raw cell(:elements, :title).new(label: LANGUAGES[:lato_blog][:mixed][:switch_status], size: 6) %>
+
+  <%=raw form.open %>
+
+    <input type="hidden" name="id" value="<%= @post.id %>">
+
+    <%=raw row.open %>
+
+      <%=raw cell(:inputs, :select).new(name: 'status', options: [
+        {value: 'published', name: LANGUAGES[:lato_blog][:posts_status][:published]},
+        {value: 'drafted', name: LANGUAGES[:lato_blog][:posts_status][:drafted]},
+        {value: 'deleted', name: LANGUAGES[:lato_blog][:posts_status][:deleted]}
+      ], value: @post.meta_status, class: 'md-8') %>
+
+      <%=raw cell(:elements, :button).new(type: 'submit', label: LANGUAGES[:lato_blog][:mixed][:switch],
+      icon: 'refresh') %>
+
+    <%=raw row.close %>
+
+  <%=raw form.close %>
+
+<%=raw block.close %>

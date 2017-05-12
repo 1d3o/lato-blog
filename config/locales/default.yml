@@ -13,7 +13,9 @@ flashes:
   post_create_success: The Article was created successfully
   post_not_found: Article not found
   deleted_posts_not_found: There are not deleted articles
+  deleted_posts_destroy_success: All deleted posts are destroyed
   post_update_success: The Article was updated successfully
+  post_status_not_accepted: The status selected can not be accepted for the article.
 
 forms:
   id: Id
@@ -28,6 +30,7 @@ mixed:
   drafted_posts: Drafted articles
   deleted_posts: Deleted articles
   switch_status: Switch status
+  switch: Switch
   save: Save
   create: Create
   show: Show
