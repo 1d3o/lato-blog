@@ -129,7 +129,17 @@ module LatoBlog
     
     # This function destroyes a post.
     def destroy
+      @post = LatoBlog::Post.find_by(id: params[:id])
+      return unless check_post_presence
 
+      if !@post.destroy
+        flash[:danger] = @post.post_parent.errors.full_messages.to_sentence
+        redirect_to lato_blog.edit_post_path(@post.id)
+        return
+      end
+      
+      flash[:success] = LANGUAGES[:lato_blog][:flashes][:post_destroy_success]
+      redirect_to lato_blog.posts_path(status: 'deleted')
     end
 
     # Tis function destroyes all posts with status deleted.
