@@ -1,9 +1,10 @@
 <%
-  block = cell(:elements, :block).new(class: 'xs-12 sm-12 md-12')
+  block = cell(:elements, :block).new(class: 'xs-12 sm-12 md-12 posts__index')
   table = cell(:elements, :table, :container).new
   table_head = cell(:elements, :table, :head).new(labels: [
     LANGUAGES[:lato_blog][:forms][:title],
-    LANGUAGES[:lato_blog][:forms][:language]
+    LANGUAGES[:lato_blog][:forms][:language],
+    LANGUAGES[:lato_blog][:forms][:publication]
   ])
   table_body = cell(:elements, :table, :body).new
 %>
@@ -27,12 +28,19 @@
 
       <% @posts.each do |post| %>
 
-        <%=raw cell(:elements, :table, :row).new(labels: ["<a href='#{lato_blog.post_path(post.id)}'>#{post.title}</a>", post.get_pretty_language]) %>
+        <%=raw cell(:elements, :table, :row).new(labels: [
+          "<a href='#{lato_blog.post_path(post.id)}'>#{post.title}</a>",
+          post.get_pretty_language,
+          post.get_pretty_publication_datetime
+        ]) %>
 
       <% end %>
 
     <%=raw table_body.close %>
 
   <%=raw table.close %>
+
+  <br>
+  <%=raw cell(:elements, :pagination).new(total: @posts_total_pages, current: @posts_page, url: "#{lato_blog.posts_path(status: @posts_status)}&", param: 'page') %>
 
 <%=raw block.close %>

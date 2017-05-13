@@ -25,6 +25,7 @@ forms:
   language: Language
   content: Content
   excerpt: Excerpt
+  publication: Publication
 
 mixed:
   languages: Languages

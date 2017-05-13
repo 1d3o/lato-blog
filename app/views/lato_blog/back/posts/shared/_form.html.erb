@@ -17,15 +17,19 @@
 
   <%=raw row.close %>
 
-  <%=raw row.open %>
+  <% if method === :put %>
 
-    <%=raw cell(:inputs, :editor).new(name: 'post[content]', label: LANGUAGES[:lato_blog][:forms][:content],
-    class: 'md-12', value: @post.content) %>
+    <%=raw row.open %>
 
-    <%=raw cell(:inputs, :textarea).new(name: 'post[excerpt]', label: LANGUAGES[:lato_blog][:forms][:excerpt],
-    class: 'md-12', value: @post.excerpt) %>
+      <%=raw cell(:inputs, :editor).new(name: 'post[content]', label: LANGUAGES[:lato_blog][:forms][:content],
+      class: 'md-12', value: @post.content) %>
 
-  <%=raw row.close %>
+      <%=raw cell(:inputs, :textarea).new(name: 'post[excerpt]', label: LANGUAGES[:lato_blog][:forms][:excerpt],
+      class: 'md-12', value: @post.excerpt) %>
+
+    <%=raw row.close %>
+
+  <% end %>
 
   <div class="text-right">
 
