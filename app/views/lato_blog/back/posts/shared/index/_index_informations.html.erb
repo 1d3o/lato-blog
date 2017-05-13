@@ -20,15 +20,18 @@
 
   <%=raw table.close %>
 
-  <div class="text-left">
-    <br><br>
-    <%=raw cell(:elements, :button).new(label: LANGUAGES[:lato_blog][:mixed][:new_post], icon: 'plus', url: lato_blog.new_post_path) %>
-    <%=raw cell(:elements, :button).new(label: LANGUAGES[:lato_blog][:mixed][:empty_trash], icon: 'trash', style: 'danger',
-    confirmation: {
-      message: LANGUAGES[:lato_blog][:mixed][:empty_trash_message],
-      positive_response: LANGUAGES[:lato_blog][:mixed][:empty_trash_positive],
-      negative_response: LANGUAGES[:lato_blog][:mixed][:empty_trash_negative]
-    }, url: lato_blog.posts_destroy_all_deleted_path) %>
-  </div>
+  <% if @posts_status === 'deleted' %>
+
+    <div class="text-center">
+      <br>
+      <%=raw cell(:elements, :button).new(label: LANGUAGES[:lato_blog][:mixed][:empty_trash], icon: 'trash', style: 'danger',
+      confirmation: {
+        message: LANGUAGES[:lato_blog][:mixed][:empty_trash_message],
+        positive_response: LANGUAGES[:lato_blog][:mixed][:empty_trash_positive],
+        negative_response: LANGUAGES[:lato_blog][:mixed][:empty_trash_negative]
+      }, url: lato_blog.posts_destroy_all_deleted_path) %>
+    </div>
+
+  <% end %>
  
 <%=raw block.close %>

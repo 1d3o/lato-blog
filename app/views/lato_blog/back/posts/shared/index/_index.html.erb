@@ -20,27 +20,9 @@
 
   <%=raw cell(:elements, :title).new(label: title, size: 6) %>
 
-  <%=raw table.open %>
 
-    <%=raw table_head.show %>
-
-    <%=raw table_body.open %>
-
-      <% @posts.each do |post| %>
-
-        <%=raw cell(:elements, :table, :row).new(labels: [
-          "<a href='#{lato_blog.post_path(post.id)}'>#{post.title}</a>",
-          post.get_pretty_language,
-          post.get_pretty_publication_datetime
-        ]) %>
-
-      <% end %>
-
-    <%=raw table_body.close %>
-
-  <%=raw table.close %>
-
-  <br>
-  <%=raw cell(:elements, :pagination).new(total: @posts_total_pages, current: @posts_page, url: "#{lato_blog.posts_path(status: @posts_status)}&", param: 'page') %>
+  <%=raw cell(:widgets, :index).new(records: @widget_index_posts, index_url: lato_blog.posts_path(status: @posts_status),
+  head: [LANGUAGES[:lato_blog][:forms][:title], LANGUAGES[:lato_blog][:forms][:language]],
+  columns: ['title', 'get_pretty_language'], actions: {show: true, new: true, delete: (@posts_status === 'deleted')}, search: true, pagination: true) %>
 
 <%=raw block.close %>

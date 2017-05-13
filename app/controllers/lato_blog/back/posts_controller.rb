@@ -1,8 +1,6 @@
 module LatoBlog
   class Back::PostsController < Back::BackController
 
-    @@index_pagination = 10
-
     before_action do
       core__set_menu_active_item('blog_articles')
     end
@@ -14,8 +12,6 @@ module LatoBlog
       @posts_status = 'published'
       @posts_status = 'drafted' if params[:status] && params[:status] === 'drafted'
       @posts_status = 'deleted' if params[:status] && params[:status] === 'deleted'
-      # find current page
-      @posts_page = params[:page] ? params[:page].to_i : 1
       # find informations data
       @posts_informations = {
         published_length: LatoBlog::Post.published.where(meta_language: cookies[:lato_blog__current_language]).length,
@@ -23,11 +19,10 @@ module LatoBlog
         deleted_length: LatoBlog::Post.deleted.where(meta_language: cookies[:lato_blog__current_language]).length
       }
       # find posts to show
-      posts = LatoBlog::Post.where(meta_status: @posts_status,
+      @posts = LatoBlog::Post.where(meta_status: @posts_status,
       meta_language: cookies[:lato_blog__current_language]).joins(:post_parent).order('lato_blog_post_parents.publication_datetime DESC')
-      @posts_total_pages = (posts.length.to_f / @@index_pagination).ceil
 
-      @posts = core__paginate_array(posts, @@index_pagination, @posts_page)
+      @widget_index_posts = core__widgets_index(@posts, search: 'title', pagination: 10)
     end
 
     # This function shows a single post. It create a redirect to the edit path.

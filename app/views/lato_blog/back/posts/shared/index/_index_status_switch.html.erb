@@ -20,7 +20,7 @@
     buttons = [published_button, drafted_button] if status && status === 'deleted'
   %>
 
-  <div class="text-left">
+  <div class="text-center">
     <% buttons.each do |button| %>
       <%=raw button.show %>
     <% end %>
