@@ -31,7 +31,7 @@ mixed:
   drafted_posts: Drafted articles
   deleted_posts: Deleted articles
   switch_status: Switch status
-  switch: Switch
+  update: Update
   save: Save
   create: Create
   show: Show
