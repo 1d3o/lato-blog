@@ -23,6 +23,8 @@ forms:
   title: Title
   subtitle: Subtitle
   language: Language
+  content: Content
+  excerpt: Excerpt
 
 mixed:
   languages: Languages

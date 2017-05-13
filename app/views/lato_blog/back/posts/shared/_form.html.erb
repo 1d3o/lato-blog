@@ -13,7 +13,17 @@
     required: true, class: 'md-12', value: @post.title) %>
 
     <%=raw cell(:inputs, :text).new(name: 'post[subtitle]', label: LANGUAGES[:lato_blog][:forms][:subtitle],
-    required: false, class: 'md-12', value: @post.subtitle) %>
+    class: 'md-12', value: @post.subtitle) %>
+
+  <%=raw row.close %>
+
+  <%=raw row.open %>
+
+    <%=raw cell(:inputs, :editor).new(name: 'post[content]', label: LANGUAGES[:lato_blog][:forms][:content],
+    class: 'md-12', value: @post.content) %>
+
+    <%=raw cell(:inputs, :textarea).new(name: 'post[excerpt]', label: LANGUAGES[:lato_blog][:forms][:excerpt],
+    class: 'md-12', value: @post.excerpt) %>
 
   <%=raw row.close %>
 
