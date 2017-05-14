@@ -3,11 +3,13 @@ menu:
   posts_new: Add new
   posts_index: Show all
   posts_categories: Categories
+  documentation: Doc. Blog
 
 pages:
   posts: Articles
   posts_new: New article
   posts_edit: Edit article
+  documentation: Documentation
 
 flashes:
   post_create_success: The Article was created successfully

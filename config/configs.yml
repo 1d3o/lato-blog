@@ -15,7 +15,7 @@ menu:
     icon: file-text
     title: translate[posts]
     url: /lato/blog/posts
-    position: 12
+    position: 3
     permission_min: 0
     permission_max: 99
     sub_items:
@@ -34,6 +34,13 @@ menu:
         url: ''
         permission_min: 0
         permission_max: 99
+  blog_documentation:
+    icon: book
+    title: translate[documentation]
+    url: /lato/blog/doc
+    position: 1002
+    permission_min: 4
+    permission_max: 99
 
 # set assets for the module. -> Please, do not edit default assets.
 assets:
