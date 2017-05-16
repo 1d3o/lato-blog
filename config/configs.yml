@@ -31,7 +31,7 @@ menu:
         permission_max: 99
       categories:
         title: translate[posts_categories]
-        url: ''
+        url: /lato/blog/categories
         permission_min: 0
         permission_max: 99
   blog_documentation:
