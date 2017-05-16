@@ -32,9 +32,9 @@ module LatoBlog
     end
 
     before_save do
-      meta_permalink.downcase!
-      meta_status.downcase!
-      meta_language.downcase!
+      self.meta_permalink.downcase!
+      self.meta_status.downcase!
+      self.meta_language.downcase!
 
       check_lato_blog_post_parent
     end
