@@ -1,8 +1,6 @@
 module LatoBlog
   class CategoryPost < ApplicationRecord
 
-    include ModelCategoryPostHelper
-
     # Validations:
 
     validates :lato_blog_category_id, presence: true

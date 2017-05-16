@@ -1,7 +1,7 @@
 module LatoBlog
   class Category < ApplicationRecord
 
-    include ModelCategoryHelpers
+    include Category::EntityHelpers
 
     # Validations:
 

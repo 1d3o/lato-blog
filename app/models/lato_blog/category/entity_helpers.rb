@@ -1,5 +1,5 @@
 module LatoBlog
-  module ModelCategoryHelpers
+  module Category::EntityHelpers
 
     # This function return the pretty name of the language of the category.
     def get_pretty_language

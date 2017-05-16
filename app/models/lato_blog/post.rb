@@ -1,7 +1,7 @@
 module LatoBlog
   class Post < ApplicationRecord
 
-    include ModelPostHelpers
+    include Post::EntityHelpers
 
     # Validations:
 

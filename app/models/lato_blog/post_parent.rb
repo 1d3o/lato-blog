@@ -1,8 +1,6 @@
 module LatoBlog
   class PostParent < ApplicationRecord
 
-    include ModelPostParentHelpers
-
     # Validations:
 
     validates :publication_datetime, presence: true

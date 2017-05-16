@@ -1,5 +1,5 @@
 module LatoBlog
-  module ModelPostHelpers
+  module Post::EntityHelpers
 
     # This function returns a pretty presentation of the pubblication date for the post.
     def get_pretty_publication_datetime
