@@ -31,6 +31,8 @@ module LatoBlog
       if params[:parent]
         @category_parent = LatoBlog::CategoryParent.find_by(id: params[:parent])
       end
+
+      fetch_external_objects
     end
 
     # This function creates a new category.
@@ -56,6 +58,8 @@ module LatoBlog
       if @category.meta_language != cookies[:lato_blog__current_language]
         set_current_language @category.meta_language
       end
+
+      fetch_external_objects
     end
 
     # This function updates a category.
@@ -101,12 +105,17 @@ module LatoBlog
         return true
       end
 
+      def fetch_external_objects
+        @categories_list = LatoBlog::Category.where(meta_language: cookies[:lato_blog__current_language]).where.not(
+        id: @category.id).map { |cat| { title: cat.title, value: cat.id } }
+      end
+
       # Params helpers:
 
       # This function generate params for a new category.
       def new_category_params
         # take params from front-end request
-        category_params = params.require(:category).permit(:title).to_h
+        category_params = params.require(:category).permit(:title, :lato_blog_category_id).to_h
         # add current superuser id
         category_params[:lato_core_superuser_creator_id] = @core__current_superuser.id
         # add post parent id
@@ -119,7 +128,7 @@ module LatoBlog
 
       # This function generate params for a edit category.
       def edit_category_params
-        params.require(:category).permit(:title)
+        params.require(:category).permit(:title, :lato_blog_category_id)
       end
 
       # This function generate and save a new category parent and return the id.

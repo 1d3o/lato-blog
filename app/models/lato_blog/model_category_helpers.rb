@@ -26,7 +26,20 @@ module LatoBlog
     # This function the post translation for a specific language.
     def get_translation_for_language language_identifier
       return self.category_parent.categories.find_by(meta_language: language_identifier)
-    end  
+    end
+
+    # This function return all category children of the current category.
+    def get_all_category_children
+      direct_children = self.category_children
+      all_children = []
+
+      direct_children.each do |direct_child|
+        all_children.push(direct_child)
+        all_children = all_children + direct_child.get_all_category_children
+      end
+      
+      return all_children
+    end
 
   end
 end

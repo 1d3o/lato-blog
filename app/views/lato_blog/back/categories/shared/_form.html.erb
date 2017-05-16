@@ -12,6 +12,10 @@
     <%=raw cell(:inputs, :text).new(name: 'category[title]', label: LANGUAGES[:lato_blog][:forms][:title],
     required: true, class: 'md-12', value: @category.title) %>
 
+    <%=raw cell(:inputs, :select).new(name: 'category[lato_blog_category_id]', label: LANGUAGES[:lato_blog][:forms][:category_father],
+    required: false, class: 'md-12', options: @categories_list, option_value: 'value', option_name: 'title',
+    value: @category.lato_blog_category_id) %>
+
   <%=raw row.close %>
 
   <div class="text-right">

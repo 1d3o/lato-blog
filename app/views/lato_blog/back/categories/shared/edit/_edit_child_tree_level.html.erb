@@ -1,0 +1,7 @@
+<li><%= link_to category.title, lato_blog.category_path(category.id) %></li>
+
+<ul>
+  <% category.category_children.each do |child| %>
+    <%= render 'lato_blog/back/categories/shared/edit/edit_child_tree_level', category: child %>
+  <% end %>
+</ul>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170516115006) do
+ActiveRecord::Schema.define(version: 20170516123538) do
 
   create_table "lato_blog_categories", force: :cascade do |t|
     t.string "title"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20170516115006) do
     t.string "meta_language"
     t.integer "lato_core_superuser_creator_id"
     t.integer "lato_blog_category_parent_id"
+    t.integer "lato_blog_category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

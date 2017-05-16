@@ -8,6 +8,7 @@ class CreateLatoBlogCategories < ActiveRecord::Migration[5.1]
       
       t.integer :lato_core_superuser_creator_id
       t.integer :lato_blog_category_parent_id
+      t.integer :lato_blog_category_id
 
       t.timestamps
     end

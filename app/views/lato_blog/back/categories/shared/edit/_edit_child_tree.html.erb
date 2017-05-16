@@ -1,0 +1,23 @@
+<% if @category.category_children.length > 0 %>
+
+<%
+block = cell(:elements, :block).new(class: 'xs-12 sm-12 md-12 categories__edit-child-tree')
+%>
+
+<%=raw block.open %>
+
+  <%=raw cell(:elements, :title).new(label: LANGUAGES[:lato_blog][:mixed][:child_tree], size: 6) %>
+
+  <div class="child-tree-container">
+
+    <ul>
+      <% @category.category_children.each do |child| %>
+        <%= render 'lato_blog/back/categories/shared/edit/edit_child_tree_level', category: child %>
+      <% end %>
+    </ul>
+
+  </div>
+
+<%=raw block.close %>
+
+<% end %>

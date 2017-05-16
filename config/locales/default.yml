@@ -36,6 +36,7 @@ forms:
   content: Content
   excerpt: Excerpt
   publication: Publication
+  category_father: Category father
 
 mixed:
   languages: Languages
@@ -63,6 +64,7 @@ mixed:
   superuser_creator: Superuser creator
   status: Status
   change_publication_datetime: Change publication date
+  child_tree: Child tree
 
 posts_status:
   published: Published
