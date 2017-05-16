@@ -65,6 +65,7 @@ mixed:
   status: Status
   change_publication_datetime: Change publication date
   child_tree: Child tree
+  change_categories: Change categories
 
 posts_status:
   published: Published

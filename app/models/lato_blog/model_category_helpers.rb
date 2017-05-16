@@ -23,6 +23,11 @@ module LatoBlog
       return self.superuser_creator ? self.superuser_creator.get_complete_name : 'Anonymous'
     end
 
+    # This function return the title of the category father.
+    def get_category_father_title
+      return self.category_father.title if self.category_father
+    end
+
     # This function the post translation for a specific language.
     def get_translation_for_language language_identifier
       return self.category_parent.categories.find_by(meta_language: language_identifier)

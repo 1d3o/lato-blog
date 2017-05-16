@@ -15,10 +15,18 @@ module LatoBlog
     # Relations:
 
     belongs_to :category_parent, foreign_key: :lato_blog_category_parent_id, class_name: 'LatoBlog::CategoryParent'
+
     belongs_to :superuser_creator, foreign_key: :lato_core_superuser_creator_id, class_name: 'LatoCore::Superuser'
 
     has_many :category_children, foreign_key: :lato_blog_category_id, class_name: 'LatoBlog::Category', dependent: :nullify
     belongs_to :category_father, foreign_key: :lato_blog_category_id, class_name: 'LatoBlog::Category', optional: true
+
+    has_many :post_relations, foreign_key: :lato_blog_category_id, class_name: 'LatoBlog::CategoryPost', dependent: :destroy
+    has_many :posts, through: :post_relations
+
+    # Scopes:
+
+    scope :roots, -> { where(lato_blog_category_id: nil) }
 
     # Callbacks:
 

@@ -43,6 +43,8 @@ module LatoBlog
       if params[:parent]
         @post_parent = LatoBlog::PostParent.find_by(id: params[:parent])
       end
+
+      fetch_external_objects
     end
 
     # This function creates a new post.
@@ -68,6 +70,8 @@ module LatoBlog
       if @post.meta_language != cookies[:lato_blog__current_language]
         set_current_language @post.meta_language
       end
+
+      fetch_external_objects
     end
 
     # This function updates a post.
@@ -165,6 +169,10 @@ module LatoBlog
     end
 
     private
+
+      def fetch_external_objects
+        @categories = LatoBlog::Category.roots.where(meta_language: cookies[:lato_blog__current_language])
+      end
 
       # This function checks the @post variable is present and redirect to index if it not exist.
       def check_post_presence

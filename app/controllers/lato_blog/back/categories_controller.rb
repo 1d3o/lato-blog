@@ -94,6 +94,11 @@ module LatoBlog
 
     private
 
+      def fetch_external_objects
+        @categories_list = LatoBlog::Category.where(meta_language: cookies[:lato_blog__current_language]).where.not(
+        id: @category.id).map { |cat| { title: cat.title, value: cat.id } }
+      end
+
       # This function checks the @post variable is present and redirect to index if it not exist.
       def check_category_presence
         if !@category
@@ -103,11 +108,6 @@ module LatoBlog
         end
 
         return true
-      end
-
-      def fetch_external_objects
-        @categories_list = LatoBlog::Category.where(meta_language: cookies[:lato_blog__current_language]).where.not(
-        id: @category.id).map { |cat| { title: cat.title, value: cat.id } }
       end
 
       # Params helpers:
