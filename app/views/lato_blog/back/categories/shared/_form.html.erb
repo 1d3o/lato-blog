@@ -5,10 +5,19 @@
 
 <%=raw form.open %>
 
+  <input type="hidden" name="parent" value="<%= @category_parent ? @category_parent.id : nil %>">
+
+  <%=raw row.open %>
+
+    <%=raw cell(:inputs, :text).new(name: 'category[title]', label: LANGUAGES[:lato_blog][:forms][:title],
+    required: true, class: 'md-12', value: @category.title) %>
+
+  <%=raw row.close %>
+
   <div class="text-right">
 
     <%=raw cell(:elements, :button).new(type: 'link', label: LANGUAGES[:lato_blog][:mixed][:cancel],
-    style: 'danger', icon: 'ban', url: lato_blog.posts_path) %>
+    style: 'danger', icon: 'ban', url: lato_blog.categories_path) %>
 
     <%=raw cell(:elements, :button).new(type: 'submit', label: LANGUAGES[:lato_blog][:mixed][:save],
     style: 'success', icon: 'check') %>

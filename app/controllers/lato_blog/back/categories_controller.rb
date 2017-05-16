@@ -8,8 +8,9 @@ module LatoBlog
     # This function shows the list of possible categories.
     def index
       core__set_header_active_page_title(LANGUAGES[:lato_blog][:pages][:categories])
-      @categories = get_categories_orders_by_relations
-      @widget_index_categories = core__widgets_index(@categories, pagination: 10)
+      # find categories to show
+      @categories = LatoBlog::Category.where(meta_language: cookies[:lato_blog__current_language]).order('title ASC')
+      @widget_index_categories = core__widgets_index(@categories, search: 'title', pagination: 10)
     end
 
     # This function shows a single category. It create a redirect to the edit path.
@@ -22,37 +23,110 @@ module LatoBlog
     def new
       core__set_header_active_page_title(LANGUAGES[:lato_blog][:pages][:categories_new])
       @category = LatoBlog::Category.new
+
+      if params[:language]
+        set_current_language params[:language]
+      end
+
+      if params[:parent]
+        @category_parent = LatoBlog::CategoryParent.find_by(id: params[:parent])
+      end
+    end
+
+    # This function creates a new category.
+    def create
+      @category = LatoBlog::Category.new(new_category_params)
+
+      if !@category.save
+        flash[:danger] = @category.errors.full_messages.to_sentence
+        redirect_to lato_blog.new_category_path
+        return
+      end
+
+      flash[:success] = LANGUAGES[:lato_blog][:flashes][:category_create_success]
+      redirect_to lato_blog.category_path(@category.id)
+    end
+
+    # This function show the view to edit a category.
+    def edit
+      core__set_header_active_page_title(LANGUAGES[:lato_blog][:pages][:categories_edit])
+      @category = LatoBlog::Category.find_by(id: params[:id])
+      return unless check_category_presence
+
+      if @category.meta_language != cookies[:lato_blog__current_language]
+        set_current_language @category.meta_language
+      end
+    end
+
+    # This function updates a category.
+    def update
+      @category = LatoBlog::Category.find_by(id: params[:id])
+      return unless check_category_presence
+
+      if !@category.update(edit_category_params)
+        flash[:danger] = @category.errors.full_messages.to_sentence
+        redirect_to lato_blog.edit_category_path(@category.id)
+        return
+      end
+      
+      flash[:success] = LANGUAGES[:lato_blog][:flashes][:category_update_success]
+      redirect_to lato_blog.category_path(@category.id)
+    end
+
+    # This function destroyes a category.
+    def destroy
+      @category = LatoBlog::Category.find_by(id: params[:id])
+      return unless check_category_presence
+
+      if !@category.destroy
+        flash[:danger] = @category.category_parent.errors.full_messages.to_sentence
+        redirect_to lato_blog.edit_category_path(@category.id)
+        return
+      end
+      
+      flash[:success] = LANGUAGES[:lato_blog][:flashes][:category_destroy_success]
+      redirect_to lato_blog.categories_path(status: 'deleted')
     end
 
     private
 
-      # List order functions:
-
-      # This function return all categories ordered by the relations between themself.
-      def get_categories_orders_by_relations
-        orders_categories = []
-        categories = LatoBlog::Category.all
-        parent_categories = categories.where(lato_blog_category_id: nil).order('created_at DESC')
-
-        parent_categories.each do |parent_category|
-          orders_categories.push(parent_category)
-          orders_categories = orders_categories + get_tree_for_category(parent_category, categories)
+      # This function checks the @post variable is present and redirect to index if it not exist.
+      def check_category_presence
+        if !@category
+          flash[:warning] = LANGUAGES[:lato_blog][:flashes][:category_not_found]
+          redirect_to lato_blog.categories_path
+          return false
         end
-        
-        return orders_categories
+
+        return true
       end
 
-      def get_tree_for_category category, categories
-        tree = []
-        children = categories.where(lato_blog_category_id: category.id).order('created_at DESC')
+      # Params helpers:
 
-        children.each do |child|
-          tree.push(child)
-          tree = tree + get_tree_for_category(child, categories)
-        end
-        
-        return tree
+      # This function generate params for a new category.
+      def new_category_params
+        # take params from front-end request
+        category_params = params.require(:category).permit(:title).to_h
+        # add current superuser id
+        category_params[:lato_core_superuser_creator_id] = @core__current_superuser.id
+        # add post parent id
+        category_params[:lato_blog_category_parent_id] = (params[:parent] && !params[:parent].blank? ? params[:parent] : generate_category_parent)
+        # add metadata
+        category_params[:meta_language] = cookies[:lato_blog__current_language]
+        # return final post object
+        return category_params
       end
-    
+
+      # This function generate params for a edit category.
+      def edit_category_params
+        params.require(:category).permit(:title)
+      end
+
+      # This function generate and save a new category parent and return the id.
+      def generate_category_parent
+        category_parent = LatoBlog::CategoryParent.create
+        return category_parent.id
+      end
+
   end
 end

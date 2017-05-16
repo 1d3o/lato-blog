@@ -11,6 +11,7 @@ pages:
   posts_edit: Edit article
   categories: Categories
   categories_new: New category
+  categories_edit: Edit category
   documentation: Documentation
 
 flashes:
@@ -22,6 +23,10 @@ flashes:
   post_status_not_accepted: The status selected can not be accepted for the article.
   post_publication_datetime_not_accepted: The date for the article can not be accepted.
   post_destroy_success: The Article was destroied successfully
+  category_create_success: The Category was created successfully
+  category_not_found: Category not found
+  category_update_success: The Category was updated successfully
+  category_destroy_success: The Category was destroied successfully
 
 forms:
   id: Id

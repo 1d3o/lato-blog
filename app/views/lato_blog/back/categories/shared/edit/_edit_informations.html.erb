@@ -1,0 +1,24 @@
+<%
+  block = cell(:elements, :block).new(class: 'xs-12 sm-12 md-12')
+  table = cell(:elements, :table, :container).new(border: true)
+  table_body = cell(:elements, :table, :body).new
+%>
+
+<%=raw block.open %>
+
+  <%=raw cell(:elements, :title).new(label: LANGUAGES[:lato_blog][:mixed][:info], size: 6) %>
+
+  <%=raw table.open %>
+
+    <%=raw table_body.open %>
+
+      <%=raw cell(:elements, :table, :row).new(labels: [LANGUAGES[:lato_blog][:mixed][:current_language], get_current_language_title]) %>
+      <%=raw cell(:elements, :table, :row).new(labels: [LANGUAGES[:lato_blog][:mixed][:creation_date], @category.get_pretty_created_at]) %>
+      <%=raw cell(:elements, :table, :row).new(labels: [LANGUAGES[:lato_blog][:mixed][:update_date], @category.get_pretty_updated_at]) %>
+      <%=raw cell(:elements, :table, :row).new(labels: [LANGUAGES[:lato_blog][:mixed][:superuser_creator], @category.get_superuser_creator_name]) %>
+
+    <%=raw table_body.close %>
+
+  <%=raw table.close %>
+ 
+<%=raw block.close %>

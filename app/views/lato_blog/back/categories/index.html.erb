@@ -8,12 +8,9 @@
 
   <%=raw block.open %>
 
-    <%=raw cell(:widgets, :index).new(records: @widget_index_categories, index_url: lato_blog.categories_path,
-    head: [
-      LANGUAGES[:lato_blog][:forms][:id],
-      LANGUAGES[:lato_blog][:forms][:title],
-    ], columns: ['id', "title"],
-    actions: {show: true, edit: true, delete: true, new: true}, pagination: true) %>
+      <%=raw cell(:widgets, :index).new(records: @widget_index_categories, index_url: lato_blog.categories_path,
+      head: [LANGUAGES[:lato_blog][:forms][:title], LANGUAGES[:lato_blog][:forms][:language]],
+      columns: ['title', 'get_pretty_language'], actions: {show: true, new: true, delete: true}, search: true, pagination: true) %>
 
   <%=raw block.close %>
 

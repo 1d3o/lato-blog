@@ -12,7 +12,7 @@ languages:
 # set menu for the module.
 menu:
   blog_articles:
-    icon: file-text
+    icon: newspaper-o
     title: translate[posts]
     url: /lato/blog/posts
     position: 3
