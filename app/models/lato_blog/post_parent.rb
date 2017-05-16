@@ -9,7 +9,7 @@ module LatoBlog
 
     # Relations:
 
-    has_many :posts, foreign_key: :lato_blog_post_parent_id, class_name: 'LatoBlog::Post'
+    has_many :posts, foreign_key: :lato_blog_post_parent_id, class_name: 'LatoBlog::Post', dependent: :destroy
 
     # Calbacks:
 

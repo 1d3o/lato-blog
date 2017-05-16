@@ -10,6 +10,7 @@ pages:
   posts_new: New article
   posts_edit: Edit article
   categories: Categories
+  categories_new: New category
   documentation: Documentation
 
 flashes:

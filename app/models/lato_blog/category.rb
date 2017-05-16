@@ -3,23 +3,19 @@ module LatoBlog
 
     include ModelCategoryHelpers
 
-    # Serializations:
-
-    serialize :names, Hash
-
     # Validations:
 
-    validates :names, presence: true
+    validates :title, presence: true, uniqueness: true
 
     # Relations:
 
-    has_many :categories, foreign_key: :lato_blog_category_id, class_name: 'LatoBlog::Category'
+    has_many :categories, foreign_key: :lato_blog_category_id, class_name: 'LatoBlog::Category', dependent: :destroy
     belongs_to :parent_category, foreign_key: :lato_blog_category_id, class_name: 'LatoBlog::Category'
 
     # Callbacks:
 
     before_save do
-      # TODO: Check presence of circular dependencies
+      # TODO: Check presence of circular dependencies.
     end
 
   end

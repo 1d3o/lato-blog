@@ -1,0 +1,18 @@
+<%
+  row = cell(:elements, :row).new
+  form = cell(:inputs, :form).new(url: url, method: method)
+%>
+
+<%=raw form.open %>
+
+  <div class="text-right">
+
+    <%=raw cell(:elements, :button).new(type: 'link', label: LANGUAGES[:lato_blog][:mixed][:cancel],
+    style: 'danger', icon: 'ban', url: lato_blog.posts_path) %>
+
+    <%=raw cell(:elements, :button).new(type: 'submit', label: LANGUAGES[:lato_blog][:mixed][:save],
+    style: 'success', icon: 'check') %>
+
+  </div>
+
+<%=raw form.close %>
