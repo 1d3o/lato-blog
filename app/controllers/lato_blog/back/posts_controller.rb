@@ -36,9 +36,7 @@ module LatoBlog
       core__set_header_active_page_title(LANGUAGES[:lato_blog][:pages][:posts_new])
       @post = LatoBlog::Post.new
 
-      if params[:language]
-        set_current_language params[:language]
-      end
+      set_current_language params[:language] if params[:language]
 
       if params[:parent]
         @post_parent = LatoBlog::PostParent.find_by(id: params[:parent])
@@ -51,12 +49,12 @@ module LatoBlog
     def create
       @post = LatoBlog::Post.new(new_post_params)
 
-      if !@post.save
+      unless @post.save
         flash[:danger] = @post.errors.full_messages.to_sentence
         redirect_to lato_blog.new_post_path
         return
       end
-      
+
       flash[:success] = LANGUAGES[:lato_blog][:flashes][:post_create_success]
       redirect_to lato_blog.post_path(@post.id)
     end
@@ -79,12 +77,12 @@ module LatoBlog
       @post = LatoBlog::Post.find_by(id: params[:id])
       return unless check_post_presence
 
-      if !@post.update(edit_post_params)
+      unless @post.update(edit_post_params)
         flash[:danger] = @post.errors.full_messages.to_sentence
         redirect_to lato_blog.edit_post_path(@post.id)
         return
       end
-      
+
       flash[:success] = LANGUAGES[:lato_blog][:flashes][:post_update_success]
       redirect_to lato_blog.post_path(@post.id)
     end
@@ -100,7 +98,7 @@ module LatoBlog
         return false
       end
 
-      if !@post.update(meta_status: params[:status])
+      unless @post.update(meta_status: params[:status])
         flash[:danger] = @post.errors.full_messages.to_sentence
         redirect_to lato_blog.edit_post_path(@post.id)
         return
@@ -115,33 +113,60 @@ module LatoBlog
       @post = LatoBlog::Post.find_by(id: params[:id])
       return unless check_post_presence
 
-      if !params[:publication_datetime]
+      unless params[:publication_datetime]
         flash[:warning] = LANGUAGES[:lato_blog][:flashes][:post_publication_datetime_not_accepted]
         redirect_to lato_blog.edit_post_path(@post.id)
         return false
       end
 
-      if !@post.post_parent.update(publication_datetime: params[:publication_datetime])
+      unless @post.post_parent.update(publication_datetime: params[:publication_datetime])
         flash[:danger] = @post.post_parent.errors.full_messages.to_sentence
         redirect_to lato_blog.edit_post_path(@post.id)
         return
       end
 
       flash[:success] = LANGUAGES[:lato_blog][:flashes][:post_update_success]
-      redirect_to lato_blog.post_path(@post.id)    
-    end 
-    
+      redirect_to lato_blog.post_path(@post.id)
+    end
+
+    # This function updates the categories of a post.
+    def update_categories
+      @post = LatoBlog::Post.find_by(id: params[:id])
+      return unless check_post_presence
+
+      unless params[:categories]
+        flash[:warning] = LANGUAGES[:lato_blog][:flashes][:post_categories_not_accepted]
+        redirect_to lato_blog.edit_post_path(@post.id)
+        return false
+      end
+
+      params[:categories].each do |category_id, value|
+        category = LatoBlog::Category.find_by(id: category_id)
+        next if !category || category.meta_language != @post.meta_language
+
+        category_post = LatoBlog::CategoryPost.find_by(lato_blog_post_id: @post.id, lato_blog_category_id: category.id)
+        if value == 'true'
+          LatoBlog::CategoryPost.create(lato_blog_post_id: @post.id, lato_blog_category_id: category.id) unless category_post
+        else
+          category_post.destroy if category_post
+        end
+      end
+
+      flash[:success] = LANGUAGES[:lato_blog][:flashes][:post_update_success]
+      redirect_to lato_blog.post_path(@post.id)
+    end
+
     # This function destroyes a post.
     def destroy
       @post = LatoBlog::Post.find_by(id: params[:id])
       return unless check_post_presence
 
-      if !@post.destroy
+      unless @post.destroy
         flash[:danger] = @post.post_parent.errors.full_messages.to_sentence
         redirect_to lato_blog.edit_post_path(@post.id)
         return
       end
-      
+
       flash[:success] = LANGUAGES[:lato_blog][:flashes][:post_destroy_success]
       redirect_to lato_blog.posts_path(status: 'deleted')
     end
@@ -150,14 +175,14 @@ module LatoBlog
     def destroy_all_deleted
       @posts = LatoBlog::Post.deleted
 
-      if !@posts || @posts.length < 1
+      if !@posts || @posts.empty?
         flash[:warning] = LANGUAGES[:lato_blog][:flashes][:deleted_posts_not_found]
         redirect_to lato_blog.posts_path(status: 'deleted')
         return
       end
 
       @posts.each do |post|
-        if !post.destroy
+        unless post.destroy
           flash[:danger] = post.errors.full_messages.to_sentence
           redirect_to lato_blog.edit_post_path(post.id)
           return
@@ -170,48 +195,48 @@ module LatoBlog
 
     private
 
-      def fetch_external_objects
-        @categories = LatoBlog::Category.roots.where(meta_language: cookies[:lato_blog__current_language])
+    def fetch_external_objects
+      @categories = LatoBlog::Category.all.where(meta_language: cookies[:lato_blog__current_language])
+    end
+
+    # This function checks the @post variable is present and redirect to index if it not exist.
+    def check_post_presence
+      if !@post
+        flash[:warning] = LANGUAGES[:lato_blog][:flashes][:post_not_found]
+        redirect_to lato_blog.posts_path
+        return false
       end
 
-      # This function checks the @post variable is present and redirect to index if it not exist.
-      def check_post_presence
-        if !@post
-          flash[:warning] = LANGUAGES[:lato_blog][:flashes][:post_not_found]
-          redirect_to lato_blog.posts_path
-          return false
-        end
+      true
+    end
 
-        return true
-      end
+    # Params helpers:
 
-      # Params helpers:
+    # This function generate params for a new post.
+    def new_post_params
+      # take params from front-end request
+      post_params = params.require(:post).permit(:title, :subtitle).to_h
+      # add current superuser id
+      post_params[:lato_core_superuser_creator_id] = @core__current_superuser.id
+      # add post parent id
+      post_params[:lato_blog_post_parent_id] = (params[:parent] && !params[:parent].blank? ? params[:parent] : generate_post_parent)
+      # add metadata
+      post_params[:meta_language] = cookies[:lato_blog__current_language]
+      post_params[:meta_status] = BLOG_POSTS_STATUS[:drafted]
+      # return final post object
+      post_params
+    end
 
-      # This function generate params for a new post.
-      def new_post_params
-        # take params from front-end request
-        post_params = params.require(:post).permit(:title, :subtitle).to_h
-        # add current superuser id
-        post_params[:lato_core_superuser_creator_id] = @core__current_superuser.id
-        # add post parent id
-        post_params[:lato_blog_post_parent_id] = (params[:parent] && !params[:parent].blank? ? params[:parent] : generate_post_parent)
-        # add metadata
-        post_params[:meta_language] = cookies[:lato_blog__current_language]
-        post_params[:meta_status] = BLOG_POSTS_STATUS[:drafted]
-        # return final post object
-        return post_params
-      end
+    # This function generate params for a edit post.
+    def edit_post_params
+      params.require(:post).permit(:title, :subtitle, :content, :excerpt)
+    end
 
-      # This function generate params for a edit post.
-      def edit_post_params
-        params.require(:post).permit(:title, :subtitle, :content, :excerpt)
-      end
+    # This function generate and save a new post parent and return the id.
+    def generate_post_parent
+      post_parent = LatoBlog::PostParent.create
+      post_parent.id
+    end
 
-      # This function generate and save a new post parent and return the id.
-      def generate_post_parent
-        post_parent = LatoBlog::PostParent.create
-        return post_parent.id
-      end
-    
   end
 end

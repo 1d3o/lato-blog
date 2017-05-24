@@ -9,7 +9,7 @@ module LatoBlog
     # Relations:
 
     belongs_to :category, foreign_key: :lato_blog_category_id, class_name: 'LatoBlog::Category'
-    
+
     belongs_to :post, foreign_key: :lato_blog_post_id, class_name: 'LatoBlog::Post'
 
     # Callbacks:

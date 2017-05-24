@@ -27,6 +27,7 @@ flashes:
   category_not_found: Category not found
   category_update_success: The Category was updated successfully
   category_destroy_success: The Category was destroied successfully
+  post_categories_not_accepted: There are not categories selected
 
 forms:
   id: Id

@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/ideonetwork/lato-core
-  revision: 3ba1f7678a879e2216ee16cc8eddbb7e4755b959
+  revision: 05622bd95fd6d51aa2ec536b5b5516166ac7c20e
   specs:
     lato_core (2.0)
       bcrypt (>= 3.1.7)
@@ -162,7 +162,7 @@ GEM
       ffi (>= 0.5.0)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
-    sass (3.4.23)
+    sass (3.4.24)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
       sass (~> 3.1)
@@ -173,7 +173,7 @@ GEM
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
       websocket (~> 1.0)
-    spring (2.0.1)
+    spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -234,4 +234,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.14.3
+   1.15.0
