@@ -41,46 +41,46 @@ module LatoBlog
 
     private
 
-      # This function check if current permalink is valid. If it is not valid it
-      # generate a new from the post title.
-      def check_meta_permalink
-        candidate = (self.meta_permalink ? self.meta_permalink : self.title.parameterize)
-        accepted = nil
-        counter = 0
+    # This function check if current permalink is valid. If it is not valid it
+    # generate a new from the post title.
+    def check_meta_permalink
+      candidate = (self.meta_permalink ? self.meta_permalink : self.title.parameterize)
+      accepted = nil
+      counter = 0
 
-        while accepted.nil?
-          if LatoBlog::Category.find_by(meta_permalink: candidate)
-            counter = counter + 1
-            candidate = "#{candidate}-#{counter}"
-          else
-            accepted = candidate
-          end
-        end
-
-        self.meta_permalink = accepted
-      end
-
-      # This function check the category parent of the category do not create a circular dependency.
-      def check_category_father_circular_dependency
-        return unless self.lato_blog_category_id
-
-        all_children = self.get_all_category_children
-        same_children = all_children.select { |child| child.id === self.lato_blog_category_id }
-        
-        if same_children.length > 0
-          errors.add('Category father', 'can not be a children of the category')
-          throw :abort
+      while accepted.nil?
+        if LatoBlog::Category.find_by(meta_permalink: candidate)
+          counter += 1
+          candidate = "#{candidate}-#{counter}"
+        else
+          accepted = candidate
         end
       end
 
-      # This function check the chategory parent has the same language of the child.
-      def check_category_father_language
-        return unless self.lato_blog_category_id
-        if self.category_father.meta_language != self.meta_language
-          errors.add('Category father', 'must have the same language of the child')
-          throw :abort
-        end
+      self.meta_permalink = accepted
+    end
+
+    # This function check the category parent of the category do not create a circular dependency.
+    def check_category_father_circular_dependency
+      return unless self.lato_blog_category_id
+
+      all_children = self.get_all_category_children
+      same_children = all_children.select { |child| child.id === self.lato_blog_category_id }
+
+      if same_children.length > 0
+        errors.add('Category father', 'can not be a children of the category')
+        throw :abort
       end
+    end
+
+    # This function check the chategory parent has the same language of the child.
+    def check_category_father_language
+      return unless self.lato_blog_category_id
+      if self.category_father.meta_language != self.meta_language
+        errors.add('Category father', 'must have the same language of the child')
+        throw :abort
+      end
+    end
 
   end
 end

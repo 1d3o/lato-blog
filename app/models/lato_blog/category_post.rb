@@ -20,12 +20,12 @@ module LatoBlog
 
     private
 
-      def check_relation_language
-        if self.category.meta_language != self.post.meta_language
-          errors.add('Category and Post', 'have not same language')
-          throw :abort
-        end
+    def check_relation_language
+      if self.category.meta_language != self.post.meta_language
+        errors.add('Category and Post', 'have not same language')
+        throw :abort
       end
+    end
 
   end
 end

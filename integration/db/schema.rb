@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170524131217) do
+ActiveRecord::Schema.define(version: 20170525135817) do
 
   create_table "lato_blog_categories", force: :cascade do |t|
     t.string "title"
@@ -31,6 +31,14 @@ ActiveRecord::Schema.define(version: 20170524131217) do
   create_table "lato_blog_category_posts", force: :cascade do |t|
     t.integer "lato_blog_category_id"
     t.integer "lato_blog_post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lato_blog_post_fields", force: :cascade do |t|
+    t.integer "lato_blog_post_id"
+    t.string "typology"
+    t.text "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

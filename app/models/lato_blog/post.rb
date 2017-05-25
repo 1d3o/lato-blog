@@ -45,41 +45,41 @@ module LatoBlog
 
     private 
 
-      # This function check if current permalink is valid. If it is not valid it
-      # generate a new from the post title.
-      def check_meta_permalink
-        candidate = (self.meta_permalink ? self.meta_permalink : self.title.parameterize)
-        accepted = nil
-        counter = 0
+    # This function check if current permalink is valid. If it is not valid it
+    # generate a new from the post title.
+    def check_meta_permalink
+      candidate = (self.meta_permalink ? self.meta_permalink : self.title.parameterize)
+      accepted = nil
+      counter = 0
 
-        while accepted.nil?
-          if LatoBlog::Post.find_by(meta_permalink: candidate)
-            counter = counter + 1
-            candidate = "#{candidate}-#{counter}"
-          else
-            accepted = candidate
-          end
-        end
-
-        self.meta_permalink = accepted
-      end
-
-      # This function check that the post parent exist and has not others post for the same language.
-      def check_lato_blog_post_parent
-        post_parent = LatoBlog::PostParent.find_by(id: self.lato_blog_post_parent_id)
-        if !post_parent
-          errors.add('Post parent', 'not exist for the post')
-          throw :abort
-          return
-        end
-
-        same_language_post = post_parent.posts.find_by(meta_language: self.meta_language)
-        if same_language_post && same_language_post.id != self.id
-          errors.add('Post parent', 'has another post for the same language')
-          throw :abort
-          return
+      while accepted.nil?
+        if LatoBlog::Post.find_by(meta_permalink: candidate)
+          counter = counter + 1
+          candidate = "#{candidate}-#{counter}"
+        else
+          accepted = candidate
         end
       end
+
+      self.meta_permalink = accepted
+    end
+
+    # This function check that the post parent exist and has not others post for the same language.
+    def check_lato_blog_post_parent
+      post_parent = LatoBlog::PostParent.find_by(id: self.lato_blog_post_parent_id)
+      if !post_parent
+        errors.add('Post parent', 'not exist for the post')
+        throw :abort
+        return
+      end
+
+      same_language_post = post_parent.posts.find_by(meta_language: self.meta_language)
+      if same_language_post && same_language_post.id != self.id
+        errors.add('Post parent', 'has another post for the same language')
+        throw :abort
+        return
+      end
+    end
 
   end
 end
