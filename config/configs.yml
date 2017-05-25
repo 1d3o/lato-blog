@@ -54,6 +54,6 @@ assets:
 # set widgets for the module. -> Please, do not edit default widgets.
 widgets:
   blog_switch_lang:
-    icon: language
+    icon: flag
     path: lato_blog/widgets/switchlang
     position: 11
