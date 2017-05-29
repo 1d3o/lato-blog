@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170525135817) do
+ActiveRecord::Schema.define(version: 20170529071924) do
 
   create_table "lato_blog_categories", force: :cascade do |t|
     t.string "title"
@@ -73,6 +73,17 @@ ActiveRecord::Schema.define(version: 20170525135817) do
     t.datetime "last_login_datetime"
     t.string "last_login_ip_address"
     t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lato_media_media", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "attachment_file_name"
+    t.string "attachment_content_type"
+    t.integer "attachment_file_size"
+    t.datetime "attachment_updated_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

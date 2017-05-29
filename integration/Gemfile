@@ -55,4 +55,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Import Lato modules
 gem 'lato_core', git: 'https://github.com/ideonetwork/lato-core'
+gem 'lato_media', git: 'https://github.com/ideonetwork/lato-media'
 gem 'lato_blog', path: '../'
