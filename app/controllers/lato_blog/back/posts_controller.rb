@@ -203,6 +203,7 @@ module LatoBlog
 
     def fetch_external_objects
       @categories = LatoBlog::Category.all.where(meta_language: cookies[:lato_blog__current_language])
+      @medias = LatoMedia::Media.all
     end
 
     # This function checks the @post variable is present and redirect to index if it not exist.
