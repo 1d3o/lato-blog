@@ -14,9 +14,11 @@ post_fields:
   author:
     type: text
     label: Insert the name of the author
+    class: md-6
   author_city:
     type: text
     label: Insert the city of the author
+    class: md-6
 
 # set menu for the module.
 menu:

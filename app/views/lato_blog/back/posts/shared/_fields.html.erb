@@ -1,0 +1,15 @@
+<% row = cell(:elements, :row).new %>
+
+<div class="fields__container">
+
+  <%=raw row.open %>
+
+    <% CONFIGS[:lato_blog][:post_fields].each do |field| %>
+      
+      <%= render_post_field(@post, field.first) %>
+
+    <% end %>
+
+  <%=raw row.close %>
+
+</div>
