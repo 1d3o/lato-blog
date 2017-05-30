@@ -83,6 +83,12 @@ module LatoBlog
         return
       end
 
+      unless update_fields
+        flash[:warning] = LANGUAGES[:lato_blog][:flashes][:post_update_fields_warning]
+        redirect_to lato_blog.edit_post_path(@post.id)
+        return
+      end
+
       flash[:success] = LANGUAGES[:lato_blog][:flashes][:post_update_success]
       redirect_to lato_blog.post_path(@post.id)
     end
@@ -105,7 +111,7 @@ module LatoBlog
       end
 
       flash[:success] = LANGUAGES[:lato_blog][:flashes][:post_update_success]
-      redirect_to lato_blog.post_path(@post.id)      
+      redirect_to lato_blog.post_path(@post.id)
     end
 
     # This function updates the publication datetime of a post (update the post parent).
@@ -236,6 +242,36 @@ module LatoBlog
     def generate_post_parent
       post_parent = LatoBlog::PostParent.create
       post_parent.id
+    end
+
+    # Fields helers:
+
+    # This function update all post fields from the fields received as params.
+    def update_fields
+      return true unless params[:fields]
+      params[:fields].each do |field_key, field_value|
+        return false unless update_field(field_key, field_value)
+      end
+
+      true
+    end
+
+    # This function update a single field for the post.
+    def update_field(key, value)
+      post_field = @post.post_fields.find_by(key: key)
+      return false unless post_field
+
+      case post_field.typology
+      when 'text'
+        return update_field_text(post_field, value)
+      else
+        return false
+      end
+    end
+
+    # This function update a single field of type text.
+    def update_field_text(post_field, value)
+      post_field.update(value: value)
     end
 
   end

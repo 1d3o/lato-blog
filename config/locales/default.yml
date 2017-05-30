@@ -28,6 +28,7 @@ flashes:
   category_update_success: The Category was updated successfully
   category_destroy_success: The Category was destroied successfully
   post_categories_not_accepted: There are not categories selected
+  post_update_fields_warning: The post is updated but we have some problems with fields
 
 forms:
   id: Id
