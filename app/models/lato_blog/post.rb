@@ -17,8 +17,10 @@ module LatoBlog
     # Relations:
 
     belongs_to :post_parent, foreign_key: :lato_blog_post_parent_id, class_name: 'LatoBlog::PostParent'
-    
+
     belongs_to :superuser_creator, foreign_key: :lato_core_superuser_creator_id, class_name: 'LatoCore::Superuser'
+
+    has_many :post_fields, foreign_key: :lato_blog_post_id, class_name: 'LatoBlog::PostField', dependent: :destroy
 
     has_many :category_relations, foreign_key: :lato_blog_post_id, class_name: 'LatoBlog::CategoryPost', dependent: :destroy
     has_many :categories, through: :category_relations
@@ -41,6 +43,11 @@ module LatoBlog
       self.meta_language.downcase!
 
       check_lato_blog_post_parent
+    end
+
+    after_create do
+      # create post fields for the post.
+      blog__create_post_fields(self)
     end
 
     private 

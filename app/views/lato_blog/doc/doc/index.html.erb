@@ -14,3 +14,23 @@
 
 <%=raw row.close %>
 <!-- / PRESENTATION -->
+
+<!-- FIELDS SECTION -->
+<%=raw row.open %>
+
+  <%=raw block.open %>
+
+    <%=raw cell(:elements, :title).new(label: 'Post fields', size: 2) %>
+
+    <p>
+    Post fields are a list of possible custom fields that can be added to a post object from the configuration file.
+    </p>
+
+    <%=raw cell(:elements, :title).new(label: 'Basic fields', size: 4) %>
+
+    <%=raw cell(:elements, :button).new(label: 'Text', url: '') %>
+
+  <%=raw block.close %>
+
+<%=raw row.close %>
+<!-- / FIELDS SECTION -->

@@ -11,9 +11,12 @@ languages:
 
 # set fields for posts. # TODO: Manage them
 post_fields:
-  image:
-    type: image
-    label: Insert main image
+  author:
+    type: text
+    label: Insert the name of the author
+  author_city:
+    type: text
+    label: Insert the city of the author
 
 # set menu for the module.
 menu:

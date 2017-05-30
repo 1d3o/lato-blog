@@ -9,3 +9,8 @@ BLOG_POSTS_STATUS = {
   drafted: 'drafted',
   published: 'published'
 }
+
+# create post fields for current posts.
+if ActiveRecord::Base.connection.table_exists? 'lato_blog_post_fields'
+  blog__create_posts_fields
+end

@@ -4,5 +4,8 @@ module LatoBlog
     require 'lato_blog/interfaces/languages'
     include LatoBlog::Interface::Languages
 
+    require 'lato_blog/interfaces/posts'
+    include LatoBlog::Interface::Posts
+
   end
 end

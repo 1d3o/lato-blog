@@ -8,7 +8,7 @@ module LatoBlog
       languages = CONFIGS[:lato_blog][:languages]
       return [] unless languages
 
-      return languages.values.map{|lang| lang[:identifier]}
+      languages.values.map { |lang| lang[:identifier] }
     end
 
   end
