@@ -29,7 +29,15 @@
 
     <%=raw row.close %>
 
-    <%= render 'lato_blog/back/posts/shared/fields' %>
+    <%=raw row.open %>
+
+      <% CONFIGS[:lato_blog][:post_fields].each do |field| %>
+        
+        <%= render_post_field(@post, field.last, field.first) %>
+
+      <% end %>
+
+    <%=raw row.close %>
 
   <% end %>
 

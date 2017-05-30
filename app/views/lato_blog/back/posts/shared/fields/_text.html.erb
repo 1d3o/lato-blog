@@ -1,1 +1,2 @@
-<%=raw cell(:inputs, :text).new(name: "fields[#{field.key}]", label: field.label, value: field.value) %>
+<%=raw cell(:inputs, :text).new(name: "fields[#{post_field.key}]", label: field[:label],
+value: post_field.value, class: field[:class]) %>

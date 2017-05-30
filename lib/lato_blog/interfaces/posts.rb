@@ -19,7 +19,7 @@ module LatoBlog
         next if post_field
 
         LatoBlog::PostField.create(key: field.first, typology: field.last[:type],
-                                   label: field.last[:label], lato_blog_post_id: post.id)
+                                   lato_blog_post_id: post.id)
       end
     end
 
