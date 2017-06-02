@@ -15,12 +15,14 @@
     <%=raw row.open %>
 
       <%=raw cell(:inputs, :datetime).new(name: 'publication_datetime', value: @post.post_parent.publication_datetime,
-      class: 'md-8') %>
-
-      <%=raw cell(:elements, :button).new(type: 'submit', label: LANGUAGES[:lato_blog][:mixed][:update],
-      icon: 'refresh') %>
+      class: 'md-12') %>
 
     <%=raw row.close %>
+
+    <div class="text-right">
+      <%=raw cell(:elements, :button).new(type: 'submit', label: LANGUAGES[:lato_blog][:mixed][:update],
+      icon: 'refresh') %>
+    </div>
 
   <%=raw form.close %>
 

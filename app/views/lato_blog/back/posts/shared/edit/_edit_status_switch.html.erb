@@ -18,12 +18,14 @@
         {value: 'published', name: LANGUAGES[:lato_blog][:posts_status][:published]},
         {value: 'drafted', name: LANGUAGES[:lato_blog][:posts_status][:drafted]},
         {value: 'deleted', name: LANGUAGES[:lato_blog][:posts_status][:deleted]}
-      ], value: @post.meta_status, class: 'md-8') %>
-
-      <%=raw cell(:elements, :button).new(type: 'submit', label: LANGUAGES[:lato_blog][:mixed][:update],
-      icon: 'refresh') %>
+      ], value: @post.meta_status, class: 'md-12') %>
 
     <%=raw row.close %>
+
+    <div class="text-right">
+      <%=raw cell(:elements, :button).new(type: 'submit', label: LANGUAGES[:lato_blog][:mixed][:update],
+      icon: 'refresh') %>
+    </div>
 
   <%=raw form.close %>
 

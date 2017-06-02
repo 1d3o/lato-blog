@@ -39,6 +39,7 @@ forms:
   excerpt: Excerpt
   publication: Publication
   category_father: Category father
+  permalink: Permalink
 
 mixed:
   languages: Languages

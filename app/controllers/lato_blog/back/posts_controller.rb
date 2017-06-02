@@ -236,7 +236,7 @@ module LatoBlog
 
     # This function generate params for a edit post.
     def edit_post_params
-      params.require(:post).permit(:title, :subtitle, :content, :excerpt)
+      params.require(:post).permit(:meta_permalink, :title, :subtitle, :content, :excerpt)
     end
 
     # This function generate and save a new post parent and return the id.

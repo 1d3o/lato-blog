@@ -9,6 +9,13 @@
 
   <%=raw row.open %>
 
+    <% if method === :put %>
+
+      <%=raw cell(:inputs, :text).new(name: 'post[meta_permalink]', label: LANGUAGES[:lato_blog][:forms][:permalink],
+      required: true, class: 'md-12', value: @post.meta_permalink) %>
+
+    <% end %>
+
     <%=raw cell(:inputs, :text).new(name: 'post[title]', label: LANGUAGES[:lato_blog][:forms][:title],
     required: true, class: 'md-12', value: @post.title) %>
 

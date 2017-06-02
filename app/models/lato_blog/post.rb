@@ -38,9 +38,9 @@ module LatoBlog
     end
 
     before_save do
-      self.meta_permalink.downcase!
-      self.meta_status.downcase!
-      self.meta_language.downcase!
+      self.meta_permalink = meta_permalink.parameterize
+      meta_status.downcase!
+      meta_language.downcase!
 
       check_lato_blog_post_parent
     end
@@ -55,7 +55,7 @@ module LatoBlog
     # This function check if current permalink is valid. If it is not valid it
     # generate a new from the post title.
     def check_meta_permalink
-      candidate = (self.meta_permalink ? self.meta_permalink : self.title.parameterize)
+      candidate = (meta_permalink ? meta_permalink : title.parameterize)
       accepted = nil
       counter = 0
 
@@ -73,15 +73,15 @@ module LatoBlog
 
     # This function check that the post parent exist and has not others post for the same language.
     def check_lato_blog_post_parent
-      post_parent = LatoBlog::PostParent.find_by(id: self.lato_blog_post_parent_id)
+      post_parent = LatoBlog::PostParent.find_by(id: lato_blog_post_parent_id)
       if !post_parent
         errors.add('Post parent', 'not exist for the post')
         throw :abort
         return
       end
 
-      same_language_post = post_parent.posts.find_by(meta_language: self.meta_language)
-      if same_language_post && same_language_post.id != self.id
+      same_language_post = post_parent.posts.find_by(meta_language: meta_language)
+      if same_language_post && same_language_post.id != id
         errors.add('Post parent', 'has another post for the same language')
         throw :abort
         return
