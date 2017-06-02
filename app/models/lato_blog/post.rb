@@ -33,9 +33,7 @@ module LatoBlog
 
     # Callbacks:
 
-    before_validation do
-      check_meta_permalink
-    end
+    before_validation :check_meta_permalink, on: :create
 
     before_save do
       self.meta_permalink = meta_permalink.parameterize
@@ -50,7 +48,7 @@ module LatoBlog
       blog__create_post_fields(self)
     end
 
-    private 
+    private
 
     # This function check if current permalink is valid. If it is not valid it
     # generate a new from the post title.
