@@ -128,7 +128,7 @@ module LatoBlog
 
       # This function generate params for a edit category.
       def edit_category_params
-        params.require(:category).permit(:title, :lato_blog_category_id)
+        params.require(:category).permit(:title, :lato_blog_category_id, :meta_permalink)
       end
 
       # This function generate and save a new category parent and return the id.

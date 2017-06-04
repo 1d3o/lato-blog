@@ -30,11 +30,12 @@ module LatoBlog
 
     # Callbacks:
 
-    before_validation do
-      check_meta_permalink
-    end
+    before_validation :check_meta_permalink, on: :create
 
     before_save do
+      self.meta_permalink = meta_permalink.parameterize
+      meta_language.downcase!
+
       check_category_father_circular_dependency
       check_category_father_language
     end
