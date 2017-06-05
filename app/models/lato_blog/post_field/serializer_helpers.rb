@@ -1,7 +1,7 @@
 module LatoBlog
   module PostField::SerializerHelpers
 
-    def serialize
+    def serialize_base
       serialized = {}
 
       # set basic info

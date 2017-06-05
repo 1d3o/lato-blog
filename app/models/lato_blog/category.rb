@@ -2,6 +2,7 @@ module LatoBlog
   class Category < ApplicationRecord
 
     include Category::EntityHelpers
+    include Category::SerializerHelpers
 
     # Validations:
 

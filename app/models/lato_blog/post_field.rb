@@ -1,6 +1,7 @@
 module LatoBlog
   class PostField < ApplicationRecord
-
+    
+    include PostField::EntityHelpers
     include PostField::SerializerHelpers
 
     # Relations:
