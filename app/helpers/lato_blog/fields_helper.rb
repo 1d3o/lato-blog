@@ -3,8 +3,12 @@ module LatoBlog
 
     # This function render a single custom post field.
     def render_post_field(post, field, key)
+      # check post field exist on database
       post_field = post.post_fields.find_by(key: key)
       return unless post_field
+
+      # check post field is valid for post
+      return if field[:categories] && (field[:categories] & post.categories.pluck(:meta_permalink)).empty?
 
       case post_field.typology
       when 'text'
