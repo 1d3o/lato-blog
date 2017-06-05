@@ -12,7 +12,7 @@ module LatoBlog
       serialized[:content] = content
       serialized[:meta_language] = meta_language
       serialized[:meta_permalink] = meta_permalink
-      serialized[:meta_status] = meta_permalink
+      serialized[:meta_status] = meta_status
 
       # return serialized post
       serialized
