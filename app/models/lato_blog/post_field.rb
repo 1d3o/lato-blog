@@ -1,6 +1,8 @@
 module LatoBlog
   class PostField < ApplicationRecord
 
+    include PostField::SerializerHelpers
+
     # Relations:
 
     belongs_to :post, foreign_key: :lato_blog_post_id, class_name: 'LatoBlog::Post'
