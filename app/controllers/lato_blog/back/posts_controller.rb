@@ -158,6 +158,7 @@ module LatoBlog
         end
       end
 
+      blog__manage_post_fields(@post)
       flash[:success] = LANGUAGES[:lato_blog][:flashes][:post_update_success]
       redirect_to lato_blog.post_path(@post.id)
     end
@@ -259,7 +260,7 @@ module LatoBlog
 
     # This function update a single field for the post.
     def update_field(key, value)
-      post_field = @post.post_fields.find_by(key: key)
+      post_field = @post.post_fields.visibles.find_by(key: key)
       return false unless post_field
 
       case post_field.typology

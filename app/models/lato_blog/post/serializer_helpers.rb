@@ -31,7 +31,7 @@ module LatoBlog
 
     def serialize_fields
       serialized = {}
-      post_fields.each do |post_field|
+      post_fields.visibles.each do |post_field|
         serialized[post_field.key] = post_field.serialize
       end
       serialized

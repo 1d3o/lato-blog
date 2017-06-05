@@ -6,6 +6,8 @@ class CreateLatoBlogPostFields < ActiveRecord::Migration[5.1]
       t.string :typology
       t.text :value
 
+      t.boolean :visible
+
       t.timestamps
     end
   end

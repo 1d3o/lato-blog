@@ -44,11 +44,6 @@ module LatoBlog
       check_lato_blog_post_parent
     end
 
-    after_save do
-      # create post fields for the post.
-      blog__create_post_fields(self)
-    end
-
     private
 
     # This function check if current permalink is valid. If it is not valid it

@@ -12,6 +12,10 @@ module LatoBlog
     validates :key, presence: true
     validates :typology, presence: true
 
+    # Scopes:
+
+    scope :visibles, -> { where(visible: true) }
+
   end
 end
 

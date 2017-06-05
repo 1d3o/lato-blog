@@ -38,9 +38,9 @@
 
     <%=raw row.open %>
 
-      <% CONFIGS[:lato_blog][:post_fields].each do |field| %>
+      <% @post.post_fields.visibles.each do |post_field| %>
         
-        <%= render_post_field(@post, field.last, field.first) %>
+        <%= render_post_field(post_field) %>
 
       <% end %>
 
