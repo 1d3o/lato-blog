@@ -14,8 +14,31 @@ module LatoBlog
       serialized[:meta_permalink] = meta_permalink
       serialized[:meta_status] = meta_status
 
+      # add fields informations
+      serialized[:fields] = serialize_fields
+
+      # add categories informations
+      serialized[:categories] = serialize_categories
+
+      # add post parent informations
+      serialized[:other_informations] = serialize_post_parent
+
       # return serialized post
       serialized
+    end
+
+    private
+
+    def serialize_fields
+      {}
+    end
+
+    def serialize_categories
+      {}
+    end
+
+    def serialize_post_parent
+      {}
     end
 
   end
