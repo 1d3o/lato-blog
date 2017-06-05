@@ -15,9 +15,14 @@ module LatoBlog
     def blog__create_post_fields(post)
       fields = CONFIGS[:lato_blog][:post_fields]
       fields.each do |field|
+        # check post field does not exist.
         post_field = post.post_fields.find_by(key: field.first)
         next if post_field
 
+        # check post field can be created
+        next if field.last[:categories] && (field.last[:categories] & post.categories.pluck(:meta_permalink)).empty?
+
+        # create the post field
         LatoBlog::PostField.create(key: field.first, typology: field.last[:type],
                                    lato_blog_post_id: post.id)
       end

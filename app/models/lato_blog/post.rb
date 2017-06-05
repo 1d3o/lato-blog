@@ -43,7 +43,7 @@ module LatoBlog
       check_lato_blog_post_parent
     end
 
-    after_create do
+    after_save do
       # create post fields for the post.
       blog__create_post_fields(self)
     end
