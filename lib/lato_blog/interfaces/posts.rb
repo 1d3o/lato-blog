@@ -18,13 +18,13 @@ module LatoBlog
         post_field = post.post_fields.find_by(key: field.first)
         visible = !(field.last[:categories] && (field.last[:categories] & post.categories.pluck(:meta_permalink)).empty?)
 
-        if visible && !post_field
+        if visible && !post_field # post field not exist and should be visible
           LatoBlog::PostField.create(key: field.first, typology: field.last[:type],
-                                     lato_blog_post_id: post.id, visible: true)
-        elsif visible && post_field && !post_field.visible
-          post_field.update(visible: true)
-        elsif !visible && post_field && post_field.visible
-          post_field.update(visible: false)
+                                     lato_blog_post_id: post.id, meta_visible: true)
+        elsif visible && post_field && !post_field.meta_visible # post field exist, is not visible and should be visible
+          post_field.update(meta_visible: true)
+        elsif !visible && post_field && post_field.meta_visible # post field exist, is visible and should not be visible
+          post_field.update(meta_visible: false)
         end
       end
     end

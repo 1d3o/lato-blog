@@ -12,5 +12,5 @@ BLOG_POSTS_STATUS = {
 
 # create post fields for current posts.
 if ActiveRecord::Base.connection.table_exists? 'lato_blog_post_fields'
-  blog__manage_posts_fields
+  blog__manage_posts_fields # update fields from config file
 end

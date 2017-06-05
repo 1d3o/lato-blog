@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170605104610) do
+ActiveRecord::Schema.define(version: 20170605111307) do
 
   create_table "lato_blog_categories", force: :cascade do |t|
     t.string "title"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20170605104610) do
     t.string "key"
     t.string "typology"
     t.text "value"
-    t.boolean "visible"
+    t.boolean "meta_visible"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

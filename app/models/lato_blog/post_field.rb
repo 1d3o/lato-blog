@@ -14,7 +14,7 @@ module LatoBlog
 
     # Scopes:
 
-    scope :visibles, -> { where(visible: true) }
+    scope :visibles, -> { where(meta_visible: true) }
 
   end
 end

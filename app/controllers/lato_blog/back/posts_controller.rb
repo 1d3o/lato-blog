@@ -55,6 +55,7 @@ module LatoBlog
         return
       end
 
+      manage_fields
       flash[:success] = LANGUAGES[:lato_blog][:flashes][:post_create_success]
       redirect_to lato_blog.post_path(@post.id)
     end
@@ -89,6 +90,7 @@ module LatoBlog
         return
       end
 
+      manage_fields
       flash[:success] = LANGUAGES[:lato_blog][:flashes][:post_update_success]
       redirect_to lato_blog.post_path(@post.id)
     end
@@ -158,7 +160,7 @@ module LatoBlog
         end
       end
 
-      blog__manage_post_fields(@post)
+      manage_fields
       flash[:success] = LANGUAGES[:lato_blog][:flashes][:post_update_success]
       redirect_to lato_blog.post_path(@post.id)
     end
@@ -247,6 +249,11 @@ module LatoBlog
     end
 
     # Fields helers:
+
+    # This function manage post fields.
+    def manage_fields
+      blog__manage_post_fields(@post)
+    end
 
     # This function update all post fields from the fields received as params.
     def update_fields
