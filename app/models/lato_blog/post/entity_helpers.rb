@@ -36,7 +36,7 @@ module LatoBlog
     # This function the post translation for a specific language.
     def get_translation_for_language language_identifier
       return self.post_parent.posts.find_by(meta_language: language_identifier)
-    end  
+    end
 
-  end  
+  end
 end

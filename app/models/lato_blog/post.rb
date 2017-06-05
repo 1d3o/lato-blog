@@ -2,6 +2,7 @@ module LatoBlog
   class Post < ApplicationRecord
 
     include Post::EntityHelpers
+    include Post::SerializerHelpers
 
     # Validations:
 
