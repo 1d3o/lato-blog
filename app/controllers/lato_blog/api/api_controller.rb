@@ -1,5 +1,3 @@
-module LatoBlog
-  class Api::ApiController < ActionController::Base
+class LatoBlog::Api::ApiController < ActionController::Base
 
-  end
 end
