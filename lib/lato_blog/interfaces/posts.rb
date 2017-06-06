@@ -14,6 +14,8 @@ module LatoBlog
     # This function creates post fields on database for a specific post from the config file.
     def blog__manage_post_fields(post)
       fields = CONFIGS[:lato_blog][:post_fields]
+
+      # create new fields or update visibility for categories
       fields.each do |field|
         post_field = post.post_fields.find_by(key: field.first)
         visible = !(field.last[:categories] && (field.last[:categories] & post.categories.pluck(:meta_permalink)).empty?)
@@ -24,6 +26,13 @@ module LatoBlog
         elsif visible && post_field && !post_field.meta_visible # post field exist, is not visible and should be visible
           post_field.update(meta_visible: true)
         elsif !visible && post_field && post_field.meta_visible # post field exist, is visible and should not be visible
+          post_field.update(meta_visible: false)
+        end
+      end
+
+      # update visibility for removed fields
+      post.post_fields.each do |post_field|
+        if post_field.meta_visible && !fields.keys.include?(post_field.key)
           post_field.update(meta_visible: false)
         end
       end
