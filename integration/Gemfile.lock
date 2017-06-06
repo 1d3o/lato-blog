@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/ideonetwork/lato-core
-  revision: 9c22c72f6e05c2818f94a2ab48dbc41215acb36c
+  revision: 939587d2e4366b48ac5f7e313b49318edf33be33
   specs:
     lato_core (2.0)
       bcrypt (>= 3.1.7)
@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: https://github.com/ideonetwork/lato-media
-  revision: 6664e90c958a5b6c7c7eea3453c2661919f29f13
+  revision: 8ced8021f7c041444b96a498d991acdd82d64d6e
   specs:
     lato_media (2.0.0)
       lato_core
@@ -115,8 +115,8 @@ GEM
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     i18n (0.8.4)
-    jbuilder (2.6.4)
-      activesupport (>= 3.0.0)
+    jbuilder (2.7.0)
+      activesupport (>= 4.2.0)
       multi_json (>= 1.2)
     jquery-rails (4.3.1)
       rails-dom-testing (>= 1, < 3)
