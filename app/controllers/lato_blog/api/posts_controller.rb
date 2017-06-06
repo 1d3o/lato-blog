@@ -26,7 +26,7 @@ module LatoBlog
 
       # render response
       core__send_request_success(
-        posts: posts.empty? ? [] : posts.map(&:serialize),
+        posts: (posts && !posts.empty?) ? posts.map(&:serialize) : [],
         page: page,
         per_page: per_page,
         order: order,
