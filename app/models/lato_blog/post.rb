@@ -12,9 +12,6 @@ module LatoBlog
     validates :meta_status, presence: true, length: { maximum: 250 }, inclusion: { in: BLOG_POSTS_STATUS.values }
     validates :meta_language, presence: true, length: { maximum: 250 }, inclusion: { in: ([nil] + BLOG_LANGUAGES_IDENTIFIER) }
 
-    validates :lato_core_superuser_creator_id, presence: true
-    validates :lato_blog_post_parent_id, presence: true
-
     # Relations:
 
     belongs_to :post_parent, foreign_key: :lato_blog_post_parent_id, class_name: 'LatoBlog::PostParent'

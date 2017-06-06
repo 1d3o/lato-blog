@@ -11,8 +11,6 @@ module LatoBlog
     validates :meta_permalink, presence: true, uniqueness: true, length: { maximum: 250 }
     validates :meta_language, presence: true, length: { maximum: 250 }, inclusion: { in: ([nil] + BLOG_LANGUAGES_IDENTIFIER) }
 
-    validates :lato_blog_category_parent_id, presence: true
-
     # Relations:
 
     belongs_to :category_parent, foreign_key: :lato_blog_category_parent_id, class_name: 'LatoBlog::CategoryParent'
