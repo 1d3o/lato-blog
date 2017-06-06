@@ -12,5 +12,5 @@ LatoBlog::Engine.routes.draw do
   draw :api
   draw :back
   draw :doc
-  
+
 end
