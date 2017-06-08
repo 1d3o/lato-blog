@@ -273,6 +273,8 @@ module LatoBlog
       case post_field.typology
       when 'text'
         return update_field_text(post_field, value)
+      when 'media'
+        return update_field_media(post_field, value)
       else
         return false
       end
@@ -280,6 +282,11 @@ module LatoBlog
 
     # This function update a single field of type text.
     def update_field_text(post_field, value)
+      post_field.update(value: value)
+    end
+
+    # This function udpate a single field type media.
+    def update_field_media(post_field, value)
       post_field.update(value: value)
     end
 

@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/ideonetwork/lato-core
-  revision: 939587d2e4366b48ac5f7e313b49318edf33be33
+  revision: 7bca225b6a1efaff9f85a49811fd8a89000695ea
   specs:
     lato_core (2.0)
       bcrypt (>= 3.1.7)
@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: https://github.com/ideonetwork/lato-media
-  revision: 8ced8021f7c041444b96a498d991acdd82d64d6e
+  revision: 601b22e58ecd731ef8713a8f747432d547a34557
   specs:
     lato_media (2.0.0)
       lato_core
@@ -76,7 +76,7 @@ GEM
     bindex (0.5.0)
     builder (3.2.3)
     byebug (9.0.6)
-    capybara (2.14.0)
+    capybara (2.14.1)
       addressable
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)

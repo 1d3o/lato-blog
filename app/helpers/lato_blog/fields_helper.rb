@@ -9,6 +9,8 @@ module LatoBlog
       case post_field.typology
       when 'text'
         render 'lato_blog/back/posts/shared/fields/text', post_field: post_field, field: field
+      when 'media'
+        render 'lato_blog/back/posts/shared/fields/media', post_field: post_field, field: field
       else
         return
       end

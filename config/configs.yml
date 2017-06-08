@@ -19,11 +19,10 @@ post_fields:
     type: text
     label: Insert the city of the author
     class: md-6
-  subject_name:
-    type: text
-    label: Write the name of the subject of the article
+  main_image:
+    type: media
+    label: Select the main image of the article
     class: md-12
-    categories: [attualita]
 
 # set menu for the module.
 menu:
