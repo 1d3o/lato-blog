@@ -1,7 +1,7 @@
 .categories__edit-child-tree {
 
   .child-tree-container {
-    background-color: #f7f7f7;
+    background-color: $color_grey;
     width: 100%;
     padding: 5px 0;
 
@@ -10,7 +10,7 @@
     }
 
     li {
-      color: darken(#f7f7f7, 50);
+      color: darken($color_grey, 50);
       margin-bottom: 10px;
       font-size: 0.8em;
     }

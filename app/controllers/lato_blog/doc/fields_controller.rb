@@ -3,5 +3,7 @@ module LatoBlog
 
     def text; end
 
+    def media; end
+
   end
 end

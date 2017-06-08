@@ -69,6 +69,7 @@ mixed:
   change_publication_datetime: Change publication date
   child_tree: Child tree
   change_categories: Change categories
+  number_of_posts: Number of posts
 
 posts_status:
   published: Published
