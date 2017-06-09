@@ -3,7 +3,6 @@ module LatoBlog
 
     def index
       categories = LatoBlog::Category.all
-      total = categories.length
 
       # order categories
       order = (params[:order] && params[:order] == 'ASC') ? 'ASC' : 'DESC'
@@ -13,6 +12,9 @@ module LatoBlog
       categories = categories.where(meta_language: params[:language]) if params[:language]
       # filter search
       categories = categories.where('title like ?', "%#{params[:search]}%") if params[:search]
+
+      # save total categories
+      total = categories.length
 
       # manage pagination
       page = params[:page] ? params[:page].to_i : 1

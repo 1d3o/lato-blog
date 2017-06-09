@@ -4,7 +4,6 @@ module LatoBlog
     def index
       posts = LatoBlog::Post.published.joins(:categories).joins(:post_parent)
       posts = posts.where('lato_blog_post_parents.publication_datetime <= ?', DateTime.now)
-      total = posts.length
 
       # order posts
       order = (params[:order] && params[:order] == 'ASC') ? 'ASC' : 'DESC'
@@ -18,6 +17,9 @@ module LatoBlog
       posts = posts.where(lato_blog_categories: {id: params[:category_id].to_i}) if params[:category_id]
       # filter search
       posts = posts.where('lato_blog_posts.title like ?', "%#{params[:search]}%") if params[:search]
+
+      # save total posts
+      total = posts.length
 
       # manage pagination
       page = params[:page] ? params[:page].to_i : 1
