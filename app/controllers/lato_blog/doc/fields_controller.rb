@@ -5,5 +5,7 @@ module LatoBlog
 
     def media; end
 
+    def geolocalization; end
+
   end
 end

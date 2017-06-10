@@ -25,6 +25,10 @@
 
 <%=raw cell(:elements, :title).new(label: 'Code', size: 6) %>
 
+<p>
+The configuration option should be:
+</p>
+
 <%=raw code.open %>
 
 post_fields:
@@ -33,6 +37,29 @@ post_fields:
     label: Select a media
     class: md-6
     categories: ['category_permalink']
+
+<%=raw code.close %>
+
+<p>
+The object returned from API should be:
+</p>
+
+<%=raw code.open %>
+
+"fields": {
+  "main_image": {
+    "key": "main_image",
+    "typology": "media",
+    "value": {
+      "id": 17,
+      "title": "reflectionintheyukon-2880x1800-300ppi-large.jpg",
+      "url": "/system/lato_media/media/attachments/000/000/017/original/reflectionintheyukon-2880x1800-300ppi-large.jpg?1496991462",
+      "thumb_url": "/system/lato_media/media/attachments/000/000/017/thumb/reflectionintheyukon-2880x1800-300ppi-large.jpg?1496991462",
+      "medium_url": "/system/lato_media/media/attachments/000/000/017/medium/reflectionintheyukon-2880x1800-300ppi-large.jpg?1496991462",
+      "large_url": "/system/lato_media/media/attachments/000/000/017/large/reflectionintheyukon-2880x1800-300ppi-large.jpg?1496991462"
+    }
+  }
+}
 
 <%=raw code.close %>
 

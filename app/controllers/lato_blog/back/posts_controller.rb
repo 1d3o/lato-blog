@@ -258,10 +258,11 @@ module LatoBlog
     # This function update all post fields from the fields received as params.
     def update_fields
       return true unless params[:fields]
+      puts "@@@@"
       params[:fields].each do |field_key, field_value|
         return false unless update_field(field_key, field_value)
       end
-
+      puts "@@@" * 100
       true
     end
 
@@ -275,6 +276,8 @@ module LatoBlog
         return update_field_text(post_field, value)
       when 'media'
         return update_field_media(post_field, value)
+      when 'geolocalization'
+        return update_field_geolocalization(post_field, value)
       else
         return false
       end
@@ -287,6 +290,16 @@ module LatoBlog
 
     # This function udpate a single field type media.
     def update_field_media(post_field, value)
+      post_field.update(value: value)
+    end
+
+    # This function update a single field type geolocalization.
+    def update_field_geolocalization(post_field, value)
+      value = {
+        lat: params[:fields][post_field.key][:lat],
+        lng: params[:fields][post_field.key][:lng],
+        address: params[:fields][post_field.key][:address]
+      }
       post_field.update(value: value)
     end
 

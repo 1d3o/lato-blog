@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/ideonetwork/lato-core
-  revision: fbf5c66303db08e80a97647c90d40feaefa2f46f
+  revision: 31663e2d4d8f13b9e2c29ca9b9d3b6569aed8e80
   specs:
     lato_core (2.0)
       bcrypt (>= 3.1.7)
@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: https://github.com/ideonetwork/lato-media
-  revision: 4a41e821b5b70a0b3374f9b1a61fc1ff710cbe1f
+  revision: d81c551acab9be5d880f1a2e2182741439cc732b
   specs:
     lato_media (2.0.0)
       lato_core
@@ -76,7 +76,7 @@ GEM
     bindex (0.5.0)
     builder (3.2.3)
     byebug (9.0.6)
-    capybara (2.14.1)
+    capybara (2.14.2)
       addressable
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -129,7 +129,7 @@ GEM
       ruby_dep (~> 1.2)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
-    mail (2.6.5)
+    mail (2.6.6)
       mime-types (>= 1.16, < 4)
     method_source (0.8.2)
     mime-types (3.1)

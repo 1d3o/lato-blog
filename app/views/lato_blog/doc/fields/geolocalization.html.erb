@@ -9,9 +9,9 @@
 
   <%=raw block.open %>
 
-    <%=raw cell(:elements, :title).new(label: 'Fields: Text') %>
+    <%=raw cell(:elements, :title).new(label: 'Fields: Geolocalization') %>
 
-    <p>A normal text input.</p>
+    <p>A map selector.</p>
 
   <%=raw block.close %>
 
@@ -32,10 +32,10 @@ The configuration option should be:
 <%=raw code.open %>
 
 post_fields:
-  author:
-    type: text
-    label: Insert the name of the author
-    class: md-6
+  location:
+    type: geolocalization
+    label: Select the location of the story
+    class: md-12
     categories: ['category_permalink']
 
 <%=raw code.close %>
@@ -47,10 +47,14 @@ The object returned from API should be:
 <%=raw code.open %>
 
 "fields": {
-  "author": {
-    "key": "author",
-    "typology": "text",
-    "value": ""
+  "location": {
+    "key": "location",
+    "typology": "geolocalization",
+    "value": {
+      "latitude": "46.07106679999999",
+      "longitude": "13.23457940000003",
+      "address": "33100 Udine UD, Italia"
+    }
   }
 }
 

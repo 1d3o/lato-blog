@@ -1,0 +1,4 @@
+<%=raw cell(:inputs, :geolocalization).new(label: field[:label], class: field[:class],
+name_lat: "fields[#{post_field.key}][lat]", name_lng: "fields[#{post_field.key}][lng]",
+name_address: "fields[#{post_field.key}][address]", value_lat: latitude, value_lng: longitude,
+value_address: address) %>

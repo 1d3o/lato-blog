@@ -23,6 +23,10 @@ post_fields:
     type: media
     label: Select the main image of the article
     class: md-12
+  location:
+    type: geolocalization
+    label: Select the location of the story
+    class: md-12
 
 # set menu for the module.
 menu:
