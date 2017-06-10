@@ -22,10 +22,10 @@ module LatoBlog
 
     # This function render the geolocalization input.
     def render_geolocalization(post_field, field)
-      value_object = eval(post_field.value)
-      latitude = value_object[:lat]
-      longitude = value_object[:lng]
-      address = value_object[:address]
+      value_object = post_field.value ? eval(post_field.value) : nil
+      latitude = value_object ? value_object[:lat] : nil
+      longitude = value_object ? value_object[:lng] : nil
+      address = value_object ? value_object[:address] : nil
       render 'lato_blog/back/posts/shared/fields/geolocalization', post_field: post_field, field: field,
              latitude: latitude, longitude: longitude, address: address
     end
