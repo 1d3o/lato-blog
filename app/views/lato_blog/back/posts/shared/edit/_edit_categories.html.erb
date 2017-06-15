@@ -11,8 +11,6 @@
 
     <input type="hidden" name="id" value="<%= @post.id %>">
 
-    <br>
-
     <% @categories.each do |category| %>
 
       <%=raw cell(:inputs, :checkbox).new(name: "categories[#{category.id}]", label: category.title,
@@ -20,7 +18,7 @@
       
     <% end %>
 
-    <br> <br>
+    <br>
     <div class="text-right">
       <%=raw cell(:elements, :button).new(type: 'submit', label: LANGUAGES[:lato_blog][:mixed][:update],
       icon: 'refresh') %>

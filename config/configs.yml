@@ -14,11 +14,20 @@ post_fields:
   author:
     type: text
     label: Insert the name of the author
-    class: md-6
-  author_city:
-    type: text
-    label: Insert the city of the author
-    class: md-6
+    class: md-12
+  # author_citation:
+  #   type: composed
+  #   label: Insert a citation that autor love
+  #   class: md-12
+  #   elements:
+  #     citation:
+  #       type: text
+  #       label: Citation
+  #       class: md-8
+  #     author:
+  #       type: text
+  #       label: Author
+  #       class: md-4
   main_image:
     type: media
     label: Select the main image of the article
@@ -27,6 +36,8 @@ post_fields:
     type: geolocalization
     label: Select the location of the story
     class: md-12
+  
+  
 
 # set menu for the module.
 menu:
