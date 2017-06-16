@@ -32,6 +32,7 @@ post_fields:
     type: media
     label: Select the main image of the article
     class: md-12
+    size: large
   location:
     type: geolocalization
     label: Select the location of the story
