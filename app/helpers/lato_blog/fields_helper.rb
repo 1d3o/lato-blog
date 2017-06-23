@@ -13,6 +13,8 @@ module LatoBlog
         render 'lato_blog/back/posts/shared/fields/media', post_field: post_field, field: field
       when 'geolocalization'
         render_geolocalization(post_field, field)
+      when 'relay'
+        render 'lato_blog/back/posts/shared/fields/relay', post_field: post_field, field: field
       else
         return
       end

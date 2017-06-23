@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/ideonetwork/lato-core
-  revision: 9812a2fc605f55c93b17c6a6e98d2086068ffc99
+  revision: 3da033e8d3af3f322d19840e33c8a296ef8c2ec1
   specs:
     lato_core (2.0.1)
       bcrypt (>= 3.1.7)
@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: https://github.com/ideonetwork/lato-media
-  revision: 314271166ff1bd002744b41caf24d00f83e6d9b3
+  revision: 5c41efbaa8ba78c5a2b48788f913d115f3384115
   specs:
     lato_media (2.0.0)
       lato_core
@@ -22,7 +22,7 @@ GIT
       rails (~> 5.1.0)
 
 PATH
-  remote: ..
+  remote: ../
   specs:
     lato_blog (2.0)
       lato_core
@@ -178,8 +178,8 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (12.0.0)
     rb-fsevent (0.9.8)
-    rb-inotify (0.9.8)
-      ffi (>= 0.5.0)
+    rb-inotify (0.9.10)
+      ffi (>= 0.5.0, < 2)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
     sass (3.4.24)

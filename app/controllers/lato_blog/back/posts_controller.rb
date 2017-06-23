@@ -258,11 +258,9 @@ module LatoBlog
     # This function update all post fields from the fields received as params.
     def update_fields
       return true unless params[:fields]
-      puts "@@@@"
       params[:fields].each do |field_key, field_value|
         return false unless update_field(field_key, field_value)
       end
-      puts "@@@" * 100
       true
     end
 
