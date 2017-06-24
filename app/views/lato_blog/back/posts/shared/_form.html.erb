@@ -36,16 +36,6 @@
 
     <%=raw row.close %>
 
-    <%=raw row.open %>
-
-      <% @post.post_fields.visibles.each do |post_field| %>
-        
-        <%= render_post_field(post_field) %>
-
-      <% end %>
-
-    <%=raw row.close %>
-
   <% end %>
 
   <div class="text-right">

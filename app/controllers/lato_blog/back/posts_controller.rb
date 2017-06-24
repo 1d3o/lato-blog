@@ -55,7 +55,6 @@ module LatoBlog
         return
       end
 
-      manage_fields
       flash[:success] = LANGUAGES[:lato_blog][:flashes][:post_create_success]
       redirect_to lato_blog.post_path(@post.id)
     end
@@ -84,13 +83,6 @@ module LatoBlog
         return
       end
 
-      unless update_fields
-        flash[:warning] = LANGUAGES[:lato_blog][:flashes][:post_update_fields_warning]
-        redirect_to lato_blog.edit_post_path(@post.id)
-        return
-      end
-
-      manage_fields
       flash[:success] = LANGUAGES[:lato_blog][:flashes][:post_update_success]
       redirect_to lato_blog.post_path(@post.id)
     end
@@ -202,6 +194,9 @@ module LatoBlog
       redirect_to lato_blog.posts_path(status: 'deleted')
     end
 
+    # Private functions:
+    # **************************************************************************
+
     private
 
     def fetch_external_objects
@@ -247,60 +242,6 @@ module LatoBlog
     def generate_post_parent
       post_parent = LatoBlog::PostParent.create
       post_parent.id
-    end
-
-    # Fields helers:
-    # **************************************************************************
-
-    # This function manage post fields.
-    def manage_fields
-      blog__manage_post_fields(@post)
-    end
-
-    # This function update all post fields from the fields received as params.
-    def update_fields
-      return true unless params[:fields]
-      params[:fields].each do |field_key, field_value|
-        return false unless update_field(field_key, field_value)
-      end
-      true
-    end
-
-    # This function update a single field for the post.
-    def update_field(key, value)
-      post_field = @post.post_fields.visibles.find_by(key: key)
-      return false unless post_field
-
-      case post_field.typology
-      when 'text'
-        return update_field_text(post_field, value)
-      when 'media'
-        return update_field_media(post_field, value)
-      when 'geolocalization'
-        return update_field_geolocalization(post_field, value)
-      else
-        return false
-      end
-    end
-
-    # This function update a single field of type text.
-    def update_field_text(post_field, value)
-      post_field.update(value: value)
-    end
-
-    # This function udpate a single field type media.
-    def update_field_media(post_field, value)
-      post_field.update(value: value)
-    end
-
-    # This function update a single field type geolocalization.
-    def update_field_geolocalization(post_field, value)
-      value = {
-        lat: params[:fields][post_field.key][:lat],
-        lng: params[:fields][post_field.key][:lng],
-        address: params[:fields][post_field.key][:address]
-      }
-      post_field.update(value: value)
     end
 
   end
