@@ -45,6 +45,10 @@ module LatoBlog
       add_to_default_category
     end
 
+    after_destroy do 
+      blog__clean_post_parents
+    end
+
     private
 
     # This function check if current permalink is valid. If it is not valid it
