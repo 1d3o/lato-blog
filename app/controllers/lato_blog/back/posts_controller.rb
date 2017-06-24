@@ -221,6 +221,7 @@ module LatoBlog
     end
 
     # Params helpers:
+    # **************************************************************************
 
     # This function generate params for a new post.
     def new_post_params
@@ -249,6 +250,7 @@ module LatoBlog
     end
 
     # Fields helers:
+    # **************************************************************************
 
     # This function manage post fields.
     def manage_fields
