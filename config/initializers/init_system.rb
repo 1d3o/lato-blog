@@ -10,7 +10,8 @@ BLOG_POSTS_STATUS = {
   published: 'published'
 }
 
-# create post fields for current posts.
-if ActiveRecord::Base.connection.table_exists? 'lato_blog_post_fields'
-  
+# create default category.
+if ActiveRecord::Base.connection.table_exists?('lato_blog_category_parents') &&
+   ActiveRecord::Base.connection.table_exists?('lato_blog_categories')
+  blog__create_default_category
 end

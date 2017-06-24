@@ -41,6 +41,10 @@ module LatoBlog
       check_lato_blog_post_parent
     end
 
+    after_create do
+      add_to_default_category
+    end
+
     private
 
     # This function check if current permalink is valid. If it is not valid it
@@ -77,6 +81,17 @@ module LatoBlog
         throw :abort
         return
       end
+    end
+
+    # This function add the post to the default category.
+    def add_to_default_category
+      default_category_parent = LatoBlog::CategoryParent.find_by(default: true)
+      return unless default_category_parent
+
+      category = default_category_parent.categories.find_by(meta_language: meta_language)
+      return unless category
+
+      LatoBlog::CategoryPost.create(lato_blog_post_id: id, lato_blog_category_id: category.id)
     end
 
   end

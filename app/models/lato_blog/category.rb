@@ -6,7 +6,7 @@ module LatoBlog
 
     # Validations:
 
-    validates :title, presence: true, uniqueness: true
+    validates :title, presence: true, length: { maximum: 250 }
 
     validates :meta_permalink, presence: true, uniqueness: true, length: { maximum: 250 }
     validates :meta_language, presence: true, length: { maximum: 250 }, inclusion: { in: ([nil] + BLOG_LANGUAGES_IDENTIFIER) }
@@ -37,6 +37,8 @@ module LatoBlog
 
       check_category_father_circular_dependency
       check_category_father_language
+
+      check_lato_blog_category_parent
     end
 
     private
@@ -79,6 +81,23 @@ module LatoBlog
       if self.category_father.meta_language != self.meta_language
         errors.add('Category father', 'must have the same language of the child')
         throw :abort
+      end
+    end
+
+    # This function check that the category parent exist and has not others categories for the same language.
+    def check_lato_blog_category_parent
+      category_parent = LatoBlog::CategoryParent.find_by(id: lato_blog_category_parent_id)
+      if !category_parent
+        errors.add('Category parent', 'not exist for the category')
+        throw :abort
+        return
+      end
+
+      same_language_category = category_parent.categories.find_by(meta_language: meta_language)
+      if same_language_category && same_language_category.id != id
+        errors.add('Category parent', 'has another category for the same language')
+        throw :abort
+        return
       end
     end
 

@@ -7,5 +7,8 @@ module LatoBlog
     require 'lato_blog/interfaces/posts'
     include LatoBlog::Interface::Posts
 
+    require 'lato_blog/interfaces/categories'
+    include LatoBlog::Interface::Categories
+
   end
 end
