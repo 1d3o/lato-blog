@@ -9,6 +9,12 @@ languages:
     identifier: it
     title: Italiano
 
+# set post fields for posts.
+post_fields:
+  example_text:
+    type: text
+    
+
 # set menu for the module.
 menu:
   blog_articles:

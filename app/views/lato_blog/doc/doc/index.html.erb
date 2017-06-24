@@ -26,6 +26,17 @@
     Post fields are a list of possible custom fields that can be added to a post object from the configuration file.
     </p>
 
+    <p>
+    The post fields management is separeted between multiple components:
+    <ul>
+      <li>- <b>Interface</b>: it should contains function to syncronize post fields between the configuration file
+      and the database; it also contains functions to clean the database from old post fields.</li>
+      <li>- <b>Model</b>: it should contains functions to serialize post fields.</li>
+      <li>- <b>Helper</b>: it should contains functions to render post fields.</li>
+      <li>- <b>Controller</b>: it should contains functions to save post fields value or to create new dynamic post fields.</li>
+    </ul>
+    </p>
+
   <%=raw block.close %>
 
 <%=raw row.close %>

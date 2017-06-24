@@ -45,7 +45,7 @@ module LatoBlog
       add_to_default_category
     end
 
-    after_destroy do 
+    after_destroy do
       blog__clean_post_parents
     end
 

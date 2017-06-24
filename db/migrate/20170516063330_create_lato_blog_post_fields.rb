@@ -5,6 +5,7 @@ class CreateLatoBlogPostFields < ActiveRecord::Migration[5.1]
       t.string :key
       t.string :typology
       t.text :value
+      t.text :meta
 
       t.boolean :meta_visible
 
