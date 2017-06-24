@@ -9,35 +9,6 @@ languages:
     identifier: it
     title: Italiano
 
-# set fields for posts.
-post_fields:
-  author:
-    type: text
-    label: Insert the name of the author
-    class: md-12
-  main_image:
-    type: media
-    label: Select the main image of the article
-    class: md-12
-    size: large
-  location:
-    type: geolocalization
-    label: Select the location of the story
-    class: md-12
-  images: # TODO: Manage input relay
-    type: relay
-    label: Select some images
-    class: md-12
-    size: large
-    components:
-      single_image:
-        type: image
-        label: Image
-        class: md-12
-
-
-
-
 # set menu for the module.
 menu:
   blog_articles:
