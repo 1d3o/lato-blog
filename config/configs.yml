@@ -15,19 +15,6 @@ post_fields:
     type: text
     label: Insert the name of the author
     class: md-12
-  # author_citation:
-  #   type: composed
-  #   label: Insert a citation that autor love
-  #   class: md-12
-  #   components:
-  #     citation:
-  #       type: text
-  #       label: Citation
-  #       class: md-8
-  #     author:
-  #       type: text
-  #       label: Author
-  #       class: md-4
   main_image:
     type: media
     label: Select the main image of the article
@@ -37,21 +24,16 @@ post_fields:
     type: geolocalization
     label: Select the location of the story
     class: md-12
-  users:
+  images: # TODO: Manage input relay
     type: relay
-    label: Select the thing
+    label: Select some images
     class: md-12
     size: large
     components:
-      name:
-        type: text
-        label: Name
-        class: md-12
-      image:
+      single_image:
         type: image
-        label: Select the main image of the article
+        label: Image
         class: md-12
-        size: large
 
 
 
