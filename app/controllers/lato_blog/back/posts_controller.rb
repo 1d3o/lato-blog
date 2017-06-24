@@ -152,7 +152,6 @@ module LatoBlog
         end
       end
 
-      manage_fields
       flash[:success] = LANGUAGES[:lato_blog][:flashes][:post_update_success]
       redirect_to lato_blog.post_path(@post.id)
     end

@@ -24,5 +24,11 @@ module LatoBlog
       end
     end
 
+    # This function cleans all old category parents without any child.
+    def blog__clean_category_parents
+      category_parents = LatoBlog::CategoryParent.all
+      category_parents.map { |cp| cp.destroy if cp.categories.empty? }
+    end
+
   end
 end

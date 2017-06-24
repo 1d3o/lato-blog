@@ -41,6 +41,10 @@ module LatoBlog
       check_lato_blog_category_parent
     end
 
+    after_destroy do 
+      blog__clean_category_parents
+    end
+
     private
 
     # This function check if current permalink is valid. If it is not valid it
