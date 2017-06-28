@@ -14,10 +14,11 @@ module LatoBlog
                       class_name: 'LatoBlog::Post'
 
     has_many :post_fields, foreign_key: :lato_blog_post_field_id,
-                           class_name: 'LatoBlog::PostField'
-
+                           class_name: 'LatoBlog::PostField',
+                           dependent: :destroy
     belongs_to :post_field, foreign_key: :lato_blog_post_field_id,
-                            class_name: 'LatoBlog::PostField', optional: true
+                            class_name: 'LatoBlog::PostField',
+                            optional: true
 
     # Validations:
 
@@ -26,6 +27,20 @@ module LatoBlog
     # Scopes:
 
     scope :visibles, -> { where(meta_visible: true) }
+
+    # Callbacks:
+
+    after_update do
+      update_child_visibility
+    end
+
+    private
+
+    # This functions update all post fields child visibility with the current
+    # post field visibility.
+    def update_child_visibility
+      post_fields.map { |pf| pf.update(meta_visible: meta_visible) }
+    end
 
   end
 end

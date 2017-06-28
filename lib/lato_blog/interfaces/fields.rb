@@ -6,7 +6,9 @@ module LatoBlog
     # fields on database.
     def blog__sync_config_post_fields_with_db_post_fields
       posts = LatoBlog::Post.all
+      # create / update fields on database
       posts.map { |p| blog__sync_config_post_fields_with_db_post_fields_for_post(p) }
+      # remove fields on database
     end
 
     # This function syncronizes the config post fields with the post fields
