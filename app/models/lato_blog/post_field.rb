@@ -27,6 +27,7 @@ module LatoBlog
     # Scopes:
 
     scope :visibles, -> { where(meta_visible: true) }
+    scope :roots, -> { where(lato_blog_post_field_id: nil) }
 
     # Callbacks:
 
@@ -39,6 +40,7 @@ module LatoBlog
     # This functions update all post fields child visibility with the current
     # post field visibility.
     def update_child_visibility
+      return if meta_visible == meta_visible_was
       post_fields.map { |pf| pf.update(meta_visible: meta_visible) }
     end
 
