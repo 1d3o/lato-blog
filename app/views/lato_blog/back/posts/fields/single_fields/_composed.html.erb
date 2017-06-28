@@ -6,7 +6,7 @@
 
   <div class="fields-composed__fields">
 
-    <% post_field.post_fields.where(meta_visible: true).each do |child_post_field| %>
+    <% post_field.post_fields.visibles.each do |child_post_field| %>
 
       <%= render_post_field(child_post_field, key) %>
 

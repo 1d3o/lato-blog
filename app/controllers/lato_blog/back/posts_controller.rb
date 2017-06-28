@@ -85,7 +85,11 @@ module LatoBlog
       end
 
       # update single fields
-      update_fields
+      unless update_fields
+        flash[:warning] = LANGUAGES[:lato_blog][:flashes][:post_update_fields_warning]
+        redirect_to lato_blog.edit_post_path(@post.id)
+        return
+      end
 
       # render positive response
       flash[:success] = LANGUAGES[:lato_blog][:flashes][:post_update_success]
@@ -222,16 +226,47 @@ module LatoBlog
     # Update fields helpers:
     # **************************************************************************
 
-    # This function check all fields params and update the value
+    # This function checks all fields params and update the value
     # on the database for the field.
     def update_fields
-      return unless params[:fields]
-      puts "@@@" * 100
+      return true unless params[:fields] 
       params[:fields].each do |key, value|
-        puts key
-        puts value
-        puts
+        field = @post.post_fields.find_by(key: key)
+        return false unless field
+        return false unless update_field(field, value)
       end
+      true
+    end
+
+    # This function updates a single field from its key and value.
+    def update_field(field, value)
+      case field.typology
+      when 'text'
+        update_field_text(field, value)
+      when 'composed'
+        update_field_composed(field, value)
+      end
+    end
+
+    # Update specific fields helpers:
+    # **************************************************************************
+
+    # Text.
+    def update_field_text(field, value)
+      field.update(value: value)
+    end
+
+    # Composed.
+    def update_field_composed(field, value)
+      # find composed children
+      child_fields = field.post_fields.visibles
+      # loop values and update single children
+      value.each do |child_key, child_value|
+        child_field = child_fields.find_by(key: child_key)
+        return false unless child_field
+        return false unless update_field(child_field, child_value)
+      end
+      true
     end
 
     # Params helpers:
