@@ -43,10 +43,23 @@ You can set a custom label with a label option:
 <%=raw code.open %>
 
 field_key:
-    type: text
+    type: composed
     label: Insert here the text
 
 <%=raw code.close %>
+
+<p>
+You can set a custom classes for the input with the class option:
+</p>
+
+<%=raw code.open %>
+
+field_key:
+    type: composed
+    class: xs-12 sm-12 md-6 lg-6
+
+<%=raw code.close %>
+
 
 <p>
 You can specify the list of fields for the composed field with the fields option:
