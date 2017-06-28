@@ -1,6 +1,7 @@
 module LatoBlog
   module Post::SerializerHelpers
 
+    # This function serializes a complete version of the post.
     def serialize
       serialized = {}
 
@@ -27,6 +28,7 @@ module LatoBlog
       serialized
     end
 
+    # This function serializes a basic version of the post.
     def serialize_base
       serialized = {}
 
@@ -40,17 +42,19 @@ module LatoBlog
       # return serialized post
       serialized
     end
-
+    
     private
 
+    # This function serializes the list of fields for the post.
     def serialize_fields
       serialized = {}
-      post_fields.visibles.each do |post_field|
+      post_fields.visibles.where(lato_blog_post_field_id: nil).each do |post_field|
         serialized[post_field.key] = post_field.serialize_base
       end
       serialized
     end
 
+    # This function serializes the list of cateogories for the post.
     def serialize_categories
       serialized = {}
       categories.each do |category|
@@ -59,6 +63,7 @@ module LatoBlog
       serialized
     end
 
+    # This function serializes other informations for the post.
     def serialize_other_informations
       serialized = {}
 

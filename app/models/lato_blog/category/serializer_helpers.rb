@@ -1,6 +1,7 @@
 module LatoBlog
   module Category::SerializerHelpers
 
+    # This function serializes a complete version of the category.
     def serialize
       serialized = {}
 
@@ -23,6 +24,7 @@ module LatoBlog
       serialized
     end
 
+    # This function serializes a basic version of the category.
     def serialize_base
       serialized = {}
 

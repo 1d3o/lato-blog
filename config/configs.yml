@@ -18,6 +18,7 @@ post_fields:
   example_composed:
     type: composed
     label: Complete these fields
+    class: xs-12 sm-12 md-12 lg-12
     fields:
       example_text_1:
         type: text

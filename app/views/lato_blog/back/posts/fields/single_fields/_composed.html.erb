@@ -1,6 +1,6 @@
-<div class="fields-composed <%= post_field[:meta_datas][:class] %>">
+<div class="fields-composed <%= post_field[:meta_datas][:class].blank? ? 'md-12' : post_field[:meta_datas][:class] %>">
 
-  <div class="fields-composed__label">
+  <div class="fields__label fields-composed__label">
     <%= post_field[:meta_datas][:label] %>
   </div>
 
