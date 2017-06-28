@@ -77,12 +77,17 @@ module LatoBlog
       @post = LatoBlog::Post.find_by(id: params[:id])
       return unless check_post_presence
 
+      # check post data update
       unless @post.update(edit_post_params)
         flash[:danger] = @post.errors.full_messages.to_sentence
         redirect_to lato_blog.edit_post_path(@post.id)
         return
       end
 
+      # update single fields
+      update_fields
+
+      # render positive response
       flash[:success] = LANGUAGES[:lato_blog][:flashes][:post_update_success]
       redirect_to lato_blog.post_path(@post.id)
     end
@@ -212,6 +217,21 @@ module LatoBlog
       end
 
       true
+    end
+
+    # Update fields helpers:
+    # **************************************************************************
+
+    # This function check all fields params and update the value
+    # on the database for the field.
+    def update_fields
+      return unless params[:fields]
+      puts "@@@" * 100
+      params[:fields].each do |key, value|
+        puts key
+        puts value
+        puts
+      end
     end
 
     # Params helpers:

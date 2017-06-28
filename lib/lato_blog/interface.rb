@@ -10,5 +10,8 @@ module LatoBlog
     require 'lato_blog/interfaces/categories'
     include LatoBlog::Interface::Categories
 
+    require 'lato_blog/interfaces/fields'
+    include LatoBlog::Interface::Fields
+
   end
 end

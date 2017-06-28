@@ -1,6 +1,7 @@
 <%
   row = cell(:elements, :row).new
   block = cell(:elements, :block).new(class: 'xs-12 sm-12 md-12')
+  code = cell(:elements, :code).new
 %>
 
 <!-- PRESENTATION -->
@@ -27,16 +28,32 @@
     </p>
 
     <p>
-    The post fields management is separeted between multiple components:
-    <ul>
-      <li>- <b>Interface</b>: it should contains function to syncronize post fields between the configuration file
-      and the database; it also contains functions to clean the database from old post fields.</li>
-      <li>- <b>Model</b>: it should contains functions to serialize post fields.</li>
-      <li>- <b>Helper</b>: it should contains functions to render post fields.</li>
-      <li>- <b>Controller</b>: it should contains functions to save post fields value or to create new dynamic post fields.</li>
-    </ul>
+    Every field should be defined on the configuration file under the "post fields" setting. <br>
+    Under the field options you must tell to the system which type of field it will be. You can also tell the system
+    the list of categories where show posts.
     </p>
 
+    <p>Here there is an example of a post fields configuration:</p>
+
+<%=raw code.open %>
+
+post_fields:
+  field_key:
+    type: field_type
+    categories: ['category_permalink_1', 'category_permalink_2'] # not required
+
+<%=raw code.close %>
+
+    <br>
+    
+    <%=raw cell(:elements, :title).new(label: 'Base fields', size: 4) %>
+
+    <%=raw cell(:elements, :button).new(label: 'Text', url: lato_blog.doc_fields_text_path) %>
+
+    <%=raw cell(:elements, :title).new(label: 'Group fields', size: 4) %>
+
+    <%=raw cell(:elements, :button).new(label: 'Composed', url: lato_blog.doc_fields_composed_path) %>
+    
   <%=raw block.close %>
 
 <%=raw row.close %>
