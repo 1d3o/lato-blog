@@ -5,9 +5,11 @@ class CreateLatoBlogPostFields < ActiveRecord::Migration[5.1]
       t.string :key
       t.string :typology
       t.text :value
-      t.text :meta
 
+      t.text :meta_datas
       t.boolean :meta_visible
+
+      t.integer :lato_blog_post_field_id
 
       t.timestamps
     end

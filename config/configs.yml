@@ -13,7 +13,6 @@ languages:
 post_fields:
   example_text:
     type: text
-    
 
 # set menu for the module.
 menu:

@@ -89,7 +89,7 @@ module LatoBlog
 
     # This function add the post to the default category.
     def add_to_default_category
-      default_category_parent = LatoBlog::CategoryParent.find_by(default: true)
+      default_category_parent = LatoBlog::CategoryParent.find_by(meta_default: true)
       return unless default_category_parent
 
       category = default_category_parent.categories.find_by(meta_language: meta_language)

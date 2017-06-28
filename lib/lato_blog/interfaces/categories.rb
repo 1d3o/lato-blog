@@ -5,10 +5,10 @@ module LatoBlog
 
     # This function create the default category if it not exists.
     def blog__create_default_category
-      category_parent = LatoBlog::CategoryParent.find_by(default: true)
+      category_parent = LatoBlog::CategoryParent.find_by(meta_default: true)
       return if category_parent
 
-      category_parent = LatoBlog::CategoryParent.new(default: true)
+      category_parent = LatoBlog::CategoryParent.new(meta_default: true)
       throw 'Impossible to create default category parent' unless category_parent.save
 
       languages = blog__get_languages_identifier
