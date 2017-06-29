@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: https://github.com/ideonetwork/lato-media
-  revision: 2ab382fd4a9886ee4631370d7c1f74f1d7f630b5
+  revision: edf86facca35ce50a8013c8b30496248dc2c24ea
   specs:
     lato_media (2.0.0)
       lato_core

@@ -3,7 +3,7 @@
 %>
 
 <div
-  class="fields__container fields-text <%= post_field.meta_datas[:class].blank? ? 'md-12' : post_field.meta_datas[:class] %>"
+  class="fields__container fields-text <%= post_field.meta_datas[:class].blank? ? field_general_get_default_class : post_field.meta_datas[:class] %>"
   data-field-id="<%= post_field.id %>"
 >
   <%=raw row.open %>

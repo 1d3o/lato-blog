@@ -51,6 +51,10 @@ module LatoBlog
     # Single field helpers functions:
     # **************************************************************************
 
+    def field_general_get_default_class
+      'xs-12 sm-12 md-12 lg-12'
+    end
+
     def field_relay_generate_components(post_field)
       components = []
       post_field.post_fields.visibles.order('position ASC').each do |child_post_field|

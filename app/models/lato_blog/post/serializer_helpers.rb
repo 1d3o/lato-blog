@@ -42,7 +42,7 @@ module LatoBlog
       # return serialized post
       serialized
     end
-    
+
     private
 
     # This function serializes the list of fields for the post.

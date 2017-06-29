@@ -1,5 +1,9 @@
+<%
+  row = cell(:elements, :row).new
+%>
+
 <div
-  class="fields__container fields-relay <%= post_field.meta_datas[:class].blank? ? 'md-12' : post_field.meta_datas[:class] %>"
+  class="fields__container fields-relay <%= post_field.meta_datas[:class].blank? ? field_general_get_default_class : post_field.meta_datas[:class] %>"
   data-field-id="<%= post_field.id %>"
 >
 
@@ -8,7 +12,9 @@
   </div>
 
   <div class="fields-relay__sortableblock">
-    <%=raw cell(:inputs, :sortableblock).new(name: key, components: field_relay_generate_components(post_field))%> 
+    <%=raw row.open %>
+      <%=raw cell(:inputs, :sortableblock).new(name: key, components: field_relay_generate_components(post_field))%> 
+    <%=raw row.close %>
   </div>
 
   <div class="fields-relay__menu-container">
