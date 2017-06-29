@@ -31,14 +31,14 @@ var BlogFieldsInitializer = (function () {
   }
 
   function _relaySubmitUpdateBeforeAction () {
-    var form = $('.inputs__form') // TODO: Add class to form and use only main form of the page
-    if (!$(form).attr('data-is-autosaving') || $(form).attr('data-is-autosaving') == 'false') {
-      $(form).attr('data-remote', true)
-      $(form).attr('data-is-autosaving', true)
-      $(form).submit()
-      $(form).attr('data-remote', false)
-      $(form).attr('data-is-autosaving', false)
-    }
+    // var form = $('.inputs__form') // TODO: Add class to form and use only main form of the page
+    // if (!$(form).attr('data-is-autosaving') || $(form).attr('data-is-autosaving') == 'false') {
+    //   $(form).attr('data-remote', true)
+    //   $(form).attr('data-is-autosaving', true)
+    //   $(form).submit()
+    //   $(form).attr('data-remote', false)
+    //   $(form).attr('data-is-autosaving', false)
+    // }
   }
 
   // Init:
