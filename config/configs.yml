@@ -24,6 +24,9 @@ post_fields:
         type: image
         label: Image
         class: md-4 lg-4
+      editor1:
+        type: editor
+        label: Editor
 
 # hide post default fields
 post_hidden_fields: [] # possible values: ['subtitle', 'content', 'excerpt'] 
