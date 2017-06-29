@@ -39,9 +39,10 @@ module LatoBlog
     # This function creates a new db post field from a specific content.
     def blog__create_db_post_field(post, key, content, post_field_parent = nil)
       # check if post field can be created for the post
-      categories = content[:categories] && content[:categories].empty? ? nil : content[:categories]
-      db_categories = LatoBlog::Category.where(meta_permalink: categories)
-      return if categories && !post.categories.include?(db_categories)
+      if content[:categories] && !content[:categories].empty?
+        db_categories = LatoBlog::Category.where(meta_permalink: content[:categories])
+        return unless !post.categories.include?(db_categories)
+      end
       # create post field on database
       db_post_field = LatoBlog::PostField.new(
         key: key,

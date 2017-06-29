@@ -16,6 +16,9 @@ module LatoBlog
 
     before_save do
       check_relation_language
+    end
+
+    after_save do
       blog__sync_config_post_fields_with_db_post_fields_for_post(post)
     end
 
