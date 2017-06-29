@@ -1,0 +1,6 @@
+<%=raw cell('LatoMedia', :inputs, :media).new(
+  name: key,
+  value: post_field[:value],
+  label: post_field[:meta_datas][:label],
+  class: post_field[:meta_datas][:class]
+) %>

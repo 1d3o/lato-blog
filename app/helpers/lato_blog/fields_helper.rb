@@ -16,6 +16,8 @@ module LatoBlog
       case post_field.typology
       when 'text'
         render_post_field_text(post_field, key)
+      when 'image'
+        render_post_field_image(post_field, key)
       when 'composed'
         render_post_field_composed(post_field, key)
       end
@@ -27,6 +29,11 @@ module LatoBlog
     # Text.
     def render_post_field_text(post_field, key)
       render 'lato_blog/back/posts/fields/single_fields/text', post_field: post_field, key: key
+    end
+
+    # Image.
+    def render_post_field_image(post_field, key)
+      render 'lato_blog/back/posts/fields/single_fields/image', post_field: post_field, key: key
     end
 
     # Composed.

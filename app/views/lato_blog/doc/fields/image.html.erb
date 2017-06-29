@@ -1,0 +1,67 @@
+<%
+  row = cell(:elements, :row).new
+  block = cell(:elements, :block).new(class: 'xs-12 sm-12 md-12')
+  code = cell(:elements, :code).new
+%>
+
+<!-- PRESENTATION -->
+<%=raw row.open %>
+
+  <%=raw block.open %>
+
+    <%=raw cell(:elements, :title).new(label: 'Fields: Image') %>
+
+    <p>A normal image input.</p>
+
+  <%=raw block.close %>
+
+<%=raw row.close %>
+<!-- / PRESENTATION -->
+
+<!-- CONFIGURATION SECTION -->
+<%=raw row.open %>
+
+<%=raw block.open %>
+
+<%=raw cell(:elements, :title).new(label: 'Configuration', size: 4) %>
+
+<p>
+The configuration option should be:
+</p>
+
+<%=raw code.open %>
+
+field_key:
+    type: image
+
+<%=raw code.close %>
+
+<p>
+You can set a custom label with a label option:
+</p>
+
+<%=raw code.open %>
+
+field_key:
+    type: image
+    label: Insert here the text
+
+<%=raw code.close %>
+
+<p>
+You can set a custom classes for the input with the class option:
+</p>
+
+<%=raw code.open %>
+
+field_key:
+    type: image
+    class: xs-12 sm-12 md-6 lg-6
+
+<%=raw code.close %>
+
+
+<%=raw block.close %>
+
+<%=raw row.close %>
+<!-- / CONFIGURATION SECTION -->

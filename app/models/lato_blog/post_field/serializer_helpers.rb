@@ -39,7 +39,11 @@ module LatoBlog
 
     # Composed.
     def serialize_field_value_composed
-      post_fields.visibles.map(&:serialize_base)
+      serialized_value = {}
+      post_fields.visibles.each do |post_field|
+        serialized_value[post_field.key] = post_field.serialize_base
+      end
+      serialized_value
     end
 
   end

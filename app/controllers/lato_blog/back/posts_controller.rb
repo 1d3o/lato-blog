@@ -243,6 +243,8 @@ module LatoBlog
       case field.typology
       when 'text'
         update_field_text(field, value)
+      when 'image'
+        update_field_image(field, value)
       when 'composed'
         update_field_composed(field, value)
       end
@@ -253,6 +255,11 @@ module LatoBlog
 
     # Text.
     def update_field_text(field, value)
+      field.update(value: value)
+    end
+
+    # Image.
+    def update_field_image(field, value)
       field.update(value: value)
     end
 

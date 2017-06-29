@@ -15,6 +15,10 @@ post_fields:
     type: text
     label: Insert here the text
     class: xs-12 sm-12 md-12 lg-12
+  example_image:
+    type: image
+    label: Insert here the image
+    class: xs-12 sm-12 md-12 lg-12
   example_composed:
     type: composed
     label: Complete these fields

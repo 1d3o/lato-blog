@@ -81,6 +81,8 @@ module LatoBlog
       case db_post_field.typology
       when 'text'
         update_db_post_field_text(db_post_field, content, post_field_parent)
+      when 'image'
+        update_db_post_field_image(db_post_field, content, post_field_parent)
       when 'composed'
         update_db_post_field_composed(db_post_field, content, post_field_parent)
       end
@@ -91,6 +93,16 @@ module LatoBlog
 
     # Text.
     def update_db_post_field_text(db_post_field, content, post_field_parent = nil)
+      db_post_field.update(
+        meta_datas: {
+          label: content[:label] && !content[:label].blank? ? content[:label] : db_post_field.key,
+          class: content[:class] && !content[:class].blank? ? content[:class] : nil
+        }
+      )
+    end
+
+    # Image.
+    def update_db_post_field_image(db_post_field, content, post_field_parent = nil)
       db_post_field.update(
         meta_datas: {
           label: content[:label] && !content[:label].blank? ? content[:label] : db_post_field.key,
@@ -111,11 +123,13 @@ module LatoBlog
       # create or update child fields
       return unless content[:fields]
       content[:fields].each do |child_key, child_content|
+        # search child field on db
         child_db_post_field = LatoBlog::PostField.find_by(
           key: child_key,
           lato_blog_post_id: db_post_field.post.id,
           lato_blog_post_field_id: db_post_field.id
         )
+        # update or create child field on db
         if child_db_post_field
           update_db_post_field(child_db_post_field, child_content, db_post_field)
         else
