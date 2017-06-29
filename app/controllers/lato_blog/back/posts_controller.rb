@@ -243,6 +243,8 @@ module LatoBlog
       case field.typology
       when 'text'
         update_field_text(field, value)
+      when 'editor'
+        update_field_editor(field, value)
       when 'image'
         update_field_image(field, value)
       when 'composed'
@@ -257,6 +259,11 @@ module LatoBlog
 
     # Text.
     def update_field_text(field, value)
+      field.update(value: value)
+    end
+
+    # Editor.
+    def update_field_editor(field, value)
       field.update(value: value)
     end
 
@@ -298,15 +305,13 @@ module LatoBlog
     def update_field_relay_single_value(id, value, child_fields)
       child_field = child_fields.find_by(id: id)
       return false unless child_field
-      return false unless update_field(child_field, value)
-      true
+      update_field(child_field, value)
     end
 
     def update_field_relay_single_position(id, value, child_fields)
       child_field = child_fields.find_by(id: id)
       return false unless child_field
-      return false unless child_field.update(position: value)
-      true
+      child_field.update(position: value)
     end
 
     # Params helpers:

@@ -3,6 +3,8 @@ module LatoBlog
 
     def text; end
 
+    def editor; end
+
     def image; end
 
     def composed; end

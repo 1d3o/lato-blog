@@ -24,6 +24,8 @@ module LatoBlog
       case typology
       when 'text'
         serialize_field_value_text
+      when 'editor'
+        serialize_field_value_editor
       when 'image'
         serialize_field_value_image
       when 'composed'
@@ -38,6 +40,11 @@ module LatoBlog
 
     # Text.
     def serialize_field_value_text
+      value
+    end
+
+    # Editor.
+    def serialize_field_value_editor
       value
     end
 

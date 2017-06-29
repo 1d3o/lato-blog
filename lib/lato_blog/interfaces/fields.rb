@@ -65,6 +65,8 @@ module LatoBlog
       case db_post_field.typology
       when 'text'
         update_db_post_field_text(db_post_field, content, post_field_parent)
+      when 'editor'
+        update_db_post_field_editor(db_post_field, content, post_field_parent)
       when 'image'
         update_db_post_field_image(db_post_field, content, post_field_parent)
       when 'composed'
@@ -81,6 +83,16 @@ module LatoBlog
 
     # Text.
     def update_db_post_field_text(db_post_field, content, post_field_parent = nil)
+      db_post_field.update(
+        meta_datas: {
+          label: content[:label] && !content[:label].blank? ? content[:label] : db_post_field.key,
+          class: content[:class] && !content[:class].blank? ? content[:class] : nil
+        }
+      )
+    end
+
+    # Editor.
+    def update_db_post_field_editor(db_post_field, content, post_field_parent = nil)
       db_post_field.update(
         meta_datas: {
           label: content[:label] && !content[:label].blank? ? content[:label] : db_post_field.key,

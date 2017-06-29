@@ -1,0 +1,17 @@
+<%
+  row = cell(:elements, :row).new
+%>
+
+<div
+  class="fields__container fields-editor <%= post_field.meta_datas[:class].blank? ? field_general_get_default_class : post_field.meta_datas[:class] %>"
+  data-field-id="<%= post_field.id %>"
+>
+  <%=raw row.open %>
+    <%=raw cell(:inputs, :editor).new(
+      name: key,
+      value: post_field.value,
+      label: post_field.meta_datas[:label]
+    ) %>
+  <%=raw row.close %>
+
+</div>
