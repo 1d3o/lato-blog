@@ -16,6 +16,11 @@ post_fields:
     position: 1
     label: Example of editor
     class: xs-12 sm-12 md-12 lg-12
+  example_geolocalization:
+    type: geolocalization
+    position: 2
+    label: Example of geolocalization
+    class: xs-12 sm-12 md-12 lg-12
 
 # set menu for the module.
 menu:

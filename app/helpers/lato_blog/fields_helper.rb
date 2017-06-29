@@ -18,6 +18,8 @@ module LatoBlog
         render_post_field_text(post_field, key)
       when 'editor'
         render_post_field_editor(post_field, key)
+      when 'geolocalization'
+        render_post_field_geolocalization(post_field, key)
       when 'image'
         render_post_field_image(post_field, key)
       when 'composed'
@@ -38,6 +40,11 @@ module LatoBlog
     # Editor.
     def render_post_field_editor(post_field, key)
       render 'lato_blog/back/posts/fields/single_fields/editor', post_field: post_field, key: key
+    end
+
+    # Geolocalization.
+    def render_post_field_editor(post_field, key)
+      render 'lato_blog/back/posts/fields/single_fields/geolocalization', post_field: post_field, key: key
     end
 
     # Image.
