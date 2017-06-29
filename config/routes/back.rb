@@ -10,6 +10,7 @@ get 'posts_extra/destroy_all_deleted', to: 'back/posts#destroy_all_deleted', as:
 
 # post fields
 post 'post_fields/create_relay_field', to: 'back/post_fields#create_relay_field', as: 'post_fields_create_relay_field'
+post 'post_fields/destroy_relay_field', to: 'back/post_fields#destroy_relay_field', as: 'post_fields_destroy_relay_field'
 
 # categories
 resources :categories, module: 'back'

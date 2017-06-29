@@ -73,3 +73,39 @@
     }
   }
 }
+
+.js-related-field__destroy {
+  position: absolute;
+  top: 0;
+  left: 35px;
+  opacity: 0;
+  width: 25px;
+  height: 25px;
+  background: #ecf0f1;
+  border-radius: 3px;
+  text-align: center;
+  transition: all 0.3s;
+  svg {
+    display: block;
+    width: 15px;
+    height: 15px;
+    margin: 5px auto 0 auto;
+    path {
+      transition: all 0.3s;
+    }
+  }
+  &:hover {
+    background-color: $color_danger;
+    svg {
+      path {
+        fill: white;
+      }
+    }
+  }
+}
+
+.c-sortable__element:hover {
+  .js-related-field__destroy {
+    opacity: 1;
+  }
+}
