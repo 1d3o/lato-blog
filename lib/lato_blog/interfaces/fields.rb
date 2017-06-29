@@ -41,7 +41,7 @@ module LatoBlog
       # check if post field can be created for the post
       if content[:categories] && !content[:categories].empty?
         db_categories = LatoBlog::Category.where(meta_permalink: content[:categories])
-        return unless post.categories.include?(db_categories)
+        return unless post.categories.include?(db_categories) # TODO: Fix me
       end
       # create post field on database
       db_post_field = LatoBlog::PostField.new(
