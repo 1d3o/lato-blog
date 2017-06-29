@@ -17,7 +17,7 @@ module LatoBlog
     def blog__sync_config_post_fields_with_db_post_fields_for_post(post)
       post_fields = CONFIGS[:lato_blog][:post_fields]
       # save or update post fields from config
-      post_fields.map { |key, content| sync_config_post_field(post, key, content) }
+      post_fields.map { |key, content| blog__sync_config_post_field(post, key, content) }
     end
 
     # This function updates the database post fields with the config
@@ -36,10 +36,8 @@ module LatoBlog
       # - eliminazione di field foglie su field composti.
     end
 
-    private
-
     # This function syncronizes a single post field of a specific post with database.
-    def sync_config_post_field(post, key, content)
+    def blog__sync_config_post_field(post, key, content)
       db_post_field = LatoBlog::PostField.find_by(
         key: key,
         lato_blog_post_id: post.id,
@@ -48,9 +46,9 @@ module LatoBlog
 
       if db_post_field
         db_post_field.update(meta_visible: true)
-        update_db_post_field(db_post_field, content)
+        blog__update_db_post_field(db_post_field, content)
       else
-        create_db_post_field(post, key, content)
+        blog__create_db_post_field(post, key, content)
       end
     end
 
@@ -58,7 +56,7 @@ module LatoBlog
     # **************************************************************************
 
     # This function creates a new db post field from a specific content.
-    def create_db_post_field(post, key, content, post_field_parent = nil)
+    def blog__create_db_post_field(post, key, content, post_field_parent = nil)
       # check if post field can be created for the post
       categories = content[:categories] && content[:categories].empty? ? nil : content[:categories]
       db_categories = LatoBlog::Category.where(meta_permalink: categories)
@@ -67,6 +65,7 @@ module LatoBlog
       db_post_field = LatoBlog::PostField.new(
         key: key,
         typology: content[:type],
+        position: content[:position],
         meta_visible: true,
         lato_blog_post_id: post.id,
         lato_blog_post_field_id: post_field_parent ? post_field_parent.id : nil
@@ -77,7 +76,7 @@ module LatoBlog
     end
 
     # This function update an existing post field on database with new content.
-    def update_db_post_field(db_post_field, content, post_field_parent = nil)
+    def blog__update_db_post_field(db_post_field, content, post_field_parent = nil)
       case db_post_field.typology
       when 'text'
         update_db_post_field_text(db_post_field, content, post_field_parent)
@@ -89,6 +88,8 @@ module LatoBlog
         update_db_post_field_relay(db_post_field, content, post_field_parent)
       end
     end
+
+    private
 
     # Manage single specific field functions:
     # **************************************************************************
@@ -133,9 +134,9 @@ module LatoBlog
         )
         # update or create child field on db
         if child_db_post_field
-          update_db_post_field(child_db_post_field, child_content, db_post_field)
+          blog__update_db_post_field(child_db_post_field, child_content, db_post_field)
         else
-          create_db_post_field(db_post_field.post, child_key, child_content, db_post_field)
+          blog__create_db_post_field(db_post_field.post, child_key, child_content, db_post_field)
         end
       end
     end

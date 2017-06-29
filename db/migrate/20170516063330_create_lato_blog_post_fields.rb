@@ -4,6 +4,7 @@ class CreateLatoBlogPostFields < ActiveRecord::Migration[5.1]
       t.integer :lato_blog_post_id
       t.string :key
       t.string :typology
+      t.integer :position
       t.text :value
 
       t.text :meta_datas

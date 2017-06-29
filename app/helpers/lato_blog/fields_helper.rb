@@ -4,7 +4,7 @@ module LatoBlog
     # This function render the partial used to render post fields for a
     # specific post.
     def render_post_fields(post)
-      post_fields = post.post_fields.visibles.roots
+      post_fields = post.post_fields.visibles.roots.order_by('position ASC')
       render 'lato_blog/back/posts/fields/fields', post_fields: post_fields
     end
 
