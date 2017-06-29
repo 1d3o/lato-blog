@@ -245,6 +245,8 @@ module LatoBlog
         update_field_text(field, value)
       when 'editor'
         update_field_editor(field, value)
+      when 'geolocalization'
+        update_field_geolocalization(field, value)
       when 'image'
         update_field_image(field, value)
       when 'composed'
@@ -265,6 +267,16 @@ module LatoBlog
     # Editor.
     def update_field_editor(field, value)
       field.update(value: value)
+    end
+
+    # Geolocalization.
+    def update_field_geolocalization(field, value)
+      final_value = {
+        lat: value[:lat],
+        lng: value[:lng],
+        address: value[:address]
+      }
+      field.update(value: final_value)
     end
 
     # Image.

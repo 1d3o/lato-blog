@@ -7,6 +7,14 @@
   data-field-id="<%= post_field.id %>"
 >
   
-  <!-- TODO -->
+  <%=raw cell(:inputs, :geolocalization).new(
+    label: post_field.meta_datas[:label],
+    name_lat: "#{key}[lat]",
+    name_lng: "#{key}[lng]",
+    name_address: "#{key}[address]",
+    value_lat: lat,
+    value_lng: lng,
+    value_address: address
+  ) %>
 
 </div>

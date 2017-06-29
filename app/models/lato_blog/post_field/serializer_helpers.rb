@@ -26,6 +26,8 @@ module LatoBlog
         serialize_field_value_text
       when 'editor'
         serialize_field_value_editor
+      when 'geolocalization'
+        serialize_field_value_geolocalization
       when 'image'
         serialize_field_value_image
       when 'composed'
@@ -46,6 +48,20 @@ module LatoBlog
     # Editor.
     def serialize_field_value_editor
       value
+    end
+
+    # Geolocalization.
+    def serialize_field_value_geolocalization
+      value_object = eval(value)
+      serialized = {}
+
+      # add basic info
+      serialized[:latitude] = value_object[:lat]
+      serialized[:longitude] = value_object[:lng]
+      serialized[:address] = value_object[:address]
+
+      # return serialized data
+      serialized
     end
 
     # Image.

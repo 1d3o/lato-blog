@@ -43,8 +43,16 @@ module LatoBlog
     end
 
     # Geolocalization.
-    def render_post_field_editor(post_field, key)
-      render 'lato_blog/back/posts/fields/single_fields/geolocalization', post_field: post_field, key: key
+    def render_post_field_geolocalization(post_field, key)
+      value_object = post_field.value ? eval(post_field.value) : nil
+      render(
+        'lato_blog/back/posts/fields/single_fields/geolocalization',
+        post_field: post_field,
+        key: key,
+        lat: value_object ? value_object[:lat] : nil,
+        lng: value_object ? value_object[:lng] : nil,
+        address: value_object ? value_object[:address] : nil
+      )
     end
 
     # Image.

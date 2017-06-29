@@ -5,6 +5,8 @@ module LatoBlog
 
     def editor; end
 
+    def geolocalization; end
+
     def image; end
 
     def composed; end
