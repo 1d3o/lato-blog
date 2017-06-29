@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20170629092845) do
 
-  create_table "lato_blog_categories", force: :cascade do |t|
+  create_table "lato_blog_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
     t.string "meta_permalink"
     t.string "meta_language"
@@ -23,20 +23,20 @@ ActiveRecord::Schema.define(version: 20170629092845) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "lato_blog_category_parents", force: :cascade do |t|
+  create_table "lato_blog_category_parents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.boolean "meta_default"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "lato_blog_category_posts", force: :cascade do |t|
+  create_table "lato_blog_category_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "lato_blog_category_id"
     t.integer "lato_blog_post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "lato_blog_post_fields", force: :cascade do |t|
+  create_table "lato_blog_post_fields", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "lato_blog_post_id"
     t.string "key"
     t.string "typology"
@@ -49,13 +49,13 @@ ActiveRecord::Schema.define(version: 20170629092845) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "lato_blog_post_parents", force: :cascade do |t|
+  create_table "lato_blog_post_parents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "publication_datetime"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "lato_blog_posts", force: :cascade do |t|
+  create_table "lato_blog_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
     t.string "subtitle"
     t.text "excerpt"
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 20170629092845) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "lato_core_superusers", force: :cascade do |t|
+  create_table "lato_core_superusers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "surname"
     t.text "biography"
@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(version: 20170629092845) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "lato_media_media", force: :cascade do |t|
+  create_table "lato_media_media", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
     t.text "description"
     t.string "attachment_file_name"

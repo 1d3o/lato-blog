@@ -10,8 +10,17 @@ default: &default
   timeout: 5000
 
 development:
-  <<: *default
-  database: db/development.sqlite3
+  # <<: *default
+  # database: db/development.sqlite3
+  adapter: mysql2
+  encoding: utf8
+  database: galante-development
+  username: galante-development
+  password: b1st3cc41
+  host: 46.101.113.157
+  port: 3306
+  socket: /run/mysqld/mysqld.sock
+
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

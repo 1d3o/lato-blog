@@ -45,7 +45,6 @@ module LatoBlog
       ) # search first level fields
 
       if db_post_field
-        db_post_field.update(meta_visible: true)
         blog__update_db_post_field(db_post_field, content)
       else
         blog__create_db_post_field(post, key, content)
@@ -65,8 +64,6 @@ module LatoBlog
       db_post_field = LatoBlog::PostField.new(
         key: key,
         typology: content[:type],
-        position: content[:position],
-        meta_visible: true,
         lato_blog_post_id: post.id,
         lato_blog_post_field_id: post_field_parent ? post_field_parent.id : nil
       )
@@ -77,6 +74,12 @@ module LatoBlog
 
     # This function update an existing post field on database with new content.
     def blog__update_db_post_field(db_post_field, content, post_field_parent = nil)
+      # run minimum updates
+      db_post_field.update(
+        position: content[:position],
+        meta_visible: true
+      )
+      # run custom update for type
       case db_post_field.typology
       when 'text'
         update_db_post_field_text(db_post_field, content, post_field_parent)

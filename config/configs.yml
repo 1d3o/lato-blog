@@ -13,17 +13,17 @@ languages:
 post_fields:
   example_text:
     type: text
-    position: 1
+    position: 4
     label: Insert here the text
     class: xs-12 sm-12 md-12 lg-12
   example_image:
     type: image
-    position: 2
+    position: 3
     label: Insert here the image
     class: xs-12 sm-12 md-12 lg-12
   example_composed:
     type: composed
-    position: 3
+    position: 2
     label: Complete these fields
     class: xs-12 sm-12 md-12 lg-12
     fields:
@@ -39,7 +39,7 @@ post_fields:
         class: xs-12 sm-12 md-6 lg-6
   example_relay:
     type: relay
-    position: 4
+    position: 1
     label: Insert here your custom content
     class: xs-12 sm-12 md-12 lg-12
     fields:
