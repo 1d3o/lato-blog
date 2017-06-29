@@ -9,9 +9,9 @@
 
   <%=raw block.open %>
 
-    <%=raw cell(:elements, :title).new(label: 'Fields: Text') %>
+    <%=raw cell(:elements, :title).new(label: 'Fields: Relay') %>
 
-    <p>A normal text input.</p>
+    <p>A field used to group other fields and create new one at runtime.</p>
 
   <%=raw block.close %>
 
@@ -32,7 +32,7 @@ The configuration option should be:
 <%=raw code.open %>
 
 field_key:
-    type: text
+    type: relay
     position: 1
 
 <%=raw code.close %>
@@ -44,7 +44,7 @@ You can set a custom label with a label option:
 <%=raw code.open %>
 
 field_key:
-    type: text
+    type: relay
     position: 1
     label: Insert here the text
 
@@ -57,12 +57,29 @@ You can set a custom classes for the input with the class option:
 <%=raw code.open %>
 
 field_key:
-    type: text
+    type: relay
     position: 1
     class: xs-12 sm-12 md-6 lg-6
 
 <%=raw code.close %>
 
+
+<p>
+You can specify the list of fields for the relay field with the fields option:
+</p>
+
+<%=raw code.open %>
+
+field_key:
+    type: relay
+    position: 1
+    fields:
+      field_key_1:
+        type: field_type
+      field_key_2:
+        type: field_type
+
+<%=raw code.close %>
 
 <%=raw block.close %>
 

@@ -7,5 +7,7 @@ module LatoBlog
 
     def composed; end
 
+    def relay; end
+
   end
 end

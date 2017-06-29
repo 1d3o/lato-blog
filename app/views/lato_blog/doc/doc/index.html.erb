@@ -52,10 +52,12 @@ post_fields:
     <%=raw cell(:elements, :button).new(label: 'Text', url: lato_blog.doc_fields_text_path) %>
     <%=raw cell(:elements, :button).new(label: 'Image', url: lato_blog.doc_fields_image_path) %>
 
+    <br> <br>
     <%=raw cell(:elements, :title).new(label: 'Group fields', size: 4) %>
 
     <%=raw cell(:elements, :button).new(label: 'Composed', url: lato_blog.doc_fields_composed_path) %>
-    
+    <%=raw cell(:elements, :button).new(label: 'Relay', url: lato_blog.doc_fields_relay_path) %>
+
   <%=raw block.close %>
 
 <%=raw row.close %>
