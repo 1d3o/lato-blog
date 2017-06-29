@@ -7,22 +7,9 @@
     <%= post_field.meta_datas[:label] %>
   </div>
 
-  <!--<div class="fields-relay__sortableblock">
-    <%
-      components = []
-      post_field.post_fields.visibles.each do |child_post_field|
-        components.push({
-          id: "TODO",
-          position: child_post_field.position,
-          render: render_post_field(child_post_field, post_field.key)
-        })
-      end
-    %>
-
-    <%=raw cell(:inputs, :sortableblock).new(name: key, components: components)%> 
-  </div>-->
-
-
+  <div class="fields-relay__sortableblock">
+    <%=raw cell(:inputs, :sortableblock).new(name: key, components: field_relay_generate_components(post_field))%> 
+  </div>
 
   <div class="fields-relay__menu-container">
     <div class="fields-relay__menu-add">
@@ -33,6 +20,7 @@
 
     <ul class="fields-relay__menu">
 
+      <% # TODO: Order by position %>
       <% post_field[:meta_datas][:fields].each do |key, content| %>
         <li class="fields-relay__menu-item">
           <%= link_to(content[:label], lato_blog.post_fields_create_relay_field_path(key: key, post_field_id: post_field.id), remote: true, method: :post) %>

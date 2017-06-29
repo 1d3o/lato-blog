@@ -14,17 +14,32 @@ post_fields:
   example_text:
     type: text
     position: 1
-    label: Insert here the text
-    class: xs-12 sm-12 md-6 lg-6
-  example_text_2:
-    type: text
+    label: Example of text
+    class: xs-12 sm-12 md-8 lg-8
+  example_image:
+    type: image
     position: 2
-    label: Insert here the text
-    class: xs-12 sm-12 md-6 lg-6
+    label: Example of image
+    class: xs-12 sm-12 md-4 lg-4
+  example_composed:
+    type: composed
+    position: 3
+    label: Example of composed
+    fields:
+      example_text:
+        type: text
+        position: 1
+        label: Insert here the text
+        class: xs-12 sm-12 md-6 lg-6
+      example_text_2:
+        type: text
+        position: 2
+        label: Insert here the text
+        class: xs-12 sm-12 md-6 lg-6
   example_relay:
     type: relay
-    position: 3
-    label: Insert here your custom content
+    position: 4
+    label: Example of relay
     class: xs-12 sm-12 md-12 lg-12
     fields:
       text_1:

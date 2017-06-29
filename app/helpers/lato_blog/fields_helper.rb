@@ -11,7 +11,7 @@ module LatoBlog
     # This function render a single post field.
     def render_post_field(post_field, key_parent = 'fields')
       # define key
-      key = "#{key_parent}[#{post_field.key}]"
+      key = "#{key_parent}[#{post_field.id}]"
       # render correct field
       case post_field.typology
       when 'text'
@@ -46,6 +46,21 @@ module LatoBlog
     # Relay.
     def render_post_field_relay(post_field, key)
       render 'lato_blog/back/posts/fields/single_fields/relay', post_field: post_field, key: key
+    end
+
+    # Single field helpers functions:
+    # **************************************************************************
+
+    def field_relay_generate_components(post_field)
+      components = []
+      post_field.post_fields.visibles.order('position ASC').each do |child_post_field|
+        components.push({
+          id: "position#{child_post_field.id}",
+          position: child_post_field.position,
+          render: render_post_field(child_post_field, "fields[#{post_field.id}]")
+        })
+      end
+      components
     end
 
   end

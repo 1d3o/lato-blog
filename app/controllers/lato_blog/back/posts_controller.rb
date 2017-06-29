@@ -230,8 +230,8 @@ module LatoBlog
     # on the database for the field.
     def update_fields
       return true unless params[:fields] 
-      params[:fields].each do |key, value|
-        field = @post.post_fields.find_by(key: key)
+      params[:fields].each do |id, value|
+        field = @post.post_fields.find_by(id: id)
         return false unless field
         return false unless update_field(field, value)
       end
@@ -247,6 +247,8 @@ module LatoBlog
         update_field_image(field, value)
       when 'composed'
         update_field_composed(field, value)
+      when 'relay'
+        update_field_relay(field, value)
       end
     end
 
@@ -268,11 +270,42 @@ module LatoBlog
       # find composed children
       child_fields = field.post_fields.visibles
       # loop values and update single children
-      value.each do |child_key, child_value|
-        child_field = child_fields.find_by(key: child_key)
+      value.each do |child_id, child_value|
+        child_field = child_fields.find_by(id: child_id)
         return false unless child_field
         return false unless update_field(child_field, child_value)
       end
+      true
+    end
+
+    # Relay.
+    def update_field_relay(field, value)
+      # find composed children
+      child_fields = field.post_fields.visibles
+      # loop values and update single children
+      value.each do |child_id, child_value|
+        if child_id.include?('position')
+          child_id = child_id.dup
+          child_id.slice! 'position'
+          return false unless update_field_relay_single_position(child_id, child_value, child_fields)
+        else
+          return false unless update_field_relay_single_value(child_id, child_value, child_fields)
+        end
+      end
+      true
+    end
+
+    def update_field_relay_single_value(id, value, child_fields)
+      child_field = child_fields.find_by(id: id)
+      return false unless child_field
+      return false unless update_field(child_field, value)
+      true
+    end
+
+    def update_field_relay_single_position(id, value, child_fields)
+      child_field = child_fields.find_by(id: id)
+      return false unless child_field
+      return false unless child_field.update(position: value)
       true
     end
 

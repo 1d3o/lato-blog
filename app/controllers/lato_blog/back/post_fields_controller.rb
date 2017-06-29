@@ -25,8 +25,14 @@ module LatoBlog
         @error = true
         respond_to { |r| r.js }
       end
+      # prepare data to create field
+      child_field_key = child_field_info.first
+      child_field_content = child_field_info.last
+      # override class and position
+      child_field_content[:class] = nil
+      child_field_content[:position] = !@post_field.post_fields.empty? ? @post_field.post_fields.order('position ASC').last.position + 1 : 1
       # create subfield for the post field
-      blog__create_db_post_field(@post_field.post, child_field_info.first, child_field_info.last, @post_field)
+      blog__create_db_post_field(@post_field.post, child_field_key, child_field_content, @post_field)
       # send response to client
       @error = false
       respond_to { |r| r.js }

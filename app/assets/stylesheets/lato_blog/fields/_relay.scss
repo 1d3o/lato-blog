@@ -3,7 +3,7 @@
 }
 
 .fields-relay__sortableblock {
-  
+  @include clearfix;
 }
 
 .fields-relay__menu-container {
