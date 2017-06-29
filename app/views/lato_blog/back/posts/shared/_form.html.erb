@@ -19,8 +19,12 @@
     <%=raw cell(:inputs, :text).new(name: 'post[title]', label: LANGUAGES[:lato_blog][:forms][:title],
     required: true, class: 'md-12', value: @post.title) %>
 
-    <%=raw cell(:inputs, :text).new(name: 'post[subtitle]', label: LANGUAGES[:lato_blog][:forms][:subtitle],
-    class: 'md-12', value: @post.subtitle) %>
+    <% unless CONFIGS[:lato_blog][:post_hidden_fields].include? 'subtitle' %>
+
+      <%=raw cell(:inputs, :text).new(name: 'post[subtitle]', label: LANGUAGES[:lato_blog][:forms][:subtitle],
+      class: 'md-12', value: @post.subtitle) %>
+    
+    <% end %>
 
   <%=raw row.close %>
 
@@ -28,11 +32,19 @@
 
     <%=raw row.open %>
 
-      <%=raw cell(:inputs, :editor).new(name: 'post[content]', label: LANGUAGES[:lato_blog][:forms][:content],
-      class: 'md-12', value: @post.content) %>
+      <% unless CONFIGS[:lato_blog][:post_hidden_fields].include? 'content' %>
 
-      <%=raw cell(:inputs, :textarea).new(name: 'post[excerpt]', label: LANGUAGES[:lato_blog][:forms][:excerpt],
-      class: 'md-12', value: @post.excerpt) %>
+        <%=raw cell(:inputs, :editor).new(name: 'post[content]', label: LANGUAGES[:lato_blog][:forms][:content],
+        class: 'md-12', value: @post.content) %>
+
+      <% end %>
+
+      <% unless CONFIGS[:lato_blog][:post_hidden_fields].include? 'excerpt' %>
+
+        <%=raw cell(:inputs, :textarea).new(name: 'post[excerpt]', label: LANGUAGES[:lato_blog][:forms][:excerpt],
+        class: 'md-12', value: @post.excerpt) %>
+
+      <% end %>
 
     <%=raw row.close %>
 

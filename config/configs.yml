@@ -25,6 +25,9 @@ post_fields:
         label: Image
         class: md-4 lg-4
 
+# hide post default fields
+post_hidden_fields: [] # possible values: ['subtitle', 'content', 'excerpt'] 
+
 # set menu for the module.
 menu:
   blog_articles:
@@ -74,7 +77,8 @@ widgets:
     path: lato_blog/widgets/switchlang
     position: 11
 
+# set partials added at the end of the layout.
 partials:
-  media_media_selector:
-    path: lato_blog/partials/relay-destroy-button
-    position: 1
+  blog_relay_destroy_button:
+    path: lato_blog/partials/relay_destroy_button
+    position: 11
