@@ -1,14 +1,31 @@
 <div class="fields-relay <%= post_field[:meta_datas][:class].blank? ? 'md-12' : post_field[:meta_datas][:class] %>">
 
-  <% post_field[:meta_datas][:fields].each do |key, content| %>
-    <%= link_to "crea #{key}", lato_blog.post_fields_create_relay_field_path(
-      key: key,
-      post_field_id: post_field.id
-    ), remote: true, method: :post %>
-  <% end %>
-
   <%=raw cell(:inputs, :sortableblock).new(name: key, components: [
 
   ])%>
+  
+  <div class="c-custom-field__menu-container">
 
+    <div class="c-custom-field__menu-add">
+      <div class="c-custom-field__menu-add-icon">
+        +
+      </div>
+    </div>
+
+    <ul class="c-custom-field__menu">
+
+      <% post_field[:meta_datas][:fields].each do |key, content| %>
+        <li class="c-custom-field__menu-item">
+          <div class="c-custom-field__menu-link">
+            <%= link_to content[:label], lato_blog.post_fields_create_relay_field_path(
+              key: key,
+              post_field_id: post_field.id
+            ), remote: true, method: :post %>
+          </div>
+        </li>
+      <% end %>
+
+    </ul>
+
+  </div>
 </div>
