@@ -28,6 +28,8 @@ module LatoBlog
         serialize_field_value_image
       when 'composed'
         serialize_field_value_composed
+      when 'relay'
+        serialize_field_value_relay
       end
     end
 
@@ -62,8 +64,17 @@ module LatoBlog
     # Composed.
     def serialize_field_value_composed
       serialized = {}
-      post_fields.visibles.each do |post_field|
+      post_fields.visibles.order('position ASC').each do |post_field|
         serialized[post_field.key] = post_field.serialize_base
+      end
+      serialized
+    end
+
+    # Relay.
+    def serialize_field_value_relay
+      serialized = []
+      post_fields.visibles.order('position ASC').each do |post_field|
+        serialized.push(post_field.serialize_base)
       end
       serialized
     end

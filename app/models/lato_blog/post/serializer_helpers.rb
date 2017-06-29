@@ -48,7 +48,7 @@ module LatoBlog
     # This function serializes the list of fields for the post.
     def serialize_fields
       serialized = {}
-      post_fields.visibles.roots.each do |post_field|
+      post_fields.visibles.roots.order('position ASC').each do |post_field|
         serialized[post_field.key] = post_field.serialize_base
       end
       serialized
