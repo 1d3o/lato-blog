@@ -24,6 +24,8 @@ module LatoBlog
       case typology
       when 'text'
         serialize_field_value_text
+      when 'image'
+        serialize_field_value_image
       when 'composed'
         serialize_field_value_composed
       end
@@ -37,13 +39,33 @@ module LatoBlog
       value
     end
 
+    # Image.
+    def serialize_field_value_image
+      media = LatoMedia::Media.find_by(id: value)
+      return unless media
+
+      # add basic info
+      serialized = {}
+      serialized[:id] = media.id
+      serialized[:title] = media.title
+      serialized[:url] = media.attachment.url
+
+      # add image info
+      serialized[:thumb_url] = (media.image? ? media.attachment.url(:thumb) : nil)
+      serialized[:medium_url] = (media.image? ? media.attachment.url(:medium) : nil)
+      serialized[:large_url] = (media.image? ? media.attachment.url(:large) : nil)
+
+      # return serialized media
+      serialized
+    end
+
     # Composed.
     def serialize_field_value_composed
-      serialized_value = {}
+      serialized = {}
       post_fields.visibles.each do |post_field|
-        serialized_value[post_field.key] = post_field.serialize_base
+        serialized[post_field.key] = post_field.serialize_base
       end
-      serialized_value
+      serialized
     end
 
   end
