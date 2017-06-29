@@ -85,6 +85,8 @@ module LatoBlog
         update_db_post_field_image(db_post_field, content, post_field_parent)
       when 'composed'
         update_db_post_field_composed(db_post_field, content, post_field_parent)
+      when 'relay'
+        update_db_post_field_relay(db_post_field, content, post_field_parent)
       end
     end
 
@@ -136,6 +138,16 @@ module LatoBlog
           create_db_post_field(db_post_field.post, child_key, child_content, db_post_field)
         end
       end
+    end
+
+    # Relay.
+    def update_db_post_field_relay(db_post_field, content, post_parent = nil)
+      db_post_field.update(
+        meta_datas: {
+          label: content[:label] && !content[:label].blank? ? content[:label] : db_post_field.key,
+          class: content[:class] && !content[:class].blank? ? content[:class] : nil
+        }
+      )
     end
 
   end

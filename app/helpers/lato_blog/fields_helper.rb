@@ -20,6 +20,8 @@ module LatoBlog
         render_post_field_image(post_field, key)
       when 'composed'
         render_post_field_composed(post_field, key)
+      when 'relay'
+        render_post_field_relay(post_field, key)
       end
     end
 
@@ -39,6 +41,11 @@ module LatoBlog
     # Composed.
     def render_post_field_composed(post_field, key)
       render 'lato_blog/back/posts/fields/single_fields/composed', post_field: post_field, key: key
+    end
+
+    # Relay.
+    def render_post_field_relay(post_field, key)
+      render 'lato_blog/back/posts/fields/single_fields/relay', post_field: post_field, key: key
     end
 
   end

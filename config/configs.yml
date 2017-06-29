@@ -32,6 +32,19 @@ post_fields:
         type: text
         label: Insert here the text 2
         class: xs-12 sm-12 md-6 lg-6
+  example_relay:
+    type: relay
+    label: Insert here your custom content
+    class: xs-12 sm-12 md-12 lg-12
+    fields:
+      example_text_1:
+        type: text
+        label: Insert here the text 1
+        class: xs-12 sm-12 md-6 lg-6
+      example_text_2:
+        type: text
+        label: Insert here the text 2
+        class: xs-12 sm-12 md-6 lg-6
 
 # set menu for the module.
 menu:
