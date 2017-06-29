@@ -1,5 +1,8 @@
 <div class="fields-relay <%= post_field[:meta_datas][:class].blank? ? 'md-12' : post_field[:meta_datas][:class] %>">
 
+  <% post_field[:meta_datas][:fields].each do |key, content| %>
+    
+  <% end %>
 
   <%=raw cell(:inputs, :sortableblock).new(name: key, components: [
 

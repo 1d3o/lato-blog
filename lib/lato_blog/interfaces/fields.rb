@@ -145,7 +145,8 @@ module LatoBlog
       db_post_field.update(
         meta_datas: {
           label: content[:label] && !content[:label].blank? ? content[:label] : db_post_field.key,
-          class: content[:class] && !content[:class].blank? ? content[:class] : nil
+          class: content[:class] && !content[:class].blank? ? content[:class] : nil,
+          fields: content[:fields] && !content[:fields].empty? ? content[:fields] : nil
         }
       )
     end
