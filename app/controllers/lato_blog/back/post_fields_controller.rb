@@ -41,14 +41,14 @@ module LatoBlog
     # This function destroy a post for the field.
     def destroy_relay_field
       # find post field
-      @post_field = LatoBlog::PostField.find_by(id: params[:post_field_id])
+      child_field = LatoBlog::PostField.find_by(id: params[:id])
+      @post_field = child_field.post_field
       unless @post_field
         @error = true
         respond_to { |r| r.js }
       end
       # find post field child and destroy it
-      child_field = @post_field.post_fields.find_by(key: params[:key])
-      unless child_field || child_field.destroy
+      unless child_field.destroy
         @error = true
         respond_to { |r| r.js }
       end

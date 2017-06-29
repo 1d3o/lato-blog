@@ -11,11 +11,18 @@ languages:
 
 # set post fields for posts.
 post_fields:
-  example_editor:
-    type: editor
+  relay:
+    type: relay
     position: 1
-    label: Example of editor
+    label: Example of Relay
     class: xs-12 sm-12 md-12 lg-12
+    fields:
+      text1:
+        type: text
+        label: Testo D'esempio
+      image1:
+        type: image
+        label: immagine d'esempio
   example_geolocalization:
     type: geolocalization
     position: 2
@@ -70,3 +77,8 @@ widgets:
     icon: flag
     path: lato_blog/widgets/switchlang
     position: 11
+
+partials:
+  media_media_selector:
+    path: lato_blog/partials/relay-destroy-button
+    position: 1
