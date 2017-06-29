@@ -19,15 +19,11 @@ post_fields:
     fields:
       text1:
         type: text
-        label: Testo D'esempio
+        label: Text
       image1:
         type: image
-        label: immagine d'esempio
-  example_geolocalization:
-    type: geolocalization
-    position: 2
-    label: Example of geolocalization
-    class: xs-12 sm-12 md-12 lg-12
+        label: Image
+        class: md-4 lg-4
 
 # set menu for the module.
 menu:
