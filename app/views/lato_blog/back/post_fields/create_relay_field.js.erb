@@ -7,5 +7,6 @@
   $('.fields-relay[data-field-id="<%= @post_field.id %>"]').replaceWith('<%=j render_post_field(@post_field) %>')
   BlogFieldsInitializer.init()
   SortableManager.init()
+  InputsInitializer.init()
 
 <% end %>
