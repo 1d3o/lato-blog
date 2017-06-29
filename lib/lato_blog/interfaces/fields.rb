@@ -8,8 +8,6 @@ module LatoBlog
       posts = LatoBlog::Post.all
       # create / update fields on database
       posts.map { |p| blog__sync_config_post_fields_with_db_post_fields_for_post(p) }
-      # remove fields on database
-      blog_sync_db_post_fields_with_config_post_fields
     end
 
     # This function syncronizes the config post fields with the post fields
@@ -18,22 +16,6 @@ module LatoBlog
       post_fields = CONFIGS[:lato_blog][:post_fields]
       # save or update post fields from config
       post_fields.map { |key, content| blog__sync_config_post_field(post, key, content) }
-    end
-
-    # This function updates the database post fields with the config
-    # post fields.
-    def blog_sync_db_post_fields_with_config_post_fields
-      # post_fields = CONFIGS[:lato_blog][:post_fields]
-      # db_post_fields = LatoBlog::PostField.visibles.roots
-      # db_post_fields.each do |db_post_field|
-      #   unless post_fields.keys.include?(db_post_field.key)
-      #     db_post_field.update(meta_visible: false)
-      #   end
-      # end
-
-      # TODO: Tenere in considerazione:
-      # - aggiornamento delle categorie di appartenenza del field.
-      # - eliminazione di field foglie su field composti.
     end
 
     # This function syncronizes a single post field of a specific post with database.

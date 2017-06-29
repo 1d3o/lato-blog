@@ -1,17 +1,25 @@
-.c-custom-field__menu-container {
-  width: 100%;
-  position: relative;
-  @include clearfix();
+.fields-relay {
+  
 }
 
-.c-custom-field__menu-add {
-  width: 50px;
-  height: 50px;
+.fields-relay__sortableblock {
+  
+}
+
+.fields-relay__menu-container {
+  margin-top: 10px;
+  width: 100%;
+  position: relative;
+}
+
+.fields-relay__menu-add {
+  width: 25px;
+  height: 25px;
   margin: 0 auto;
   background: $color_white;
   border-radius: 50%;
   color: $color_main;
-  border: 3px solid $color_main;
+  border: 1px solid $color_main;
   cursor: pointer;
   text-align: center;
   position: relative;
@@ -22,39 +30,46 @@
   }
 }
 
-.c-custom-field__menu-add-icon {
+.fields-relay__menu-add-icon {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 30px;
+  font-size: 20px;
   z-index: 10;
 }
 
-.c-custom-field__menu {
+.fields-relay__menu {
   display: block;
   position: absolute;
   top: 120%;
   left: 50%;
   transform: translateX(-50%);
-  width: 250px;
-  border: 2px solid $color_main;
+  min-width: 150px;
+  border: 1px solid $color_main;
   list-style: none;
   padding: 0;
   margin: 0;
   z-index: 10;
+  display: none;
 }
 
-.c-custom-field__menu-item {
+.fields-relay__menu--active {
+  display: block;
+}
+
+.fields-relay__menu-item {
   text-align: center;
   margin: 0;
-}
 
-.c-custom-field__menu-link {
-  display: block;
-  padding: 12px 0;
-  background: $color_white;
-  &:hover {
-    background-color: #f7f7f7;
+  a {
+    font-size: 0.8em;
+    display: block;
+    padding: 6px 0;
+    background: $color_white;
+    text-decoration: none;
+    &:hover {
+      background-color: $color_grey;
+    }
   }
 }

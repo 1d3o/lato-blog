@@ -1,31 +1,45 @@
-<div class="fields-relay <%= post_field[:meta_datas][:class].blank? ? 'md-12' : post_field[:meta_datas][:class] %>">
+<div
+  class="fields__container fields-relay <%= post_field.meta_datas[:class].blank? ? 'md-12' : post_field.meta_datas[:class] %>"
+  data-field-id="<%= post_field.id %>"
+>
 
-  <%=raw cell(:inputs, :sortableblock).new(name: key, components: [
+  <div class="fields__label fields-composed__label">
+    <%= post_field.meta_datas[:label] %>
+  </div>
 
-  ])%>
-  
-  <div class="c-custom-field__menu-container">
+  <!--<div class="fields-relay__sortableblock">
+    <%
+      components = []
+      post_field.post_fields.visibles.each do |child_post_field|
+        components.push({
+          id: "TODO",
+          position: child_post_field.position,
+          render: render_post_field(child_post_field, post_field.key)
+        })
+      end
+    %>
 
-    <div class="c-custom-field__menu-add">
-      <div class="c-custom-field__menu-add-icon">
+    <%=raw cell(:inputs, :sortableblock).new(name: key, components: components)%> 
+  </div>-->
+
+
+
+  <div class="fields-relay__menu-container">
+    <div class="fields-relay__menu-add">
+      <div class="fields-relay__menu-add-icon">
         +
       </div>
     </div>
 
-    <ul class="c-custom-field__menu">
+    <ul class="fields-relay__menu">
 
       <% post_field[:meta_datas][:fields].each do |key, content| %>
-        <li class="c-custom-field__menu-item">
-          <div class="c-custom-field__menu-link">
-            <%= link_to content[:label], lato_blog.post_fields_create_relay_field_path(
-              key: key,
-              post_field_id: post_field.id
-            ), remote: true, method: :post %>
-          </div>
+        <li class="fields-relay__menu-item">
+          <%= link_to(content[:label], lato_blog.post_fields_create_relay_field_path(key: key, post_field_id: post_field.id), remote: true, method: :post) %>
         </li>
       <% end %>
 
     </ul>
-
   </div>
+
 </div>

@@ -1,5 +1,11 @@
 <% if @error %>
+
   alert('There was an error')
+
 <% else %>
-  // TODO: Renderizzare nuovamente field
+
+  console.log('OK')
+  
+  $('.field__container[data-field-id="<%= @post_field.id %>"]').replaceWith('<%= render_post_field(@post_field) %>')
+
 <% end %>

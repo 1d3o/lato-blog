@@ -49,6 +49,7 @@ module LatoBlog
 
     after_create do
       add_to_default_category
+      blog__sync_config_post_fields_with_db_post_fields_for_post(self)
     end
 
     after_destroy do

@@ -1,6 +1,17 @@
-<%=raw cell(:inputs, :text).new(
-  name: key,
-  value: post_field[:value],
-  label: post_field[:meta_datas][:label],
-  class: post_field[:meta_datas][:class]
-) %>
+<%
+  row = cell(:elements, :row).new
+%>
+
+<div
+  class="fields__container fields-text <%= post_field.meta_datas[:class].blank? ? 'md-12' : post_field.meta_datas[:class] %>"
+  data-field-id="<%= post_field.id %>"
+>
+  <%=raw row.open %>
+    <%=raw cell(:inputs, :text).new(
+      name: key,
+      value: post_field.value,
+      label: post_field.meta_datas[:label]
+    ) %>
+  <%=raw row.close %>
+
+</div>

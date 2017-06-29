@@ -17,7 +17,10 @@ module LatoBlog
         respond_to { |r| r.js }
       end
       # find subfield info
-      child_field_info = post_field[:meta_datas][:fields].map { |f| f if f.first == params[:key] }
+      child_field_info = nil
+      @post_field.meta_datas[:fields].each do |key, content|
+        child_field_info = [key, content] if key == params[:key]
+      end
       unless child_field_info
         @error = true
         respond_to { |r| r.js }

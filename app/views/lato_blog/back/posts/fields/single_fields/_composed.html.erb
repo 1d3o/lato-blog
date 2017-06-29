@@ -1,10 +1,17 @@
-<div class="fields-composed <%= post_field[:meta_datas][:class].blank? ? 'md-12' : post_field[:meta_datas][:class] %>">
+<%
+  row = cell(:elements, :row).new
+%>
+
+<div
+  class="fields__container fields-composed <%= post_field.meta_datas[:class].blank? ? 'md-12' : post_field.meta_datas[:class] %>"
+  data-field-id="<%= post_field.id %>"
+>
 
   <div class="fields__label fields-composed__label">
-    <%= post_field[:meta_datas][:label] %>
+    <%= post_field.meta_datas[:label] %>
   </div>
 
-  <div class="fields-composed__fields">
+  <%=raw row.open %>
 
     <% post_field.post_fields.visibles.each do |child_post_field| %>
 
@@ -12,6 +19,6 @@
 
     <% end %>
 
-  </div>
+  <%=raw row.close %>
 
 </div>
