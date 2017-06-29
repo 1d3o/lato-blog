@@ -72,7 +72,7 @@ module LatoBlog
       )
       throw "Impossible to create post field #{key}" unless db_post_field.save
       # update post field with correct content
-      update_db_post_field(db_post_field, content, post_field_parent)
+      blog__update_db_post_field(db_post_field, content, post_field_parent)
     end
 
     # This function update an existing post field on database with new content.
