@@ -52,6 +52,7 @@ module LatoBlog
 
     # Geolocalization.
     def serialize_field_value_geolocalization
+      return unless value
       value_object = eval(value)
       serialized = {}
 
