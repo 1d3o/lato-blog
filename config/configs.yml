@@ -37,13 +37,13 @@ post_fields:
     label: Insert here your custom content
     class: xs-12 sm-12 md-12 lg-12
     fields:
-      example_text_1:
+      text:
         type: text
-        label: Insert here the text 1
+        label: Testo
         class: xs-12 sm-12 md-6 lg-6
-      example_text_2:
-        type: text
-        label: Insert here the text 2
+      image:
+        type: image
+        label: Immagine
         class: xs-12 sm-12 md-6 lg-6
 
 # set menu for the module.

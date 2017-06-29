@@ -1,0 +1,37 @@
+// Clearfix
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+// Center an element (need position: relative to the container)
+@mixin centerElement($xy) {
+  position: absolute;
+  @if $xy == xy {
+    left: 50%;
+    top: 50%;
+    bottom: auto;
+    right: auto;
+    transform: translate(-50%, -50%);
+  }
+  @else if $xy == x {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  }
+  @else if $xy == y {
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+  }
+}
+
+// Set text to one line.
+@mixin oneLineText {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
