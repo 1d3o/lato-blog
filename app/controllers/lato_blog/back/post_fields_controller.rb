@@ -6,7 +6,7 @@ module LatoBlog
     end
 
     def index
-      @post_fields = LatoBlog::PostField.not_visibles
+      @post_fields = LatoBlog::PostField.all
     end
 
     def destroy # TODO: Continue
