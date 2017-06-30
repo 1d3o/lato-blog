@@ -40,7 +40,7 @@ module LatoBlog
     end
 
     # Datetime.
-    def render_post_field_text(post_field, key)
+    def render_post_field_datetime(post_field, key)
       render 'lato_blog/back/posts/fields/single_fields/datetime', post_field: post_field, key: key
     end
 
