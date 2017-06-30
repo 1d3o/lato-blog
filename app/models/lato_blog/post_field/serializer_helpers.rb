@@ -58,8 +58,8 @@ module LatoBlog
       serialized[:month] = date.month
       serialized[:day] = date.day
       serialized[:hour] = date.hour
-      serialized[:minute] = data.min
-      serialized[:second] = data.sec 
+      serialized[:minute] = date.min
+      serialized[:second] = date.sec
 
       # return serialized data
       serialized
