@@ -27,6 +27,7 @@ module LatoBlog
     # Scopes:
 
     scope :visibles, -> { where(meta_visible: true) }
+    scope :not_visibles, -> { where(meta_visible: false) }
     scope :roots, -> { where(lato_blog_post_field_id: nil) }
 
     # Callbacks:

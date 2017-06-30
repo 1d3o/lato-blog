@@ -5,6 +5,28 @@ module LatoBlog
       core__set_menu_active_item('blog_articles')
     end
 
+    def index
+      @post_fields = LatoBlog::PostField.not_visibles
+    end
+
+    def destroy # TODO: Continue
+      @post_field = LatoBlog::PostField.find_by(id: params[:id])
+
+      unless @post_field
+        flash[:warning] = LANGUAGES[:lato_blog][:flashes][:post_field_not_found]
+        redirect_to lato_blog.root_path
+        return
+      end
+
+      if @post_field.meta_visible
+
+      end
+
+      unless @post_field.destroy
+
+      end
+    end
+
     # Relay:
     # **************************************************************************
 

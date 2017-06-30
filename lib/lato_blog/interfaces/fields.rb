@@ -13,9 +13,12 @@ module LatoBlog
     # This function syncronizes the config post fields with the post fields
     # on database for a single post object.
     def blog__sync_config_post_fields_with_db_post_fields_for_post(post)
-      post_fields = CONFIGS[:lato_blog][:post_fields]
       # save or update post fields from config
+      post_fields = CONFIGS[:lato_blog][:post_fields]
       post_fields.map { |key, content| blog__sync_config_post_field(post, key, content) }
+      # remove old post fields
+      db_post_fields = post.post_fields.visibles.roots
+      db_post_fields.map { |dbpf| blog__sync_db_post_field(post, dbpf) }
     end
 
     # This function syncronizes a single post field of a specific post with database.
@@ -24,12 +27,30 @@ module LatoBlog
         key: key,
         lato_blog_post_id: post.id,
         lato_blog_post_field_id: nil
-      ) # search first level fields
-
+      )
+      # check if post field can be created for the post
+      if content[:categories] && !content[:categories].empty?
+        db_categories = LatoBlog::Category.where(meta_permalink: content[:categories])
+        return if (post.categories.pluck(:id) & db_categories.pluck(:id)).empty?
+      end
+      # run correct action for field
       if db_post_field
         blog__update_db_post_field(db_post_field, content)
       else
         blog__create_db_post_field(post, key, content)
+      end
+    end
+
+    # This function syncronizes a single post field of a specific post with config file.
+    def blog__sync_db_post_field(post, db_post_field)
+      post_fields = CONFIGS[:lato_blog][:post_fields]
+      # search db post field on config file
+      content = post_fields[db_post_field.key]
+      db_post_field.update(meta_visible: false) && return unless content
+      # check category of post field is accepted
+      if content[:categories] && !content[:categories].empty?
+        db_categories = LatoBlog::Category.where(meta_permalink: content[:categories])
+        db_post_field.update(meta_visible: false) && return if (post.categories.pluck(:id) & db_categories.pluck(:id)).empty?
       end
     end
 
@@ -38,11 +59,6 @@ module LatoBlog
 
     # This function creates a new db post field from a specific content.
     def blog__create_db_post_field(post, key, content, post_field_parent = nil)
-      # check if post field can be created for the post
-      if content[:categories] && !content[:categories].empty?
-        db_categories = LatoBlog::Category.where(meta_permalink: content[:categories])
-        return if (post.categories.pluck(:id) & db_categories.pluck(:id)).empty?
-      end
       # create post field on database
       db_post_field = LatoBlog::PostField.new(
         key: key,
