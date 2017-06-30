@@ -3,6 +3,8 @@ module LatoBlog
 
     def text; end
 
+    def datetime; end
+
     def editor; end
 
     def geolocalization; end

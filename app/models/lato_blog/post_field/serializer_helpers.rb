@@ -24,6 +24,8 @@ module LatoBlog
       case typology
       when 'text'
         serialize_field_value_text
+      when 'datetime'
+        serialize_field_value_datetime
       when 'editor'
         serialize_field_value_editor
       when 'geolocalization'
@@ -43,6 +45,24 @@ module LatoBlog
     # Text.
     def serialize_field_value_text
       value
+    end
+
+    # Datetime.
+    def serialize_field_value_datetime
+      date = DateTime.parse(value)
+      serialized = {}
+
+      # add basic info
+      serialized[:datetime] = date
+      serialized[:year] = date.year
+      serialized[:month] = date.month
+      serialized[:day] = date.day
+      serialized[:hour] = date.hour
+      serialized[:minute] = data.min
+      serialized[:second] = data.sec 
+
+      # return serialized data
+      serialized
     end
 
     # Editor.

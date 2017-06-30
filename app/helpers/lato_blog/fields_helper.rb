@@ -16,6 +16,8 @@ module LatoBlog
       case post_field.typology
       when 'text'
         render_post_field_text(post_field, key)
+      when 'datetime'
+        render_post_field_datetime(post_field, key)
       when 'editor'
         render_post_field_editor(post_field, key)
       when 'geolocalization'
@@ -35,6 +37,11 @@ module LatoBlog
     # Text.
     def render_post_field_text(post_field, key)
       render 'lato_blog/back/posts/fields/single_fields/text', post_field: post_field, key: key
+    end
+
+    # Datetime.
+    def render_post_field_text(post_field, key)
+      render 'lato_blog/back/posts/fields/single_fields/datetime', post_field: post_field, key: key
     end
 
     # Editor.

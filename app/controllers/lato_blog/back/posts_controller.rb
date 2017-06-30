@@ -243,6 +243,8 @@ module LatoBlog
       case field.typology
       when 'text'
         update_field_text(field, value)
+      when 'datetime'
+        update_field_datetime(field, value)
       when 'editor'
         update_field_editor(field, value)
       when 'geolocalization'
@@ -261,6 +263,11 @@ module LatoBlog
 
     # Text.
     def update_field_text(field, value)
+      field.update(value: value)
+    end
+
+    # Datetime.
+    def update_field_datetime(field, value)
       field.update(value: value)
     end
 
