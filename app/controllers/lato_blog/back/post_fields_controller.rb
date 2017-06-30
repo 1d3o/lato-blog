@@ -27,7 +27,7 @@ module LatoBlog
       end
     end
 
-    # Relay:
+    # Single fields endpoints:
     # **************************************************************************
 
     # This function create a new field for the post.
@@ -51,6 +51,7 @@ module LatoBlog
       child_field_key = child_field_info.first
       child_field_content = child_field_info.last
       # override class and position
+      child_field_content[:class] = nil
       child_field_content[:position] = !@post_field.post_fields.empty? ? @post_field.post_fields.order('position ASC').last.position + 1 : 1
       # create subfield for the post field
       blog__create_db_post_field(@post_field.post, child_field_key, child_field_content, @post_field)

@@ -23,7 +23,6 @@ post_fields:
       image:
         type: image
         label: Image
-        class: md-4 lg-4
       editor:
         type: editor
         label: Editor

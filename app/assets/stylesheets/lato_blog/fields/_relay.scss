@@ -4,6 +4,11 @@
 
 .fields-relay__sortableblock {
   @include clearfix;
+  
+  // fix images height
+  .elements-preview__container {
+    padding-bottom: 40%;
+  }
 }
 
 .fields-relay__menu-container {
