@@ -14,19 +14,25 @@ post_fields:
   relay:
     type: relay
     position: 1
-    label: Example of Relay
+    label: Custom fields
     class: xs-12 sm-12 md-12 lg-12
     fields:
-      text1:
+      text:
         type: text
         label: Text
-      image1:
+      image:
         type: image
         label: Image
         class: md-4 lg-4
-      editor1:
+      editor:
         type: editor
         label: Editor
+      geolocalization:
+        type: geolocalization
+        label: Geolocalization
+      datetime:
+        type: datetime
+        label: Datetime
 
 # hide post default fields
 post_hidden_fields: [] # possible values: ['subtitle', 'content', 'excerpt'] 
