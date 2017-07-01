@@ -17,10 +17,34 @@ var BlogPostsInitializer = (function () {
     }
   }
 
+  function initializeCategoriesAutosave () {
+    var form = $('.posts__edit-categories').find('form')
+    $(form).find('input').change(function () {
+      $(form).submit()
+    })
+  }
+
+  function initializePublicationDatetimeAutosave () {
+    var form = $('.posts__edit-publication-datetime').find('form')
+    $(form).find('input').change(function () {
+      $(form).submit()
+    })
+  }
+
+  function initializeStatusSwitchAutosave () {
+    var form = $('.posts__edit-status-switch').find('form')
+    $(form).find('select').change(function () {
+      $(form).submit()
+    })
+  }
+
   // Init:
 
   function init () {
     initializeAutosave()
+    initializeCategoriesAutosave()
+    initializePublicationDatetimeAutosave()
+    initializeStatusSwitchAutosave()
   }
 
   return {

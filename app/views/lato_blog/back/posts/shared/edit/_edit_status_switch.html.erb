@@ -1,7 +1,7 @@
 <%
   block = cell(:elements, :block).new(class: 'xs-12 sm-12 md-12 posts__edit-status-switch')
   row = cell(:elements, :row).new
-  form = cell(:inputs, :form).new(url: lato_blog.posts_update_status_path, method: :post)
+  form = cell(:inputs, :form).new(url: lato_blog.posts_update_status_path, method: :post, remote: true)
 %>
 
 <%=raw block.open %>
@@ -21,11 +21,6 @@
       ], value: @post.meta_status, class: 'md-12') %>
 
     <%=raw row.close %>
-
-    <div class="text-right">
-      <%=raw cell(:elements, :button).new(type: 'submit', label: LANGUAGES[:lato_blog][:mixed][:update],
-      icon: 'refresh') %>
-    </div>
 
   <%=raw form.close %>
 

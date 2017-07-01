@@ -109,20 +109,7 @@ module LatoBlog
       @post = LatoBlog::Post.find_by(id: params[:id])
       return unless check_post_presence
 
-      if !params[:status] || !BLOG_POSTS_STATUS.values.include?(params[:status])
-        flash[:warning] = LANGUAGES[:lato_blog][:flashes][:post_status_not_accepted]
-        redirect_to lato_blog.edit_post_path(@post.id)
-        return false
-      end
-
-      unless @post.update(meta_status: params[:status])
-        flash[:danger] = @post.errors.full_messages.to_sentence
-        redirect_to lato_blog.edit_post_path(@post.id)
-        return
-      end
-
-      flash[:success] = LANGUAGES[:lato_blog][:flashes][:post_update_success]
-      redirect_to lato_blog.post_path(@post.id)
+      @post.update(meta_status: params[:status])
     end
 
     # This function updates the publication datetime of a post (update the post parent).
@@ -130,32 +117,13 @@ module LatoBlog
       @post = LatoBlog::Post.find_by(id: params[:id])
       return unless check_post_presence
 
-      unless params[:publication_datetime]
-        flash[:warning] = LANGUAGES[:lato_blog][:flashes][:post_publication_datetime_not_accepted]
-        redirect_to lato_blog.edit_post_path(@post.id)
-        return false
-      end
-
-      unless @post.post_parent.update(publication_datetime: params[:publication_datetime])
-        flash[:danger] = @post.post_parent.errors.full_messages.to_sentence
-        redirect_to lato_blog.edit_post_path(@post.id)
-        return
-      end
-
-      flash[:success] = LANGUAGES[:lato_blog][:flashes][:post_update_success]
-      redirect_to lato_blog.post_path(@post.id)
+      @post.post_parent.update(publication_datetime: params[:publication_datetime])
     end
 
     # This function updates the categories of a post.
     def update_categories
       @post = LatoBlog::Post.find_by(id: params[:id])
       return unless check_post_presence
-
-      unless params[:categories]
-        flash[:warning] = LANGUAGES[:lato_blog][:flashes][:post_categories_not_accepted]
-        redirect_to lato_blog.edit_post_path(@post.id)
-        return false
-      end
 
       params[:categories].each do |category_id, value|
         category = LatoBlog::Category.find_by(id: category_id)
@@ -168,9 +136,6 @@ module LatoBlog
           category_post.destroy if category_post
         end
       end
-
-      flash[:success] = LANGUAGES[:lato_blog][:flashes][:post_update_success]
-      redirect_to lato_blog.post_path(@post.id)
     end
 
     # This function destroyes a post.

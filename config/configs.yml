@@ -32,6 +32,18 @@ post_fields:
       datetime:
         type: datetime
         label: Datetime
+      composed:
+        type: composed
+        label: Composed
+        fields:
+          text1:
+            type: text
+            label: Text 1
+            class: xs-12 sm-12 md-6 lg-6
+          text2:
+            type: text
+            label: Text 1
+            class: xs-12 sm-12 md-6 lg-6
 
 # hide post default fields
 post_hidden_fields: [] # possible values: ['subtitle', 'content', 'excerpt'] 

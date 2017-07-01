@@ -1,6 +1,6 @@
 <%
   block = cell(:elements, :block).new(class: 'xs-12 sm-12 md-12 posts__edit-categories')
-  form = cell(:inputs, :form).new(url: lato_blog.posts_update_categories_path, method: :post)
+  form = cell(:inputs, :form).new(url: lato_blog.posts_update_categories_path, method: :post, remote: true)
   table = cell(:elements, :table, :container).new
   table_body = cell(:elements, :table, :body).new
 %>
@@ -31,14 +31,6 @@
 
     <%=raw table.close %>
 
-    
-
-    <br>
-    <div class="text-right">
-      <%=raw cell(:elements, :button).new(type: 'submit', label: LANGUAGES[:lato_blog][:mixed][:update],
-      icon: 'refresh') %>
-    </div>
-  
   <%=raw form.close %>
  
 <%=raw block.close %>
