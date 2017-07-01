@@ -8,6 +8,13 @@
 .posts__edit-categories {
   .inputs-checkbox {
     margin: 0;
+    margin-bottom: 2px;
+  }
+
+  .elements-table__row {
+    td:first-child {
+      width: 50px;
+    }
   }
 }
 

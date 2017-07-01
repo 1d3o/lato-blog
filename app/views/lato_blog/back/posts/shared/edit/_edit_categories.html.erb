@@ -1,6 +1,8 @@
 <%
   block = cell(:elements, :block).new(class: 'xs-12 sm-12 md-12 posts__edit-categories')
   form = cell(:inputs, :form).new(url: lato_blog.posts_update_categories_path, method: :post)
+  table = cell(:elements, :table, :container).new
+  table_body = cell(:elements, :table, :body).new
 %>
 
 <%=raw block.open %>
@@ -11,12 +13,25 @@
 
     <input type="hidden" name="id" value="<%= @post.id %>">
 
-    <% @categories.each do |category| %>
+    <%=raw table.open %>
 
-      <%=raw cell(:inputs, :checkbox).new(name: "categories[#{category.id}]", label: category.title,
-      value: @post.categories.include?(category)) %>
-      
-    <% end %>
+      <%=raw table_body.open %>
+        
+        <% @categories.each do |category| %>
+
+          <% checkbox = cell(:inputs, :checkbox).new(name: "categories[#{category.id}]", value: @post.categories.include?(category)) %>
+          <%=raw cell(:elements, :table, :row).new(labels: [
+            {type: 'component', value: checkbox},
+            category.title
+          ]) %>
+          
+        <% end %>
+
+      <%=raw table_body.close %>
+
+    <%=raw table.close %>
+
+    
 
     <br>
     <div class="text-right">
