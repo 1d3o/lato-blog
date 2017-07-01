@@ -1,11 +1,15 @@
 <%
   row = cell(:elements, :row).new
-  form = cell(:inputs, :form).new(url: url, method: method, class: 'posts__form')
+  form = cell(:inputs, :form).new(url: url, method: method)
 %>
 
 <%=raw form.open %>
 
   <input type="hidden" name="parent" value="<%= @post_parent ? @post_parent.id : nil %>">
+
+  <% if method === :put %>
+    <input type="hidden" name="autosave" value="false" class="posts__form-autosave">
+  <% end %>
 
   <%=raw row.open %>
 

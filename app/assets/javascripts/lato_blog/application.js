@@ -15,4 +15,5 @@
 
 $(window).load(function () {
   BlogFieldsInitializer.init()
+  BlogPostsInitializer.init()
 })

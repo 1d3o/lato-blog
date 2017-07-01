@@ -77,6 +77,14 @@ module LatoBlog
       @post = LatoBlog::Post.find_by(id: params[:id])
       return unless check_post_presence
 
+      # update for autosaving
+      autosaving = params[:autosave] && params[:autosave] == 'true'
+      if autosaving
+        @post.update(edit_post_params)
+        update_fields
+        return
+      end
+
       # check post data update
       unless @post.update(edit_post_params)
         flash[:danger] = @post.errors.full_messages.to_sentence

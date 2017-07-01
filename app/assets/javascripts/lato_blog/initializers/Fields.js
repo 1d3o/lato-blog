@@ -31,13 +31,14 @@ var BlogFieldsInitializer = (function () {
   }
 
   function _relaySubmitUpdateBeforeAction () {
-    var form = $('.posts__form')
-    if (!$(form).attr('data-is-autosaving') || $(form).attr('data-is-autosaving') == 'false') {
+    var formInput = $('.posts__form-autosave')
+    var form = $(formInput).parent()
+    if ($(formInput).val('false')) {
+      $(formInput).val('true')
       $(form).attr('data-remote', true)
-      $(form).attr('data-is-autosaving', true)
       $(form).submit()
+      $(formInput).val('false')
       $(form).attr('data-remote', false)
-      $(form).attr('data-is-autosaving', false)
     }
   }
 
