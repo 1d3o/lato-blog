@@ -18,6 +18,9 @@ module LatoBlog
       # filter search
       posts = posts.where('lato_blog_posts.title like ?', "%#{params[:search]}%") if params[:search]
 
+      # take posts uniqueness
+      posts = posts.uniq(&:id)
+
       # save total posts
       total = posts.length
 
