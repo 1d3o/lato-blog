@@ -7,7 +7,7 @@ module LatoBlog
 
     def index
       core__set_header_active_page_title(LANGUAGES[:lato_blog][:pages][:post_fields])
-      @post_fields = LatoBlog::PostField.all.order('meta_visible DESC')
+      @post_fields = LatoBlog::PostField.all.order('meta_visible')
       @widget_index_post_fields = core__widgets_index(@post_fields, search: 'key', pagination: 10)
     end
 
