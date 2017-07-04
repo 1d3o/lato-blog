@@ -9,11 +9,11 @@ var BlogPostsInitializer = (function () {
         if ($(formInput).val('false')) {
           $(formInput).val('true')
           $(form).attr('data-remote', true)
-          $(form).submit()
+          $.rails.handleRemote($(form))
           $(formInput).val('false')
           $(form).attr('data-remote', false)
         }
-      }, 10000)
+      }, 5000)
     }
   }
 

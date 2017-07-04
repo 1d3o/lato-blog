@@ -82,6 +82,7 @@ module LatoBlog
       if autosaving
         @post.update(edit_post_params)
         update_fields
+        render status: 200, json: {} # render something positive :)
         return
       end
 
