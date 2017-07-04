@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/ideonetwork/lato-core
-  revision: 456a80f4f3577e7af144d4fd1770318f78a09939
+  revision: 0d26eeb14adc7bd532896eac780f6937b33daadb
   specs:
-    lato_core (2.0.1)
+    lato_core (2.0.2)
       bcrypt (>= 3.1.7)
       cells (>= 4.0.0)
       cells-erb
@@ -14,9 +14,9 @@ GIT
 
 GIT
   remote: https://github.com/ideonetwork/lato-media
-  revision: 08bd3cb679e753eea1f41e071236c00700dd71b9
+  revision: 32581ca413ffd5824085c76bf20969c21b8f491d
   specs:
-    lato_media (2.0.0)
+    lato_media (2.0.1)
       lato_core
       paperclip (>= 5.0.0)
       rails (~> 5.1.0)
@@ -139,7 +139,7 @@ GEM
     mini_portile2 (2.2.0)
     minitest (5.10.2)
     multi_json (1.12.1)
-    mysql2 (0.4.6)
+    mysql2 (0.4.7)
     nio4r (2.1.0)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)

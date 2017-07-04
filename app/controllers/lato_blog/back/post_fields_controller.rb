@@ -6,10 +6,12 @@ module LatoBlog
     end
 
     def index
-      @post_fields = LatoBlog::PostField.all
+      core__set_header_active_page_title(LANGUAGES[:lato_blog][:pages][:post_fields])
+      @post_fields = LatoBlog::PostField.all.order('meta_visible')
+      @widget_index_post_fields = core__widgets_index(@post_fields, search: 'key', pagination: 10)
     end
 
-    def destroy # TODO: Continue
+    def destroy
       @post_field = LatoBlog::PostField.find_by(id: params[:id])
 
       unless @post_field
@@ -18,13 +20,14 @@ module LatoBlog
         return
       end
 
-      if @post_field.meta_visible
-
-      end
-
       unless @post_field.destroy
-
+        flash[:danger] = @post_field.category_parent.errors.full_messages.to_sentence
+        redirect_to lato_blog.post_fields_path
+        return
       end
+
+      flash[:success] = LANGUAGES[:lato_blog][:flashes][:post_field_destroy_success]
+      redirect_to lato_blog.post_fields_path
     end
 
     # Single fields endpoints:

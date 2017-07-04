@@ -3,12 +3,14 @@ menu:
   posts_new: Add new
   posts_index: Show all
   posts_categories: Categories
+  post_fields: Fields
   documentation: Doc. Blog
 
 pages:
   posts: Articles
   posts_new: New article
   posts_edit: Edit article
+  post_fields: Fields
   categories: Categories
   categories_new: New category
   categories_edit: Edit category
@@ -30,6 +32,7 @@ flashes:
   post_categories_not_accepted: There are not categories selected
   post_update_fields_warning: The post is updated but we have some problems with fields
   post_field_not_found: Field not found
+  post_field_destroy_success: The Field was destroied successfully
 
 forms:
   id: Id
@@ -71,6 +74,9 @@ mixed:
   child_tree: Child tree
   change_categories: Change categories
   number_of_posts: Number of posts
+  key: Key
+  typology: Typology
+  visibility: Visibility
 
 posts_status:
   published: Published

@@ -73,6 +73,11 @@ menu:
         url: /lato/blog/categories
         permission_min: 0
         permission_max: 99
+      fields:
+        title: translate[post_fields]
+        url: /lato/blog/post_fields
+        permission_min: 0
+        permission_max: 99
   blog_documentation:
     icon: book
     title: translate[documentation]

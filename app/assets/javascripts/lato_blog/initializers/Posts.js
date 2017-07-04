@@ -13,7 +13,7 @@ var BlogPostsInitializer = (function () {
           $(formInput).val('false')
           $(form).attr('data-remote', false)
         }
-      }, 5000)
+      }, 10000)
     }
   }
 
