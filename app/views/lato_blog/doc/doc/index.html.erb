@@ -16,6 +16,21 @@
 <%=raw row.close %>
 <!-- / PRESENTATION -->
 
+<!-- GENERAL SECTION -->
+<%=raw row.open %>
+
+  <%=raw block.open %>
+
+    <%=raw cell(:elements, :title).new(label: 'General', size: 2) %>
+
+    <%=raw cell(:elements, :button).new(label: 'Installation', url: lato_blog.doc_general_installation_path) %>
+    <%=raw cell(:elements, :button).new(label: 'Personalization', url: lato_blog.doc_general_personalization_path) %>
+
+  <%=raw block.close %>
+
+<%=raw row.close %>
+<!-- / GENERAL SECTION -->
+
 <!-- FIELDS SECTION -->
 <%=raw row.open %>
 

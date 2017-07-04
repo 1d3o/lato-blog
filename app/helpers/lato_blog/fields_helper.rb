@@ -5,7 +5,7 @@ module LatoBlog
     # specific post.
     def render_post_fields(post)
       post_fields = post.post_fields.visibles.roots.order('position ASC')
-      render 'lato_blog/back/posts/fields/fields', post_fields: post_fields
+      render 'lato_blog/back/posts/shared/fields', post_fields: post_fields
     end
 
     # This function render a single post field.
@@ -36,24 +36,24 @@ module LatoBlog
 
     # Text.
     def render_post_field_text(post_field, key)
-      render 'lato_blog/back/posts/fields/single_fields/text', post_field: post_field, key: key
+      render 'lato_blog/back/post_fields/fields/text', post_field: post_field, key: key
     end
 
     # Datetime.
     def render_post_field_datetime(post_field, key)
-      render 'lato_blog/back/posts/fields/single_fields/datetime', post_field: post_field, key: key
+      render 'lato_blog/back/post_fields/fields/datetime', post_field: post_field, key: key
     end
 
     # Editor.
     def render_post_field_editor(post_field, key)
-      render 'lato_blog/back/posts/fields/single_fields/editor', post_field: post_field, key: key
+      render 'lato_blog/back/post_fields/fields/editor', post_field: post_field, key: key
     end
 
     # Geolocalization.
     def render_post_field_geolocalization(post_field, key)
       value_object = post_field.value ? eval(post_field.value) : nil
       render(
-        'lato_blog/back/posts/fields/single_fields/geolocalization',
+        'lato_blog/back/post_fields/fields/geolocalization',
         post_field: post_field,
         key: key,
         lat: value_object ? value_object[:lat] : nil,
@@ -64,17 +64,17 @@ module LatoBlog
 
     # Image.
     def render_post_field_image(post_field, key)
-      render 'lato_blog/back/posts/fields/single_fields/image', post_field: post_field, key: key
+      render 'lato_blog/back/post_fields/fields/image', post_field: post_field, key: key
     end
 
     # Composed.
     def render_post_field_composed(post_field, key)
-      render 'lato_blog/back/posts/fields/single_fields/composed', post_field: post_field, key: key
+      render 'lato_blog/back/post_fields/fields/composed', post_field: post_field, key: key
     end
 
     # Relay.
     def render_post_field_relay(post_field, key)
-      render 'lato_blog/back/posts/fields/single_fields/relay', post_field: post_field, key: key
+      render 'lato_blog/back/post_fields/fields/relay', post_field: post_field, key: key
     end
 
     # Single field helpers functions:
