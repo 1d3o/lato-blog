@@ -1,6 +1,10 @@
 module LatoBlog
   class Back::BackController < ApplicationController
 
+    # Specific helpers import to fix not found functions bug
+    helper LatoBlog::ApplicationHelper
+    helper LatoBlog::FieldsHelper
+
     layout 'lato_core/admin'
 
     # check user is logged
