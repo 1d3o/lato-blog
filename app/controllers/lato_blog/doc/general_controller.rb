@@ -5,5 +5,7 @@ module LatoBlog
 
     def personalization; end
 
+    def api; end
+
   end
 end

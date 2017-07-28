@@ -5,6 +5,7 @@ namespace :doc do
   # general
   get 'general_installation', to: 'general#installation', as: 'general_installation'
   get 'general_personalization', to: 'general#personalization', as: 'general_personalization'
+  get 'general_api', to: 'general#api', as: 'general_api'
 
   # fields
   get 'fields_text', to: 'fields#text', as: 'fields_text'
