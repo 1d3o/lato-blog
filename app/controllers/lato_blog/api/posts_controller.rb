@@ -13,8 +13,12 @@ module LatoBlog
       posts = posts.where(meta_language: params[:language]) if params[:language]
       # filter category permalink
       posts = filter_category_permalink(posts) if params[:category_permalink]
+      # filter category permalink AND
+      # TODO
       # filter category id
       posts = filter_category_id(posts) if params[:category_id]
+      # filter category id AND
+      # TODO
       # filter search
       posts = posts.where('lato_blog_posts.title like ?', "%#{params[:search]}%") if params[:search]
 
@@ -60,13 +64,13 @@ module LatoBlog
     def filter_category_permalink(posts)
       return posts unless params[:category_permalink]
       category_permalinks = params[:category_permalink].is_a?(Array) ? params[:category_permalink] : params[:category_permalink].split(',')
-      posts # TODO
+      posts.where(lato_blog_categories: { meta_permalink: category_permalinks })
     end
 
     def filter_category_id(posts)
       return posts unless params[:category_id]
       category_ids = params[:category_id].is_a?(Array) ? params[:category_id] : params[:category_id].split(',')
-      posts # TODO
+      posts.where(lato_blog_categories: { id: category_ids })
     end
 
   end
