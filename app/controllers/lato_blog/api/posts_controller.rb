@@ -13,12 +13,8 @@ module LatoBlog
       posts = posts.where(meta_language: params[:language]) if params[:language]
       # filter category permalink
       posts = filter_category_permalink(posts) if params[:category_permalink]
-      # filter category permalink AND
-      # TODO
       # filter category id
       posts = filter_category_id(posts) if params[:category_id]
-      # filter category id AND
-      # TODO
       # filter search
       posts = posts.where('lato_blog_posts.title like ?', "%#{params[:search]}%") if params[:search]
 
@@ -64,13 +60,33 @@ module LatoBlog
     def filter_category_permalink(posts)
       return posts unless params[:category_permalink]
       category_permalinks = params[:category_permalink].is_a?(Array) ? params[:category_permalink] : params[:category_permalink].split(',')
-      posts.where(lato_blog_categories: { meta_permalink: category_permalinks })
+      posts = posts.where(lato_blog_categories: { meta_permalink: category_permalinks })
+      # manage AND clause
+      if params[:category_permalink_AND] == 'true'
+        ids = []
+        posts.pluck(:id).each do |id|
+          ids.push(id) if posts.where(id: id).length >= category_permalinks.length
+        end
+        posts = posts.where(id: ids)
+      end
+      # return posts
+      posts
     end
 
     def filter_category_id(posts)
       return posts unless params[:category_id]
       category_ids = params[:category_id].is_a?(Array) ? params[:category_id] : params[:category_id].split(',')
-      posts.where(lato_blog_categories: { id: category_ids })
+      posts = posts.where(lato_blog_categories: { id: category_ids })
+      # manage AND clause
+      if params[:category_id_AND] == 'true'
+        ids = []
+        posts.pluck(:id).each do |id|
+          ids.push(id) if posts.where(id: id).length >= category_ids.length
+        end
+        posts = posts.where(id: ids)
+      end
+      # return posts
+      posts
     end
 
   end
