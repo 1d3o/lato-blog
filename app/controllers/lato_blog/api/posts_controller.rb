@@ -10,11 +10,11 @@ module LatoBlog
       posts = posts.order("lato_blog_post_parents.publication_datetime #{order}")
 
       # filter language
-      posts = filter_language(posts) if params[:language]
+      posts = posts.where(meta_language: params[:language]) if params[:language]
       # filter category permalink
-      posts = filter_category_permalink if params[:category_permalink]
+      posts = filter_category_permalink(posts) if params[:category_permalink]
       # filter category id
-      posts = filter_category_id if params[:category_id]
+      posts = filter_category_id(posts) if params[:category_id]
       # filter search
       posts = posts.where('lato_blog_posts.title like ?', "%#{params[:search]}%") if params[:search]
 
@@ -57,36 +57,16 @@ module LatoBlog
 
     private
 
-    def filter_language(posts)
-      return unless params[:language]
-      languages = params[:language].is_a?(Array) ? params[:language] : params[:language].split(',')
-      query_array(posts, :meta_language, languages)
-    end
-
     def filter_category_permalink(posts)
-      return unless params[:category_permalink]
+      return posts unless params[:category_permalink]
       category_permalinks = params[:category_permalink].is_a?(Array) ? params[:category_permalink] : params[:category_permalink].split(',')
-      query_nested_array(posts, :lato_blog_categories, :meta_permalink, category_permalinks)
+      posts # TODO
     end
 
     def filter_category_id(posts)
-      return unless params[:category_id]
+      return posts unless params[:category_id]
       category_ids = params[:category_id].is_a?(Array) ? params[:category_id] : params[:category_id].split(',')
-      query_nested_array(posts, :lato_blog_categories, :id, category_ids)
-    end
-
-    def query_array(records, key, values)
-      values.each do |value|
-        records = records.where("#{key}": value)
-      end
-      records
-    end
-
-    def query_nested_array(records, key1, key2, values)
-      values.each do |value|
-        records = records.where("#{key1}": { "#{key2}": value })
-      end
-      records
+      posts # TODO
     end
 
   end
