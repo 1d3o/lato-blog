@@ -13,7 +13,7 @@ var BlogFieldsInitializer = (function () {
   }
 
   function initializeRelayDestroy () {
-    $('.js-sortable__main-container').each(function (i, el) {
+    $('.fields-relay__sortableblock .js-sortable__main-container').each(function (i, el) {
       $(el).find('.js-sortable__element').each(function (index, element) {
         var fieldId = $(element).find('.fields__container').data('field-id')
         var destroyButton = $('.js-related-field__destroy.is-first')
