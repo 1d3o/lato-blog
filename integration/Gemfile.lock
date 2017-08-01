@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/ideonetwork/lato-core
-  revision: 5e1ff5fe862f7db11dbd38e0480e327bd180e6e1
+  revision: 51c39b1dcb85b53699ca78f705f8b44f451e8df0
   specs:
-    lato_core (2.0.3)
+    lato_core (2.0.4)
       bcrypt (>= 3.1.7)
       cells (>= 4.0.0)
       cells-erb
@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: https://github.com/ideonetwork/lato-media
-  revision: 3cfdfc29559692f1e8a7e4c74826e3c5469a07df
+  revision: 5b0430365d8f3ae537f2f64ab1a6730aefb2f8d9
   specs:
     lato_media (2.0.1)
       lato_core
