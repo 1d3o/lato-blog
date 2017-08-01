@@ -1,0 +1,87 @@
+menu:
+  posts: Articoli
+  posts_new: Aggiungi nuovo
+  posts_index: Visualizza tutti
+  posts_categories: Categorie
+  post_fields: Campi
+  documentation: Doc. Blog
+
+pages:
+  posts: Articoli
+  posts_new: Nuovo articolo
+  posts_edit: Modifica articolo
+  post_fields: Campi
+  categories: Categorie
+  categories_new: Nuova categoria
+  categories_edit: Modifica categoria
+  documentation: Documentazione
+
+flashes:
+  post_create_success: Articolo creato con successo
+  post_not_found: Articolo non trovato
+  deleted_posts_not_found: Non ci sono articoli nel cestino
+  deleted_posts_destroy_success: Tutti gli articoli del cestino sono stati eliminati
+  post_update_success: Articolo aggiornato con successo
+  post_status_not_accepted: Lo stato selezionato non può essere accettato per l'articolo.
+  post_publication_datetime_not_accepted: La data selezionata non può essere accettata per l'articolo.
+  post_destroy_success: Articolo eliminato con successo
+  category_create_success: Categoria creata con successo
+  category_not_found: Categoria non trovata
+  category_update_success: Categoria aggiornata con successo
+  category_destroy_success: Categoria eliminata con successo
+  post_categories_not_accepted: Non ci sono categorie selezionate
+  post_update_fields_warning: L'articolo è stato aggiornato ma ci sono state problematiche con il salvataggio dei campi
+  post_field_not_found: Campo non trovato
+  post_field_destroy_success: Campo eliminato con successo
+
+forms:
+  id: Id
+  title: Titolo
+  subtitle: Sottotitolo
+  language: Lingua
+  content: Contenuto
+  excerpt: Riassunto
+  publication: Pubblicazione
+  category_father: Categoria padre
+  permalink: Permalink
+
+mixed:
+  languages: Lingue
+  no_languages: Non ci sono lingue nel sistema
+  published_posts: Articoli pubblici
+  drafted_posts: Articoli in bozza
+  deleted_posts: Articoli nel cestino
+  switch_status: Aggiorna stato
+  update: Aggiorna
+  save: Salva
+  create: Crea
+  show: Visualizza
+  cancel: Cancella
+  info: Informazioni
+  new_post: Nuovo articolo
+  empty_trash: Svuota cestino
+  empty_trash_message: Sicuro di continuare? Tutti gli articoli nel cestino verranno rimossi definitivamente.
+  empty_trash_positive: Conferma
+  empty_trash_negative: Annulla
+  current_language: Lingua corrente
+  current_status: Stato corrente
+  publication_date: Data di pubblicazione
+  creation_date: Data di creazione
+  update_date: Data di aggioranmento
+  superuser_creator: Creato da
+  status: Stato
+  change_publication_datetime: Aggiorna data di pubblicazione
+  child_tree: Albero dei figli
+  change_categories: Aggiorna categorie
+  number_of_posts: Numero di articoli
+  key: Chiave
+  typology: Tipologia
+  visibility: Visibilità
+  post_fields_warning: 'ATTENZIONE: L'eliminazione dei campi può causare la perdita definitiva di alcuni dati degli articoli!'
+  post_id: Id articolo
+  post_field_id: Id campo
+
+posts_status:
+  published: Pubblico
+  drafted: Bozza
+  deleted: Cestinato
