@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/ideonetwork/lato-core
-  revision: 51c39b1dcb85b53699ca78f705f8b44f451e8df0
+  revision: 186722ea4a09af49a410162ea7d89fa81a2480e6
   specs:
-    lato_core (2.0.4)
+    lato_core (2.1)
       bcrypt (>= 3.1.7)
       cells (>= 4.0.0)
       cells-erb
@@ -14,9 +14,9 @@ GIT
 
 GIT
   remote: https://github.com/ideonetwork/lato-media
-  revision: 5b0430365d8f3ae537f2f64ab1a6730aefb2f8d9
+  revision: 0149bb40f564bc4775cfd7c8a5bc62ae39d4b5aa
   specs:
-    lato_media (2.0.1)
+    lato_media (2.1)
       lato_core
       paperclip (>= 5.0.0)
       rails (~> 5.1.0)
@@ -24,7 +24,7 @@ GIT
 PATH
   remote: ..
   specs:
-    lato_blog (2.0.1)
+    lato_blog (2.1)
       lato_core
       lato_media
       rails (~> 5.1.0)

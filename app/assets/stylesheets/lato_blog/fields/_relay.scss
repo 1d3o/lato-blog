@@ -76,9 +76,10 @@
     display: block;
     padding: 6px;
     background: $color_white;
+    color: $color_black;
     text-decoration: none;
     &:hover {
-      background-color: $color_black;
+      background-color: $color_grey;
     }
   }
 }
