@@ -11,6 +11,7 @@ module LatoBlog
       serialized[:subtitle] = subtitle
       serialized[:excerpt] = excerpt
       serialized[:content] = content
+      serialized[:seo_description] = seo_description
       serialized[:meta_language] = meta_language
       serialized[:meta_permalink] = meta_permalink
       serialized[:meta_status] = meta_status
