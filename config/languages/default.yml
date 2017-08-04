@@ -51,7 +51,6 @@ mixed:
   published_posts: Public articles
   drafted_posts: Drafted articles
   deleted_posts: Deleted articles
-  switch_status: Switch status
   update: Update
   save: Save
   create: Create
@@ -70,9 +69,9 @@ mixed:
   update_date: Date of update
   superuser_creator: Superuser creator
   status: Status
-  change_publication_datetime: Change publication date
+  publication_datetime: Publication date
   child_tree: Child tree
-  change_categories: Change categories
+  categories: Categories
   number_of_posts: Number of posts
   key: Key
   typology: Typology
@@ -80,6 +79,7 @@ mixed:
   post_fields_warning: 'WARNING: Deleting fields could lead to the complete loss of some item data!'
   post_id: Post id
   post_field_id: Post field id
+  seo_description: Seo description
 
 posts_status:
   published: Published

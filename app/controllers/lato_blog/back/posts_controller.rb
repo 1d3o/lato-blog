@@ -139,6 +139,14 @@ module LatoBlog
       end
     end
 
+    # This function updates the seo description of a post.
+    def update_seo_description
+      @post = LatoBlog::Post.find_by(id: params[:id])
+      return unless check_post_presence
+
+      @post.update(seo_description: params[:seo_description])
+    end
+
     # This function destroyes a post.
     def destroy
       @post = LatoBlog::Post.find_by(id: params[:id])

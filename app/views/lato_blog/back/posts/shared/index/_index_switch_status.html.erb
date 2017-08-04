@@ -4,8 +4,6 @@
 
 <%=raw block.open %>
 
-  <%=raw cell(:elements, :title).new(label: LANGUAGES[:lato_blog][:mixed][:switch_status], size: 6) %>
-
   <%
     published_button = cell(:elements, :button).new(label: LANGUAGES[:lato_blog][:mixed][:published_posts],
     icon: 'thumbs-o-up', url: lato_blog.posts_path(status: 'published'))

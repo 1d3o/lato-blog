@@ -51,7 +51,6 @@ mixed:
   published_posts: Articoli pubblici
   drafted_posts: Articoli in bozza
   deleted_posts: Articoli nel cestino
-  switch_status: Aggiorna stato
   update: Aggiorna
   save: Salva
   create: Crea
@@ -70,9 +69,9 @@ mixed:
   update_date: Data di aggioranmento
   superuser_creator: Creato da
   status: Stato
-  change_publication_datetime: Aggiorna data di pubblicazione
+  publication_datetime: Data di pubblicazione
   child_tree: Albero dei figli
-  change_categories: Aggiorna categorie
+  categories: Categorie
   number_of_posts: Numero di articoli
   key: Chiave
   typology: Tipologia
@@ -80,6 +79,7 @@ mixed:
   post_fields_warning: 'ATTENZIONE: L'eliminazione dei campi può causare la perdita definitiva di alcuni dati degli articoli!'
   post_id: Id articolo
   post_field_id: Id campo
+  seo_description: Descrizione seo
 
 posts_status:
   published: Pubblico

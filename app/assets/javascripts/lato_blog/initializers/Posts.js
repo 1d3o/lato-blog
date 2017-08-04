@@ -32,8 +32,15 @@ var BlogPostsInitializer = (function () {
   }
 
   function initializeStatusSwitchAutosave () {
-    var form = $('.posts__edit-status-switch').find('form')
+    var form = $('.posts__edit-status').find('form')
     $(form).find('select').change(function () {
+      $(form).submit()
+    })
+  }
+
+  function initializeSeoDescriptionAutosave () {
+    var form = $('.posts__edit-seo-description').find('form')
+    $(form).find('textarea').change(function () {
       $(form).submit()
     })
   }
@@ -45,6 +52,7 @@ var BlogPostsInitializer = (function () {
     initializeCategoriesAutosave()
     initializePublicationDatetimeAutosave()
     initializeStatusSwitchAutosave()
+    initializeSeoDescriptionAutosave()
   }
 
   return {
