@@ -3,7 +3,7 @@ var BlogPostsInitializer = (function () {
   function initializeAutosave () {
     var formInput = $('.posts__form-autosave')
 
-    if (formInput) {
+    if (formInput.length > 0) {
       var form = $(formInput).parent()
       setInterval(function () {
         if ($(formInput).val('false')) {
