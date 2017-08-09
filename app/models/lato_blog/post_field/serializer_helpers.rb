@@ -32,6 +32,8 @@ module LatoBlog
         serialize_field_value_geolocalization
       when 'image'
         serialize_field_value_image
+      when 'youtube'
+        serialize_field_value_youtube
       when 'composed'
         serialize_field_value_composed
       when 'relay'
@@ -103,6 +105,11 @@ module LatoBlog
 
       # return serialized media
       serialized
+    end
+
+    # Youtube.
+    def serialize_field_value_youtube
+      value
     end
 
     # Composed.

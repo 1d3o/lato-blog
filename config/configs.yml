@@ -32,6 +32,9 @@ post_fields:
       datetime:
         type: datetime
         label: Datetime
+      youtube:
+        type: youtube
+        label: Youtube
       composed:
         type: composed
         label: Composed
