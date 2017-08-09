@@ -24,6 +24,8 @@ module LatoBlog
         render_post_field_geolocalization(post_field, key)
       when 'image'
         render_post_field_image(post_field, key)
+      when 'gallery'
+        render_post_field_gallery(post_field, key)
       when 'youtube'
         render_post_field_youtube(post_field, key)
       when 'composed'
@@ -67,6 +69,11 @@ module LatoBlog
     # Image.
     def render_post_field_image(post_field, key)
       render 'lato_blog/back/post_fields/fields/image', post_field: post_field, key: key
+    end
+
+    # Gallery.
+    def render_post_field_gallery(post_field, key)
+      render 'lato_blog/back/post_fields/fields/gallery', post_field: post_field, key: key
     end
 
     # Youtube.

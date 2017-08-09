@@ -32,6 +32,8 @@ module LatoBlog
         serialize_field_value_geolocalization
       when 'image'
         serialize_field_value_image
+      when 'gallery'
+        serialize_field_value_gallery
       when 'youtube'
         serialize_field_value_youtube
       when 'composed'
@@ -102,6 +104,33 @@ module LatoBlog
       serialized[:thumb_url] = (media.image? ? media.attachment.url(:thumb) : nil)
       serialized[:medium_url] = (media.image? ? media.attachment.url(:medium) : nil)
       serialized[:large_url] = (media.image? ? media.attachment.url(:large) : nil)
+
+      # return serialized media
+      serialized
+    end
+
+    # Gallery.
+    def serialize_field_value_gallery
+      media_ids = value.split(',')
+      medias = LatoMedia::Media.where(id: media_ids)
+      return unless medias
+
+      # add basic info
+      serialized = []
+
+      medias.each do |media|
+        serialized_media = {}
+        serialized_media[:id] = media.id
+        serialized_media[:title] = media.title
+        serialized_media[:url] = media.attachment.url
+
+        # add image info
+        serialized_media[:thumb_url] = (media.image? ? media.attachment.url(:thumb) : nil)
+        serialized_media[:medium_url] = (media.image? ? media.attachment.url(:medium) : nil)
+        serialized_media[:large_url] = (media.image? ? media.attachment.url(:large) : nil)
+
+        serialized.push(serialized_media)
+      end
 
       # return serialized media
       serialized

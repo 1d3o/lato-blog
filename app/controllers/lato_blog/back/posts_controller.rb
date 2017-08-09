@@ -233,6 +233,8 @@ module LatoBlog
         update_field_geolocalization(field, value)
       when 'image'
         update_field_image(field, value)
+      when 'gallery'
+        update_field_gallery(field, value)
       when 'youtube'
         update_field_youtube(field, value)
       when 'composed'
@@ -272,6 +274,11 @@ module LatoBlog
 
     # Image.
     def update_field_image(field, value)
+      field.update(value: value)
+    end
+
+    # Gallery.
+    def update_field_gallery(field, value)
       field.update(value: value)
     end
 

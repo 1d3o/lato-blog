@@ -23,6 +23,9 @@ post_fields:
       image:
         type: image
         label: Image
+      gallery:
+        type: gallery
+        label: Gallery
       editor:
         type: editor
         label: Editor

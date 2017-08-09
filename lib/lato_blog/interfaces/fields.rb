@@ -90,6 +90,8 @@ module LatoBlog
         update_db_post_field_geolocalization(db_post_field, content, post_field_parent)
       when 'image'
         update_db_post_field_image(db_post_field, content, post_field_parent)
+      when 'gallery'
+        update_db_post_field_gallery(db_post_field, content, post_field_parent)
       when 'youtube'
         update_db_post_field_youtube(db_post_field, content, post_field_parent)
       when 'composed'
@@ -146,6 +148,16 @@ module LatoBlog
 
     # Image.
     def update_db_post_field_image(db_post_field, content, post_field_parent = nil)
+      db_post_field.update(
+        meta_datas: {
+          label: content[:label] && !content[:label].blank? ? content[:label] : db_post_field.key,
+          class: content[:class] && !content[:class].blank? ? content[:class] : nil
+        }
+      )
+    end
+
+    # Gallery.
+    def update_db_post_field_gallery(db_post_field, content, post_field_parent = nil)
       db_post_field.update(
         meta_datas: {
           label: content[:label] && !content[:label].blank? ? content[:label] : db_post_field.key,
