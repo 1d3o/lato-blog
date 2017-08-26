@@ -1,6 +1,6 @@
-var BlogFieldsInitializer = (function () {
+var BlogFields = (function () {
 
-  function initializeRelayNewButton () {
+  function _initializeRelayNewButton () {
     $('.fields-relay__menu-add').click(function (e) {
       // save current status with form submit
       _relaySubmitUpdateBeforeAction()
@@ -12,7 +12,7 @@ var BlogFieldsInitializer = (function () {
     })
   }
 
-  function initializeRelayDestroy () {
+  function _initializeRelayDestroy () {
     $('.fields-relay__sortableblock .js-sortable__main-container').each(function (i, el) {
       $(el).find('.js-sortable__element').each(function (index, element) {
         var fieldId = $(element).find('.fields__container').data('field-id')
@@ -45,8 +45,8 @@ var BlogFieldsInitializer = (function () {
   // Init:
 
   function init () {
-    initializeRelayNewButton()
-    initializeRelayDestroy()
+    _initializeRelayNewButton()
+    _initializeRelayDestroy()
   }
 
   return {

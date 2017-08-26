@@ -10,10 +10,10 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require_tree ./initializers
+//= require_tree ./modules
 
 
 $(window).load(function () {
-  BlogFieldsInitializer.init()
-  BlogPostsInitializer.init()
+  BlogFields.init()
+  BlogPosts.init()
 })

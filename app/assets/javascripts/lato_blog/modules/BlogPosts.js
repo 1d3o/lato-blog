@@ -1,6 +1,6 @@
-var BlogPostsInitializer = (function () {
+var BlogPosts = (function () {
 
-  function initializeAutosave () {
+  function _initializeAutosave () {
     var formInput = $('.posts__form-autosave')
 
     if (formInput.length > 0) {
@@ -17,28 +17,28 @@ var BlogPostsInitializer = (function () {
     }
   }
 
-  function initializeCategoriesAutosave () {
+  function _initializeCategoriesAutosave () {
     var form = $('.posts__edit-categories').find('form')
     $(form).find('input').change(function () {
       $(form).submit()
     })
   }
 
-  function initializePublicationDatetimeAutosave () {
+  function _initializePublicationDatetimeAutosave () {
     var form = $('.posts__edit-publication-datetime').find('form')
     $(form).find('input').change(function () {
       $(form).submit()
     })
   }
 
-  function initializeStatusSwitchAutosave () {
+  function _initializeStatusSwitchAutosave () {
     var form = $('.posts__edit-status').find('form')
     $(form).find('select').change(function () {
       $(form).submit()
     })
   }
 
-  function initializeSeoDescriptionAutosave () {
+  function _initializeSeoDescriptionAutosave () {
     var form = $('.posts__edit-seo-description').find('form')
     $(form).find('textarea').change(function () {
       $(form).submit()
@@ -48,11 +48,11 @@ var BlogPostsInitializer = (function () {
   // Init:
 
   function init () {
-    initializeAutosave()
-    initializeCategoriesAutosave()
-    initializePublicationDatetimeAutosave()
-    initializeStatusSwitchAutosave()
-    initializeSeoDescriptionAutosave()
+    _initializeAutosave()
+    _initializeCategoriesAutosave()
+    _initializePublicationDatetimeAutosave()
+    _initializeStatusSwitchAutosave()
+    _initializeSeoDescriptionAutosave()
   }
 
   return {

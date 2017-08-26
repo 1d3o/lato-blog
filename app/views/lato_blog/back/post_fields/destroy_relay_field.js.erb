@@ -6,9 +6,10 @@
 
   $('.fields-relay[data-field-id="<%= @post_field.id %>"]').replaceWith('<%=j render_post_field(@post_field) %>')
   
-  BlogFieldsInitializer.init()
-  SortableManager.init()
-  InputsInitializer.init()
-  MediaInputsInitializer.init()
+  // TODO: Aggiornare solo i field interni al ripetitore
+  BlogFields.init()
+  CoreDatepicker.init()
+  CoreEditor.init()
+  CoreMediapicker.init()
 
 <% end %>
