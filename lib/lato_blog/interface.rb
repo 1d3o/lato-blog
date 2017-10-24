@@ -13,5 +13,8 @@ module LatoBlog
     require 'lato_blog/interfaces/fields'
     include LatoBlog::Interface::Fields
 
+    require 'lato_blog/interfaces/queries'
+    include LatoBlog::Interface::Queries
+
   end
 end
