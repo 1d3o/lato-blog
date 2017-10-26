@@ -30,6 +30,6 @@ Exec migrations
 bundle exec rake db:migrate
 ```
 
-## Todo
+## TODO
 
 - Create interface query functions to get categories (like posts).
