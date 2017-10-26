@@ -1,12 +1,5 @@
 <%
   block = cell(:elements, :block).new(class: 'xs-12 sm-12 md-12 posts__index')
-  table = cell(:elements, :table, :container).new
-  table_head = cell(:elements, :table, :head).new(labels: [
-    LANGUAGES[:lato_blog][:forms][:title],
-    LANGUAGES[:lato_blog][:forms][:language],
-    LANGUAGES[:lato_blog][:forms][:publication]
-  ])
-  table_body = cell(:elements, :table, :body).new
 %>
 
 <%=raw block.open %>
@@ -22,7 +15,7 @@
 
 
   <%=raw cell(:widgets, :index).new(records: @widget_index_posts, index_url: lato_blog.posts_path(status: @posts_status),
-  head: [LANGUAGES[:lato_blog][:forms][:title], LANGUAGES[:lato_blog][:forms][:language]],
-  columns: ['title', 'get_pretty_language'], actions: {show: true, new: true, delete: (@posts_status === 'deleted')}, search: true, pagination: true) %>
+  head: [LANGUAGES[:lato_blog][:forms][:title], LANGUAGES[:lato_blog][:mixed][:categories], LANGUAGES[:lato_blog][:forms][:language]],
+  columns: ['title', 'get_category_titles', 'get_pretty_language'], actions: {show: true, new: true, delete: (@posts_status === 'deleted')}, search: true, pagination: true) %>
 
 <%=raw block.close %>

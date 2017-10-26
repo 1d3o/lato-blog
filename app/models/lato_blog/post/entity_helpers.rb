@@ -38,5 +38,10 @@ module LatoBlog
       return self.post_parent.posts.find_by(meta_language: language_identifier)
     end
 
+    # This function return the list of titles of categories.
+    def get_category_titles
+      categories.pluck(:title).to_sentence
+    end
+
   end
 end
