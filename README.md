@@ -1,6 +1,10 @@
 # Lato Blog
 
+Lato is a Rails engine used to develop modular admin panels. This is the module used to manage a blog.
+
 ## Installation
+
+Install [lato_core](https://github.com/ideonetwork/lato-core) and [lato_media](https://github.com/ideonetwork/lato-media) gem as required dependencies.
 
 Add the lato_blog gem on your Gemfile
 
