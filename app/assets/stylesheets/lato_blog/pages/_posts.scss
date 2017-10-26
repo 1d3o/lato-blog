@@ -19,6 +19,10 @@
 
 .posts__index {
   .elements-table__row td:first-child {
-    width: 60%;
+    width: 50%;
+  }
+
+  .elements-table__row td:last-child {
+    min-width: 100px;
   }
 }

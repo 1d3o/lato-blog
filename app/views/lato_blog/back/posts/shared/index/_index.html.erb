@@ -5,17 +5,23 @@
 <%=raw block.open %>
 
   <%
-    title = ''
-    title = LANGUAGES[:lato_blog][:mixed][:published_posts] if status && status === 'published'
-    title = LANGUAGES[:lato_blog][:mixed][:drafted_posts] if status && status === 'drafted'
-    title = LANGUAGES[:lato_blog][:mixed][:deleted_posts] if status && status === 'deleted'
+    title = "#{get_current_language_title.upcase}: "
+    title = "#{title}#{LANGUAGES[:lato_blog][:mixed][:published_posts]}" if status && status === 'published'
+    title = "#{title}#{LANGUAGES[:lato_blog][:mixed][:drafted_posts]}" if status && status === 'drafted'
+    title = "#{title}#{LANGUAGES[:lato_blog][:mixed][:deleted_posts]}" if status && status === 'deleted'
   %>
 
   <%=raw cell(:elements, :title).new(label: title, size: 6) %>
 
 
-  <%=raw cell(:widgets, :index).new(records: @widget_index_posts, index_url: lato_blog.posts_path(status: @posts_status),
-  head: [LANGUAGES[:lato_blog][:forms][:title], LANGUAGES[:lato_blog][:mixed][:categories], LANGUAGES[:lato_blog][:forms][:language]],
-  columns: ['title', 'get_category_titles', 'get_pretty_language'], actions: {show: true, new: true, delete: (@posts_status === 'deleted')}, search: true, pagination: true) %>
+  <%=raw cell(:widgets, :index).new(
+    records: @widget_index_posts,
+    index_url: lato_blog.posts_path(status: @posts_status),
+    head: [LANGUAGES[:lato_blog][:forms][:title], LANGUAGES[:lato_blog][:mixed][:categories]],
+    columns: ['title', 'get_category_titles'],
+    actions: {show: true, new: true, delete: (@posts_status === 'deleted')},
+    search: true,
+    pagination: true
+  ) %>
 
 <%=raw block.close %>
