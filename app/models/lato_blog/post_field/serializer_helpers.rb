@@ -53,18 +53,21 @@ module LatoBlog
 
     # Datetime.
     def serialize_field_value_datetime
-      date = DateTime.parse(value)
-      serialized = {}
 
-      # add basic info
-      serialized[:datetime] = date
-      serialized[:year] = date.year
-      serialized[:month] = date.month
-      serialized[:day] = date.day
-      serialized[:hour] = date.hour
-      serialized[:minute] = date.min
-      serialized[:second] = date.sec
+      begin
+        date = DateTime.parse(value)
+        serialized = {}
 
+        serialized[:datetime] = date
+        serialized[:year] = date.year
+        serialized[:month] = date.month
+        serialized[:day] = date.day
+        serialized[:hour] = date.hour
+        serialized[:minute] = date.min
+        serialized[:second] = date.sec
+      rescue StandardError
+        serialized = {}
+      end
       # return serialized data
       serialized
     end
