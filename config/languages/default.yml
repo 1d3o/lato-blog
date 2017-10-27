@@ -3,6 +3,7 @@ menu:
   posts_new: Add new
   posts_index: Show all
   posts_categories: Categories
+  posts_tags: Tags
   post_fields: Fields
   documentation: Doc. Blog
 
@@ -14,6 +15,9 @@ pages:
   categories: Categories
   categories_new: New category
   categories_edit: Edit category
+  tags: Tags
+  tags_new: New tag
+  tags_edit: Edit tag
   documentation: Documentation
 
 flashes:

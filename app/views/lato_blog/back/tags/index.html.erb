@@ -9,10 +9,10 @@
   <%=raw block.open %>
 
       <%=raw cell(:widgets, :index).new(
-        records: @widget_index_categories,
-        index_url: lato_blog.categories_path,
-        head: [LANGUAGES[:lato_blog][:forms][:title], LANGUAGES[:lato_blog][:forms][:language], LANGUAGES[:lato_blog][:forms][:category_father], LANGUAGES[:lato_blog][:mixed][:number_of_posts]],
-        columns: ['title', 'get_pretty_language', 'get_category_father_title', 'get_number_of_posts'],
+        records: @widget_index_tags,
+        index_url: lato_blog.tags_path,
+        head: [LANGUAGES[:lato_blog][:forms][:title], LANGUAGES[:lato_blog][:forms][:language], LANGUAGES[:lato_blog][:mixed][:number_of_posts]],
+        columns: ['title', 'get_pretty_language', 'get_number_of_posts'],
         actions: {show: true, new: true, delete: true},
         search: true,
         pagination: true

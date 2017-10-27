@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170804131336) do
+ActiveRecord::Schema.define(version: 20171027094645) do
 
   create_table "lato_blog_categories", force: :cascade do |t|
     t.string "title"
@@ -68,6 +68,28 @@ ActiveRecord::Schema.define(version: 20170804131336) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "seo_description"
+  end
+
+  create_table "lato_blog_tag_parents", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lato_blog_tag_posts", force: :cascade do |t|
+    t.integer "lato_blog_tag_id"
+    t.integer "lato_blog_post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lato_blog_tags", force: :cascade do |t|
+    t.string "title"
+    t.string "meta_permalink"
+    t.string "meta_language"
+    t.integer "lato_core_superuser_creator_id"
+    t.integer "lato_blog_tag_parent_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "lato_core_superusers", force: :cascade do |t|

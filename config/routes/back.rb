@@ -16,3 +16,6 @@ post 'post_fields_extra/destroy_relay_field', to: 'back/post_fields#destroy_rela
 
 # categories
 resources :categories, module: 'back'
+
+# tags
+resources :tags, module: 'back'
