@@ -24,6 +24,13 @@ var BlogPosts = (function () {
     })
   }
 
+  function _initializeTagsAutosave () {
+    var form = $('.posts__edit-tags').find('form')
+    $(form).find('select').change(function () {
+      $(form).submit()
+    })
+  }
+
   function _initializePublicationDatetimeAutosave () {
     var form = $('.posts__edit-publication-datetime').find('form')
     $(form).find('input').change(function () {
@@ -50,6 +57,7 @@ var BlogPosts = (function () {
   function init () {
     _initializeAutosave()
     _initializeCategoriesAutosave()
+    _initializeTagsAutosave()
     _initializePublicationDatetimeAutosave()
     _initializeStatusSwitchAutosave()
     _initializeSeoDescriptionAutosave()

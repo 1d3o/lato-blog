@@ -6,6 +6,7 @@ resources :posts, module: 'back'
 post 'posts_extra/update_status', to: 'back/posts#update_status', as: 'posts_update_status'
 post 'posts_extra/update_publication_datetime', to: 'back/posts#update_publication_datetime', as: 'posts_update_publication_datetime'
 post 'posts_extra/update_categories', to: 'back/posts#update_categories', as: 'posts_update_categories'
+post 'posts_extra/update_tags', to: 'back/posts#update_tags', as: 'posts_update_tags'
 post 'posts_extra/update_seo_description', to: 'back/posts#update_seo_description', as: 'posts_update_seo_description'
 get 'posts_extra/destroy_all_deleted', to: 'back/posts#destroy_all_deleted', as: 'posts_destroy_all_deleted'
 

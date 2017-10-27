@@ -80,6 +80,7 @@ mixed:
   publication_datetime: Publication date
   child_tree: Child tree
   categories: Categories
+  tags: Tags
   number_of_posts: Number of posts
   key: Key
   typology: Typology

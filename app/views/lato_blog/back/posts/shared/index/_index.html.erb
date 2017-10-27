@@ -5,14 +5,15 @@
 <%=raw block.open %>
 
   <%
-    title = "#{get_current_language_title.upcase}: "
+    title = "#{get_current_language_title.upcase} - "
     title = "#{title}#{LANGUAGES[:lato_blog][:mixed][:published_posts]}" if status && status === 'published'
     title = "#{title}#{LANGUAGES[:lato_blog][:mixed][:drafted_posts]}" if status && status === 'drafted'
     title = "#{title}#{LANGUAGES[:lato_blog][:mixed][:deleted_posts]}" if status && status === 'deleted'
   %>
 
-  <%=raw cell(:elements, :title).new(label: title, size: 6) %>
+  <%=raw cell(:elements, :title).new(label: title, size: 3) %>
 
+  <br>
 
   <%=raw cell(:widgets, :index).new(
     records: @widget_index_posts,

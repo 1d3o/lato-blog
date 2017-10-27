@@ -139,6 +139,30 @@ module LatoBlog
       end
     end
 
+    # This function updates the tags of a post.
+    def update_tags
+      @post = LatoBlog::Post.find_by(id: params[:id])
+      return unless check_post_presence
+
+      params_tags = params[:tags].map(&:to_i)
+      tag_posts = LatoBlog::TagPost.where(lato_blog_post_id: @post.id)
+
+      params_tags.each do |tag_id|
+        tag = LatoBlog::Tag.find_by(id: tag_id)
+        next if !tag || tag.meta_language != @post.meta_language
+
+        tag_post = tag_posts.find_by(lato_blog_tag_id: tag.id)
+        LatoBlog::TagPost.create(lato_blog_post_id: @post.id, lato_blog_tag_id: tag.id) unless tag_post
+      end
+
+      tag_ids = tag_posts.pluck(:lato_blog_tag_id)
+      tag_ids.each do |tag_id|
+        next if params_tags.include?(tag_id)
+        tag_post = tag_posts.find_by(lato_blog_tag_id: tag_id)
+        tag_post.destroy if tag_post
+      end
+    end
+
     # This function updates the seo description of a post.
     def update_seo_description
       @post = LatoBlog::Post.find_by(id: params[:id])
@@ -191,6 +215,7 @@ module LatoBlog
 
     def fetch_external_objects
       @categories = LatoBlog::Category.all.where(meta_language: cookies[:lato_blog__current_language])
+      @tags = LatoBlog::Tag.all.where(meta_language: cookies[:lato_blog__current_language])
       @medias = LatoMedia::Media.all
     end
 

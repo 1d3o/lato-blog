@@ -1,0 +1,28 @@
+<%
+  block = cell(:elements, :block).new(class: 'xs-12 sm-12 md-12 posts__edit-tags')
+  row = cell(:elements, :row).new
+  form = cell(:inputs, :form).new(url: lato_blog.posts_update_tags_path, method: :post, remote: true)
+%>
+
+<%=raw block.open %>
+
+  <%=raw cell(:elements, :title).new(label: LANGUAGES[:lato_blog][:mixed][:tags], size: 6) %>
+
+  <%=raw form.open %>
+
+    <input type="hidden" name="id" value="<%= @post.id %>">
+
+    <%=raw row.open %>
+
+      <%=raw cell(:inputs, :select).new(
+        name: 'tags[]',
+        options: @tags.map { |t| {value: t.id, name: t.title} },
+        multiple: true,
+        value: @post.tags.pluck(:id)
+      ) %>
+
+    <%=raw row.close %>
+
+  <%=raw form.close %>
+ 
+<%=raw block.close %>

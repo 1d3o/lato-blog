@@ -29,6 +29,11 @@ module LatoBlog
                                   dependent: :destroy
     has_many :categories, through: :category_relations
 
+    has_many :tag_relations, foreign_key: :lato_blog_post_id,
+                             class_name: 'LatoBlog::TagPost',
+                             dependent: :destroy
+    has_many :tags, through: :tag_relations
+
     # Scopes:
 
     scope :published, -> { where(meta_status: BLOG_POSTS_STATUS[:published]) }
