@@ -10,8 +10,22 @@ module LatoBlog
     end
 
     # This function returns an object with the list of posts with some filters.
-    def blog__get_posts(order: nil, language: nil, category_permalink: nil, category_permalink_AND: false, category_id: nil, category_id_AND: false, search: nil, page: nil, per_page: nil)
-      posts = LatoBlog::Post.published.joins(:categories).joins(:post_parent).where('lato_blog_post_parents.publication_datetime <= ?', DateTime.now)
+    def blog__get_posts(
+      order: nil,
+      language: nil,
+      category_permalink: nil,
+      category_permalink_AND: false,
+      category_id: nil,
+      category_id_AND: false,
+      tag_permalink: nil,
+      tag_permalink_AND: false,
+      tag_id: nil,
+      tag_id_AND: false,
+      search: nil,
+      page: nil,
+      per_page: nil
+    )
+      posts = LatoBlog::Post.published.includes(:categories).includes(:tags).joins(:post_parent).where('lato_blog_post_parents.publication_datetime <= ?', DateTime.now)
 
       # apply filters
       order = order && order == 'ASC' ? 'ASC' : 'DESC'
@@ -19,6 +33,8 @@ module LatoBlog
       posts = _posts_filter_by_language(posts, language)
       posts = _posts_filter_by_category_permalink(posts, category_permalink, category_permalink_AND)
       posts = _posts_filter_category_id(posts, category_id, category_id_AND)
+      posts = _posts_filter_by_tag_permalink(posts, tag_permalink, tag_permalink_AND)
+      posts = _posts_filter_tag_id(posts, tag_id, tag_id_AND)
       posts = _posts_filter_search(posts, search)
 
       # take posts uniqueness
@@ -91,6 +107,38 @@ module LatoBlog
         ids = []
         posts.pluck(:id).each do |id|
           ids.push(id) if posts.where(id: id).length >= category_ids.length
+        end
+        posts = posts.where(id: ids)
+      end
+      # return posts
+      posts
+    end
+
+    def _posts_filter_by_tag_permalink(posts, tag_permalink, tag_permalink_AND)
+      return posts unless tag_permalink
+      tag_permalinks = tag_permalink.is_a?(Array) ? tag_permalink : tag_permalink.split(',')
+      posts = posts.where(lato_blog_tags: { meta_permalink: tag_permalinks })
+      # manage AND clause
+      if ['true', true].include?(tag_permalink_AND)
+        ids = []
+        posts.pluck(:id).each do |id|
+          ids.push(id) if posts.where(id: id).length >= tag_permalinks.length
+        end
+        posts = posts.where(id: ids)
+      end
+      # return posts
+      posts
+    end
+
+    def _posts_filter_tag_id(posts, tag_id, tag_id_AND)
+      return posts unless tag_id
+      tag_ids = tag_id.is_a?(Array) ? tag_id : tag_id.split(',')
+      posts = posts.where(lato_blog_tags: { id: tag_ids })
+      # manage AND clause
+      if ['true', true].include?(tag_id_AND)
+        ids = []
+        posts.pluck(:id).each do |id|
+          ids.push(id) if posts.where(id: id).length >= tag_ids.length
         end
         posts = posts.where(id: ids)
       end

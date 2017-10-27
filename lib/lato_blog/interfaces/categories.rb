@@ -31,7 +31,13 @@ module LatoBlog
     end
 
     # This function returns an object with the list of categories with some filters.
-    def blog__get_categories(order: nil, language: nil, search: nil, page: nil, per_page: nil)
+    def blog__get_categories(
+      order: nil,
+      language: nil,
+      search: nil,
+      page: nil,
+      per_page: nil
+    )
       categories = LatoBlog::Category.all
 
       # apply filters

@@ -2,6 +2,7 @@ module LatoBlog
   class Tag < ApplicationRecord
 
     include Tag::EntityHelpers
+    include Tag::SerializerHelpers
 
     # Validations:
 

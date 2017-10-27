@@ -22,6 +22,9 @@ module LatoBlog
       # add categories informations
       serialized[:categories] = serialize_categories
 
+      # add tags informations
+      serialized[:tags] = serialize_tags
+
       # add post parent informations
       serialized[:other_informations] = serialize_other_informations
 
@@ -55,11 +58,20 @@ module LatoBlog
       serialized
     end
 
-    # This function serializes the list of cateogories for the post.
+    # This function serializes the list of categories for the post.
     def serialize_categories
       serialized = {}
       categories.each do |category|
         serialized[category.id] = category.serialize_base
+      end
+      serialized
+    end
+
+    # This function serializes the list of tags for the post.
+    def serialize_tags
+      serialized = {}
+      tags.each do |tag|
+        serialized[tag.id] = tag.serialize_base
       end
       serialized
     end

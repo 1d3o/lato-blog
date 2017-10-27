@@ -9,6 +9,10 @@ module LatoBlog
         category_permalink_AND: params[:category_permalink_AND],
         category_id: params[:category_id],
         category_id_AND: params[:category_id_AND],
+        tag_permalink: params[:tag_permalink],
+        tag_permalink_AND: params[:tag_permalink_AND],
+        tag_id: params[:tag_id],
+        tag_id_AND: params[:tag_id_AND],
         search: params[:search],
         page: params[:page],
         per_page: params[:per_page]
