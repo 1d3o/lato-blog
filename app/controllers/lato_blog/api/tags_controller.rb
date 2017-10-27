@@ -6,8 +6,8 @@ module LatoBlog
         order: params[:order],
         language: params[:language],
         search: params[:search],
-        page: params[:page],
-        per_page: params[:per_page]
+        page: params[:page].to_i,
+        per_page: params[:per_page].to_i
       )
 
       # render response
