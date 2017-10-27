@@ -2,49 +2,30 @@ module LatoBlog
   class Api::CategoriesController < Api::ApiController
 
     def index
-      categories = LatoBlog::Category.all
-
-      # order categories
-      order = (params[:order] && params[:order] == 'ASC') ? 'ASC' : 'DESC'
-      categories = categories.order("title #{order}")
-
-      # filter language
-      categories = categories.where(meta_language: params[:language]) if params[:language]
-      # filter search
-      categories = categories.where('title like ?', "%#{params[:search]}%") if params[:search]
-
-      # save total categories
-      total = categories.length
-
-      # manage pagination
-      page = params[:page] ? params[:page].to_i : 1
-      per_page = params[:per_page] ? params[:per_page].to_i : 20
-      categories = core__paginate_array(categories, per_page, page)
+      result = blog__get_categories(
+        order: params[:order],
+        language: params[:language],
+        search: params[:search],
+        page: params[:page],
+        per_page: params[:per_page]
+      )
 
       # render response
-      core__send_request_success(
-        categories: categories && !categories.empty? ? categories.map(&:serialize) : [],
-        page: page,
-        per_page: per_page,
-        order: order,
-        total: total
-      )
+      core__send_request_success(result)
     end
 
     def show
       # check parameters
       core__send_request_fail('Uncorrect parameters') && return unless params[:id] || params[:permalink]
 
-      # find post
-      if params[:id]
-        category = LatoBlog::Category.find_by(id: params[:id].to_i)
-      else
-        category = LatoBlog::Category.find_by(meta_permalink: params[:permalink])
-      end
+      category = blog__get_category(
+        id: params[:id],
+        permalink: params[:permalink]
+      )
 
       # render respnse
       core__send_request_fail('Category not found') && return unless category
-      core__send_request_success(category: category.serialize)
+      core__send_request_success(category: category)
     end
 
   end
