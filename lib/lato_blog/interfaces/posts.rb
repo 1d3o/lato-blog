@@ -44,8 +44,8 @@ module LatoBlog
       total = posts.length
 
       # manage pagination
-      page ||= 1
-      per_page ||= 20
+      page = page&.to_i || 1
+      per_page = per_page&.to_i || 20
       posts = core__paginate_array(posts, per_page, page)
 
       # return result
