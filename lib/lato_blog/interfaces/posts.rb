@@ -25,16 +25,22 @@ module LatoBlog
       page: nil,
       per_page: nil
     )
-      posts = LatoBlog::Post.published.joins(:categories).joins(:tags).joins(:post_parent).where('lato_blog_post_parents.publication_datetime <= ?', DateTime.now)
+      posts = LatoBlog::Post.published.joins(:post_parent).where('lato_blog_post_parents.publication_datetime <= ?', DateTime.now)
 
       # apply filters
       order = order && order == 'ASC' ? 'ASC' : 'DESC'
       posts = _posts_filter_by_order(posts, order)
       posts = _posts_filter_by_language(posts, language)
-      posts = _posts_filter_by_category_permalink(posts, category_permalink, category_permalink_AND)
-      posts = _posts_filter_category_id(posts, category_id, category_id_AND)
-      posts = _posts_filter_by_tag_permalink(posts, tag_permalink, tag_permalink_AND)
-      posts = _posts_filter_tag_id(posts, tag_id, tag_id_AND)
+      if category_permalink || category_id
+        posts = posts.joins(:categories)
+        posts = _posts_filter_by_category_permalink(posts, category_permalink, category_permalink_AND)
+        posts = _posts_filter_category_id(posts, category_id, category_id_AND)
+      end
+      if tag_permalink || tag_id
+        posts = posts.joins(:tags)
+        posts = _posts_filter_by_tag_permalink(posts, tag_permalink, tag_permalink_AND)
+        posts = _posts_filter_tag_id(posts, tag_id, tag_id_AND)
+      end
       posts = _posts_filter_search(posts, search)
 
       # take posts uniqueness
