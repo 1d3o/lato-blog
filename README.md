@@ -29,7 +29,3 @@ Exec migrations
 ```console
 bundle exec rake db:migrate
 ```
-
-## TODO
-
-- Create interface query functions to get categories (like posts).
