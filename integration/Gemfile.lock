@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/ideonetwork/lato-core
-  revision: d87ae478948c4251729c1fb5c4f478bd56715a3c
+  revision: 7c299d6c8f804d4d4ece8d554e78ce5cb7167ffe
   specs:
     lato_core (2.1.4)
       bcrypt (>= 3.1.7)
@@ -202,7 +202,7 @@ GEM
       ffi (>= 0.5.0, < 2)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
-    sass (3.5.2)
+    sass (3.5.3)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -236,7 +236,7 @@ GEM
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
     turbolinks-source (5.0.3)
-    tzinfo (1.2.3)
+    tzinfo (1.2.4)
       thread_safe (~> 0.1)
     uber (0.1.0)
     uglifier (3.2.0)
