@@ -25,7 +25,7 @@ module LatoBlog
       page: nil,
       per_page: nil
     )
-      posts = LatoBlog::Post.published.includes(:categories).includes(:tags).joins(:post_parent).where('lato_blog_post_parents.publication_datetime <= ?', DateTime.now)
+      posts = LatoBlog::Post.published.joins(:categories).joins(:tags).joins(:post_parent).where('lato_blog_post_parents.publication_datetime <= ?', DateTime.now)
 
       # apply filters
       order = order && order == 'ASC' ? 'ASC' : 'DESC'
