@@ -33,6 +33,10 @@ flashes:
   category_not_found: Category not found
   category_update_success: The Category was updated successfully
   category_destroy_success: The Category was destroied successfully
+  tag_create_success: The Tag was created successfully
+  tag_not_found: Tag not found
+  tag_update_success: The Tag was updated successfully
+  tag_destroy_success: The Tag was destroied successfully
   post_categories_not_accepted: There are not categories selected
   post_update_fields_warning: The post is updated but we have some problems with fields
   post_field_not_found: Field not found

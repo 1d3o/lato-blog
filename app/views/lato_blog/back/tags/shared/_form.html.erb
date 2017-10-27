@@ -1,0 +1,34 @@
+<%
+  row = cell(:elements, :row).new
+  form = cell(:inputs, :form).new(url: url, method: method)
+%>
+
+<%=raw form.open %>
+
+  <input type="hidden" name="parent" value="<%= @tag_parent ? @tag_parent.id : nil %>">
+
+  <%=raw row.open %>
+
+    <% if method === :put %>
+
+      <%=raw cell(:inputs, :text).new(name: 'tag[meta_permalink]', label: LANGUAGES[:lato_blog][:forms][:permalink],
+      required: true, class: 'md-12', value: @tag.meta_permalink) %>
+
+    <% end %>
+
+    <%=raw cell(:inputs, :text).new(name: 'tag[title]', label: LANGUAGES[:lato_blog][:forms][:title],
+    required: true, class: 'md-12', value: @tag.title) %>
+
+  <%=raw row.close %>
+
+  <div class="text-right">
+
+    <%=raw cell(:elements, :button).new(type: 'link', label: LANGUAGES[:lato_blog][:mixed][:cancel],
+    style: 'danger', icon: 'ban', url: lato_blog.tags_path) %>
+
+    <%=raw cell(:elements, :button).new(type: 'submit', label: LANGUAGES[:lato_blog][:mixed][:save],
+    style: 'success', icon: 'check') %>
+
+  </div>
+
+<%=raw form.close %>

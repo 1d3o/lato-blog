@@ -99,7 +99,7 @@ module LatoBlog
         id: @category.id).map { |cat| { title: cat.title, value: cat.id } }
       end
 
-      # This function checks the @post variable is present and redirect to index if it not exist.
+      # This function checks the @category variable is present and redirect to index if it not exist.
       def check_category_presence
         if !@category
           flash[:warning] = LANGUAGES[:lato_blog][:flashes][:category_not_found]

@@ -33,6 +33,10 @@ flashes:
   category_not_found: Categoria non trovata
   category_update_success: Categoria aggiornata con successo
   category_destroy_success: Categoria eliminata con successo
+  tag_create_success: Tag creato con successo
+  tag_not_found: Tag non trovato
+  tag_update_success: Tag aggiornato con successo
+  tag_destroy_success: Tag eliminato con successo
   post_categories_not_accepted: Non ci sono categorie selezionate
   post_update_fields_warning: L'articolo è stato aggiornato ma ci sono state problematiche con il salvataggio dei campi
   post_field_not_found: Campo non trovato
