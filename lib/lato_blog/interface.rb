@@ -10,11 +10,11 @@ module LatoBlog
     require 'lato_blog/interfaces/categories'
     include LatoBlog::Interface::Categories
 
+    require 'lato_blog/interfaces/tags'
+    include LatoBlog::Interface::Tags
+
     require 'lato_blog/interfaces/fields'
     include LatoBlog::Interface::Fields
-
-    require 'lato_blog/interfaces/queries'
-    include LatoBlog::Interface::Queries
 
   end
 end

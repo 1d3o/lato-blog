@@ -1,0 +1,38 @@
+<%
+  block = cell(:elements, :block).new(class: 'xs-12 sm-12 md-12')
+  table = cell(:elements, :table, :container).new
+  table_body = cell(:elements, :table, :body).new
+%>
+
+<%=raw block.open %>
+
+  <%=raw cell(:elements, :title).new(label: LANGUAGES[:lato_blog][:mixed][:languages], size: 6) %>
+
+  <%=raw table.open %>
+
+    <%=raw table_body.open %>
+
+      <% CONFIGS[:lato_blog][:languages].values.each do |language| %>
+
+        <% if @tag.meta_language === language[:identifier] %>
+          <%=raw cell(:elements, :table, :row).new(labels: [language[:title], '']) %>
+        <% elsif @tag.get_translation_for_language(language[:identifier]) %>
+          <% language_tag = @tag.get_translation_for_language(language[:identifier]) %>
+          <%=raw cell(:elements, :table, :row).new(labels: [
+            language[:title],
+            "<a href='#{lato_blog.tag_path(language_tag.id)}'>#{LANGUAGES[:lato_blog][:mixed][:show]}</a>"
+          ]) %>
+        <% else %>
+          <%=raw cell(:elements, :table, :row).new(labels: [
+            language[:title],
+            "<a href='#{lato_blog.new_tag_path(language: language[:identifier], parent: @tag.tag_parent.id)}'>#{LANGUAGES[:lato_blog][:mixed][:create]}</a>"
+          ]) %>
+        <% end %>
+
+      <% end %>
+
+    <%=raw table_body.close %>
+
+  <%=raw table.close %>
+ 
+<%=raw block.close %>

@@ -62,6 +62,36 @@ module LatoBlog
       end
     end
 
+    # This function updates a tag.
+    def update
+      @tag = LatoBlog::Tag.find_by(id: params[:id])
+      return unless check_tag_presence
+
+      if !@tag.update(edit_tag_params)
+        flash[:danger] = @tag.errors.full_messages.to_sentence
+        redirect_to lato_blog.edit_tag_path(@tag.id)
+        return
+      end
+
+      flash[:success] = LANGUAGES[:lato_blog][:flashes][:tag_update_success]
+      redirect_to lato_blog.tag_path(@tag.id)
+    end
+
+    # This function destroyes a tag.
+    def destroy
+      @tag = LatoBlog::Tag.find_by(id: params[:id])
+      return unless check_tag_presence
+
+      if !@tag.destroy
+        flash[:danger] = @tag.tag_parent.errors.full_messages.to_sentence
+        redirect_to lato_blog.edit_tag_path(@tag.id)
+        return
+      end
+
+      flash[:success] = LANGUAGES[:lato_blog][:flashes][:tag_destroy_success]
+      redirect_to lato_blog.categories_path(status: 'deleted')
+    end
+
     private
 
     # This function checks the @tag variable is present and redirect to index if it not exist.
@@ -89,6 +119,11 @@ module LatoBlog
       tag_params[:meta_language] = cookies[:lato_blog__current_language]
       # return final post object
       return tag_params
+    end
+
+    # This function generate params for a edit tag.
+    def edit_tag_params
+      params.require(:tag).permit(:title, :lato_blog_tag_id, :meta_permalink)
     end
 
     # This function generate and save a new tag parent and return the id.

@@ -15,7 +15,7 @@
 
       <%=raw block.open %>
 
-        <% # render 'lato_blog/back/categories/shared/form', url: lato_blog.category_path(@category.id), method: :put %>
+        <%= render 'lato_blog/back/tags/shared/form', url: lato_blog.tag_path(@tag.id), method: :put %>
 
       <%=raw block.close %>
 
@@ -29,11 +29,9 @@
 
     <%=raw row.open %>
 
-      <% # render 'lato_blog/back/categories/shared/edit/edit_informations' %>
+      <%= render 'lato_blog/back/tags/shared/edit/edit_informations' %>
 
-      <% # render 'lato_blog/back/categories/shared/edit/edit_languages' %>
-
-      <% # render 'lato_blog/back/categories/shared/edit/edit_child_tree' %>
+      <%= render 'lato_blog/back/tags/shared/edit/edit_languages' %>
 
     <%=raw row.close %>
 
