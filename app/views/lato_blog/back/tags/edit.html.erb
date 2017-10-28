@@ -15,6 +15,8 @@
 
       <%=raw block.open %>
 
+        <%=raw cell(:elements, :title).new(label: @tag.title, size: 4) %>
+
         <%= render 'lato_blog/back/tags/shared/form', url: lato_blog.tag_path(@tag.id), method: :put %>
 
       <%=raw block.close %>

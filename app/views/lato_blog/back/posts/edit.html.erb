@@ -15,7 +15,7 @@
 
       <%=raw block.open %>
 
-        <%=raw cell(:elements, :title).new(label: @post.title, size: 3) %>
+        <%=raw cell(:elements, :title).new(label: @post.title, size: 4) %>
 
         <%= render 'lato_blog/back/posts/shared/form', url: lato_blog.post_path(@post.id), method: :put %>
 

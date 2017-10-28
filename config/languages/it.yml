@@ -89,6 +89,7 @@ mixed:
   post_id: Id articolo
   post_field_id: Id campo
   seo_description: Descrizione seo
+  create_new_post: Crea un nuovo articolo
 
 posts_status:
   published: Pubblico

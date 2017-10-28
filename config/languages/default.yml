@@ -81,7 +81,7 @@ mixed:
   child_tree: Child tree
   categories: Categories
   tags: Tags
-  number_of_posts: Number of posts
+  number_of_posts: Number of articles
   key: Key
   typology: Typology
   visibility: Visibility
@@ -89,6 +89,7 @@ mixed:
   post_id: Post id
   post_field_id: Post field id
   seo_description: Seo description
+  create_new_post: Create a new article
 
 posts_status:
   published: Published

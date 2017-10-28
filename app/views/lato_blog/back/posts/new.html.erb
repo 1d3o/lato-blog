@@ -15,6 +15,8 @@
 
       <%=raw block.open %>
 
+        <%=raw cell(:elements, :title).new(label: LANGUAGES[:lato_blog][:mixed][:create_new_post], size: 4) %>
+
         <%= render 'lato_blog/back/posts/shared/form', url: lato_blog.posts_path, method: :post %>
 
       <%=raw block.close %>

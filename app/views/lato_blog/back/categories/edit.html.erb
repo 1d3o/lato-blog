@@ -15,6 +15,8 @@
 
       <%=raw block.open %>
 
+        <%=raw cell(:elements, :title).new(label: @category.title, size: 4) %>
+
         <%= render 'lato_blog/back/categories/shared/form', url: lato_blog.category_path(@category.id), method: :put %>
 
       <%=raw block.close %>
