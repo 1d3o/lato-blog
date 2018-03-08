@@ -1,5 +1,7 @@
 # Lato Blog
 
+[![Gem Version](https://badge.fury.io/rb/lato_blog.svg)](https://badge.fury.io/rb/lato_blog)
+
 Lato is a Rails engine used to develop modular admin panels. This is the module used to manage a blog.
 
 ## Installation
