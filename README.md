@@ -29,7 +29,3 @@ Exec migrations
 ```console
 bundle exec rake db:migrate
 ```
-
-## TODO
-
-Update lato_media version to avoid security vulnerabilities when a new lato_media version is online and publish update on rubygems.

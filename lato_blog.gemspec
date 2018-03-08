@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency 'rails', '>= 5.1.0'
   s.add_dependency 'lato_core', '>= 2.1.0'
-  s.add_dependency 'lato_media', '>= 2.1.0'
+  s.add_dependency 'lato_media', '>= 2.1.2'
 
   # Dev dependencies:
 
