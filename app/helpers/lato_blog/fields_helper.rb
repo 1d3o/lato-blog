@@ -16,6 +16,8 @@ module LatoBlog
       case post_field.typology
       when 'text'
         render_post_field_text(post_field, key)
+      when 'textarea'
+        render_post_field_textarea(post_field, key)
       when 'datetime'
         render_post_field_datetime(post_field, key)
       when 'editor'
@@ -42,6 +44,12 @@ module LatoBlog
     def render_post_field_text(post_field, key)
       render 'lato_blog/back/post_fields/fields/text', post_field: post_field, key: key
     end
+
+    # Textarea.
+    def render_post_field_textarea(post_field, key)
+      render 'lato_blog/back/post_fields/fields/textarea', post_field: post_field, key: key
+    end
+
 
     # Datetime.
     def render_post_field_datetime(post_field, key)

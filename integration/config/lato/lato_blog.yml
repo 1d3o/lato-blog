@@ -1,0 +1,125 @@
+# This file contain all settings for the blog module.
+
+# set languages for posts. -> One language is necessary.
+languages:
+  language_en:
+    identifier: en
+    title: English
+  language_it:
+    identifier: it
+    title: Italiano
+
+# set post fields for posts.
+post_fields:
+  textarea:
+    type: textarea
+    position: 1
+    label: Textarea input
+    class: xs-12 sm-12 md-12 lg-12
+  relay:
+    type: relay
+    position: 2
+    label: Custom fields
+    class: xs-12 sm-12 md-12 lg-12
+    fields:
+      text:
+        type: text
+        label: Text
+      image:
+        type: image
+        label: Image
+      gallery:
+        type: gallery
+        label: Gallery
+      editor:
+        type: editor
+        label: Editor
+      geolocalization:
+        type: geolocalization
+        label: Geolocalization
+      datetime:
+        type: datetime
+        label: Datetime
+      youtube:
+        type: youtube
+        label: Youtube
+      composed:
+        type: composed
+        label: Composed
+        fields:
+          text1:
+            type: text
+            label: Text 1
+            class: xs-12 sm-12 md-6 lg-6
+          text2:
+            type: text
+            label: Text 1
+            class: xs-12 sm-12 md-6 lg-6
+
+# hide post default fields
+post_hidden_fields: [] # possible values: ['subtitle', 'content', 'excerpt'] 
+
+# set menu for the module.
+menu:
+  blog_articles:
+    icon: newspaper-o
+    title: translate[posts]
+    url: /lato/blog/posts
+    position: 3
+    permission_min: 0
+    permission_max: 99
+    sub_items:
+      new:
+        title: translate[posts_new]
+        url: /lato/blog/posts/new
+        permission_min: 0
+        permission_max: 99
+      all:
+        title: translate[posts_index]
+        url: /lato/blog/posts
+        permission_min: 0
+        permission_max: 99
+      categories:
+        title: translate[posts_categories]
+        url: /lato/blog/categories
+        permission_min: 0
+        permission_max: 99
+      tags:
+        title: translate[posts_tags]
+        url: /lato/blog/tags
+        permission_min: 0
+        permission_max: 99
+      fields:
+        title: translate[post_fields]
+        url: /lato/blog/post_fields
+        permission_min: 0
+        permission_max: 99
+  blog_documentation:
+    icon: book
+    title: translate[documentation]
+    url: /lato/blog/doc
+    position: 1002
+    permission_min: 4
+    permission_max: 99
+
+# set assets for the module. -> Please, do not edit default assets.
+assets:
+  blog_style:
+    path: lato_blog/application
+    type: stylesheet
+  blog_script:
+    path: lato_blog/application
+    type: javascript
+
+# set widgets for the module. -> Please, do not edit default widgets.
+widgets:
+  blog_switch_lang:
+    icon: flag
+    path: lato_blog/widgets/switchlang
+    position: 11
+
+# set partials added at the end of the layout.
+partials:
+  blog_relay_destroy_button:
+    path: lato_blog/partials/relay_destroy_button
+    position: 11

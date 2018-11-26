@@ -24,6 +24,8 @@ module LatoBlog
       case typology
       when 'text'
         serialize_field_value_text
+      when 'textarea'
+        serialize_field_value_textarea
       when 'datetime'
         serialize_field_value_datetime
       when 'editor'
@@ -48,6 +50,11 @@ module LatoBlog
 
     # Text.
     def serialize_field_value_text
+      value
+    end
+
+    # Textarea.
+    def serialize_field_value_textarea
       value
     end
 

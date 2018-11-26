@@ -15,5 +15,7 @@ module LatoBlog
 
     def relay; end
 
+    def textarea; end
+
   end
 end

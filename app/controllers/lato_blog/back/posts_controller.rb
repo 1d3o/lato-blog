@@ -250,6 +250,8 @@ module LatoBlog
       case field.typology
       when 'text'
         update_field_text(field, value)
+      when 'textarea'
+        update_field_textarea(field, value)
       when 'datetime'
         update_field_datetime(field, value)
       when 'editor'
@@ -274,6 +276,11 @@ module LatoBlog
 
     # Text.
     def update_field_text(field, value)
+      field.update(value: value)
+    end
+
+    # Textarea.
+    def update_field_textarea(field, value)
       field.update(value: value)
     end
 
